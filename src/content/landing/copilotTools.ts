@@ -9,7 +9,7 @@ export const demoTools = [
   {
     label: 'Read Consensus Report',
     name: 'get_consensus_report',
-    result: 'ATR(14) 0.69 · price below VWAP 302.77',
+    result: 'ATR(14) 6.90 · price below VWAP 3027.70',
     icon: 'bar-chart',
   },
   {
@@ -21,13 +21,13 @@ export const demoTools = [
   {
     label: 'Read Relative Strength',
     name: 'get_relative_strength',
-    result: 'Sample stock underperforms its benchmark',
+    result: 'Sample pair underperforms BTC',
     icon: 'chart',
   },
   {
     label: 'Read Session Context',
     name: 'get_session_context',
-    result: 'Late-session intraday example · watch liquidity into the close',
+    result: 'Near the 8-hour funding window · watch liquidity into the UTC close',
     icon: 'clock',
   },
   {
@@ -39,13 +39,13 @@ export const demoTools = [
   {
     label: 'Read Support Resistance',
     name: 'get_support_resistance',
-    result: 'R1 290.58 · S3 289.78 · example entry below resistance',
+    result: 'R1 2905.80 · S3 2897.80 · example entry below resistance',
     icon: 'target',
   },
   {
     label: 'Read Volume Profile',
     name: 'get_volume_profile',
-    result: 'POC 300.59 · low-volume node 291.31',
+    result: 'POC 3005.90 · low-volume node 2913.10',
     icon: 'layers',
   },
   {
@@ -79,9 +79,9 @@ export const toolLibrary = [
   { name: 'get_news_context', label: 'Read News Context', scope: 'Analysis' },
   { name: 'get_order_flow', label: 'Read Order Flow', scope: 'Analysis' },
   {
-    name: 'get_options_analytics',
-    label: 'Read Options Analytics',
-    scope: 'F&O / index',
+    name: 'get_derivatives_analytics',
+    label: 'Read Derivatives Analytics',
+    scope: 'Perpetuals',
   },
   {
     name: 'get_trade_performance',

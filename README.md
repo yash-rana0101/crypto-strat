@@ -1,7 +1,7 @@
 # Strat
 
 <p align="center">
-  <strong>Bloomberg Terminal intelligence, built in Rust, for the serious Indian F&O trader.</strong>
+  <strong>Bloomberg Terminal intelligence, built in Rust, for the serious crypto derivatives trader.</strong>
 </p>
 
 <p align="center">
@@ -22,14 +22,14 @@
 
 ## 1. Executive Summary
 
-**Strat** is a native, high-performance desktop trading terminal tailored specifically for the Indian equity and F&O (Futures & Options) markets (NSE/BSE). By connecting to the **Zerodha Kite WebSocket** and REST APIs, the system ingests high-frequency binary tick data, routes it through an event bus, runs real-time quantitative calculations inside native Rust agents, aggregates consensus scores, and streams insights into a latency-optimized charting interface.
+**Strat** is a native, high-performance desktop trading terminal tailored specifically for crypto markets: spot pairs and perpetual futures. By connecting to **exchange WebSocket streams** and read-only REST APIs, the system ingests high-frequency tick and order-book data, routes it through an event bus, runs real-time quantitative calculations inside native Rust agents, aggregates consensus scores, and streams insights into a latency-optimized charting interface.
 
 ### Key Highlights:
 
-- **Sub-50ms Tick Path:** Direct binary parsing of Zerodha 184-byte tick frames to internal protobuf messages, written directly to QuestDB at native speeds.
+- **Sub-50ms Tick Path:** Direct parsing of exchange WebSocket stream frames (trades and order-book depth) to internal protobuf messages, written directly to QuestDB at native speeds.
 - **5-Agent Swarm Intelligence:** Technical, Sentiment, Predictive (OLS Ghost Line), Quant-RAG, and Aggregator agents run concurrently to evaluate market conditions.
 - **Zero-Latency Visuals:** Chart updates bypass React state reconciliation, invoking the Lightweight Charts API directly to prevent browser layout thrashing and maintain constant 60 FPS updates.
-- **Local Security Vault:** Zerodha Kite API keys are encrypted client-side using Argon2id key derivation and AES-256 in Tauri Stronghold. Credentials never touch external servers or public logs.
+- **Local Security Vault:** Read-only exchange API keys are encrypted client-side using Argon2id key derivation and AES-256 in Tauri Stronghold. Credentials never touch external servers or public logs.
 
 ---
 
@@ -39,7 +39,7 @@ The monorepo contains independent services structured for low coupling and maxim
 
 ```mermaid
 graph TD
-    Kite[Zerodha Kite API] -->|Binary Websocket / REST| Ingest[Ingestion Service / Rust]
+    Exchange[Exchange WebSocket APIs] -->|Websocket / REST| Ingest[Ingestion Service / Rust]
     Ingest -->|ILP TCP:9009| QuestDB[QuestDB Time-Series]
     Ingest -->|Protobuf| Redpanda[Redpanda / Kafka Topics]
 
@@ -61,14 +61,14 @@ graph TD
 
 ### Monorepo Components Directory Map:
 
-- **`/ingestion`**: decodes binary frames from Kite and streams to Redpanda and QuestDB.
+- **`/ingestion`**: decodes exchange WebSocket frames and streams to Redpanda and QuestDB.
 - **`/alpha-terminal`**: aggregates raw tick events into clean tumbling 10-minute candles.
 - **`/agents/technical`**: computes 16 indicators (RSI, VWAP, SMA/EMA, MACD) in Rust.
 - **`/agents/sentiment`**: analyzes Google News RSS feeds using Claude/DeepSeek to produce confidence indices.
 - **`/agents/predictive`**: runs rolling 14-period OLS linear regression (OLS Ghost Line).
 - **`/agents/quant-rag`**: triggers on $\ge 2\%$ swings to generate LLM anomaly analysis via DeepSeek v4 Pro.
 - **`/aggregator`**: fuses signals into clear consensus decisions (`BUY`, `SELL`, `HOLD`).
-- **`/auth`**: production-complete auth backend supporting JWT, Google OAuth, PAN/Aadhaar KYC verification, and billing.
+- **`/auth`**: production-complete auth backend supporting JWT, Google OAuth, KYC verification, and billing.
 - **`/frontend`**: Tauri desktop shell wrapper enclosing a Next.js 14 charting interface.
 - **`/design-system`**: structural visual CSS tokens and utility rules (authoritative UI styles).
 
@@ -78,7 +78,7 @@ graph TD
 
 | Layer              | Technology         | Purpose                             | Port / Protocol               |
 | ------------------ | ------------------ | ----------------------------------- | ----------------------------- |
-| **Data Ingestion** | Rust + Tokio       | Binary frame decoder                | `wss://ws.kite.trade`         |
+| **Data Ingestion** | Rust + Tokio       | WebSocket stream decoder            | Exchange WebSocket (`wss://`) |
 | **Message Bus**    | Redpanda (Kafka)   | Event routing for agents            | `19092` (Ext) / `29092` (Int) |
 | **TSDB**           | QuestDB            | High-frequency candlestick storage  | `9009` (ILP) / `8812` (SQL)   |
 | **Desktop Shell**  | Tauri + Rust       | OS integrations, SQLite, Stronghold | Native IPC                    |
@@ -122,7 +122,7 @@ Verify all services are active:
 
 ### Step 3: Run in Local Simulation Mode
 
-To run without active Kite credentials, use the Chaos Engine simulation mode:
+To run without active exchange credentials, use the Chaos Engine simulation mode:
 
 ```bash
 # Set environment flag to bypass live connections

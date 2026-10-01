@@ -1,6 +1,6 @@
 ---
-title: Strat AI — Market Analysis & Pre-Trade Risk Terminal for NSE & NFO
-description: Strat AI evaluates Indian equity and F&O trade setups, audits them against deterministic 1.5x ATR stop floors, and decodes live order flow. Analysis and risk tooling, not advice or execution.
+title: Strat AI — Market Analysis & Pre-Trade Risk Terminal for Crypto Spot & Perpetuals
+description: Strat AI evaluates crypto spot and perpetual futures trade setups, audits them against deterministic 1.5x ATR stop floors, and decodes live derivatives positioning. Analysis and risk tooling, not advice or execution.
 canonical: https://www.stratai.live/
 last-updated: 2026-08-31
 ---
@@ -9,28 +9,28 @@ last-updated: 2026-08-31
 
 **AI that tells you when not to trade.**
 
-Strat AI is a market analysis and pre-trade risk adjudication terminal for Indian
-equities and Futures & Options (NSE/BSE), built by the
-[Trading & Research Wing](https://www.tradingrw.com). Ask about a symbol in plain
+Strat AI is a market analysis and pre-trade risk adjudication terminal for crypto
+markets: spot pairs and perpetual futures, built by the
+[Trading & Research Wing](https://www.tradingrw.com). Ask about a pair in plain
 language and it calls 18 typed quantitative tools over MCP, streaming every call
 to the screen. It audits risk against hard 1.5x ATR stop floors with a Bear Agent
 critique, projects forward price paths from four selectable models, and decodes
-live F&O order flow.
+live derivatives positioning.
 
 Strat AI is analysis and risk tooling. It does not execute trades, hold funds, or
-provide financial advice. The broker interface is strictly read-only.
+provide financial advice. The exchange interface is strictly read-only.
 
 ## What it does
 
-- **Conversational market analysis.** Ask about a symbol in plain language. The
+- **Conversational market analysis.** Ask about a pair in plain language. The
   reasoning loop calls 18 typed quantitative tools over MCP and every payload is
   contract-validated before the model reads it, so the model reasons about
   measurements rather than authoring them.
 - **Pre-trade risk audit.** Enforces a stop-loss floor of at least 1.5x ATR(14)
-  and a minimum reward-to-risk ratio of 1:1.3 intraday, 1:2 swing, investor and
-  F&O. Setups below the floor are rejected with a machine-readable reason tag,
-  not quietly resized. The validator is implemented twice, in Rust and in
-  Python, with identical constants.
+  and a minimum reward-to-risk ratio of 1:1.3 intraday, 1:2 swing, positional
+  and perpetuals. Setups below the floor are rejected with a machine-readable
+  reason tag, not quietly resized. The validator is implemented twice, in Rust
+  and in Python, with identical constants.
 - **Ghost Line projections.** Eight projection engines, four user-selectable:
   OLS, volume-weighted linear regression, a volume-weighted quadratic solved by
   Gaussian elimination with partial pivoting, and a regime-conditioned drift
@@ -38,7 +38,7 @@ provide financial advice. The broker interface is strictly read-only.
   tools use.
 - **Anomaly surveillance.** A 2% absolute move on a 10-minute candle triggers
   generated commentary carrying a headline, a written analysis, and a sentiment
-  assessment, broadcast live to the terminal.
+  assessment, broadcast live to the terminal around the clock.
 - **Fused Conviction Score (1-100).** A relative ranking of setup quality, not a
   probability or a return forecast. The base blend weights technical momentum at
   70% and news sentiment at 30%, and inverts to 30/70 above sentiment conviction 85.
@@ -54,18 +54,19 @@ provide financial advice. The broker interface is strictly read-only.
   (8 reversal, 6 continuation, 4 bilateral, 5 harmonic, 3 institutional), each
   with a derived confidence and a volume-validation verdict, plus a separate
   pass reporting patterns still forming.
-- **F&O options analytics.** Black-Scholes pricing, implied volatility by
-  bisection, the full Greeks, Open Interest buildup by strike, Max Pain,
-  Put-Call Ratio, OI walls, and futures basis for Nifty, Bank Nifty, and
-  single-stock options.
+- **Perpetual derivatives analytics.** Funding rates and funding velocity,
+  open interest buildup quadrants, liquidation clusters, long/short ratio,
+  perpetual basis (premium vs spot), and order-book imbalance for BTC, ETH,
+  and major USDT-margined perpetuals.
 - **Order flow and volume profile.** Tick-level order flow imbalance signed by
   the tick rule, footprint bid/ask volume per price level, and volume profile
   point of control and value area.
 - **Honest failure.** Values that could not be measured are emitted as null, and
   a state that could not be measured reports UNAVAILABLE rather than NEUTRAL.
-- **Zero custody.** The broker seam exposes quotes, instruments, and search
-  only. There is no order-placement method, and a scope-boundary test asserts
-  that every such method name is absent from the codebase.
+- **Zero custody.** The exchange seam exposes quotes, instruments, and search
+  only, and API keys require read-only scope. There is no order-placement or
+  withdrawal method, and a scope-boundary test asserts that every such method
+  name is absent from the codebase.
 
 ## Co-Pilot modes
 
@@ -78,8 +79,8 @@ provide financial advice. The broker interface is strictly read-only.
 
 ## Who it is for
 
-Traders, quant analysts, and risk managers working Indian equities and equity
-derivatives (NSE/BSE F&O).
+Traders, quant analysts, and risk managers working crypto spot pairs and
+perpetual futures.
 
 ## Platform
 
@@ -95,16 +96,16 @@ the [pricing page](https://www.stratai.live/pricing).
 ## Frequently asked
 
 **What exactly is Strat AI?** A market analysis and pre-trade risk adjudication
-terminal for Indian equities and F&O. It provides multi-agent research
-evaluation, deterministic risk verification, order-flow decoders, and unified
-conviction scores.
+terminal for crypto spot pairs and perpetual futures. It provides multi-agent
+research evaluation, deterministic risk verification, derivatives positioning
+decoders, and unified conviction scores.
 
 **Is this financial advice or trade execution?** No. Strat AI is a quantitative
 research and market analysis terminal. It does not execute trades, manage funds,
-or provide financial advice, and the broker interface is read-only.
+or provide financial advice, and the exchange interface is read-only.
 
-**What markets does it cover?** Indian equities and equity derivatives (NSE/BSE
-F&O) only.
+**What markets does it cover?** Crypto spot pairs and perpetual futures only.
+Equities (Indian or US), forex, commodities, and crypto options are out of scope.
 
 **How does the conviction score work?** Technical momentum and news sentiment
 are fused into a relative 1-100 setup ranking. The base weighting is 70/30, but
@@ -119,9 +120,9 @@ and no endpoint exposes them. The terminal reports setups audited, setups
 rejected, and forced holds, with an em-dash wherever something has not been
 measured.
 
-**Does Strat AI cover crypto?** Not today. Strat AI covers Indian equities and
-equity derivatives only. Strat AI Crypto is a separate product in development
-with no release date and no feature commitments.
+**Does Strat AI trade on-chain or connect to DeFi?** No. Strat AI reads market
+data from exchange streams with read-only API keys. It has no wallet, no
+order-placement or withdrawal method, and no DeFi or on-chain execution.
 
 ## For agents
 

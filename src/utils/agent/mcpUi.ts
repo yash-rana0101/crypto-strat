@@ -151,7 +151,7 @@ export function buildOverviewView(
   return document_(
     'Strat AI overview',
     `<h1>Strat AI</h1>
-<p>Market analysis and pre-trade risk adjudication terminal for Indian equities and F&amp;O (NSE/BSE). It does not execute trades, hold funds, or give financial advice.</p>
+<p>Market analysis and pre-trade risk adjudication terminal for crypto spot and perpetual futures. It does not execute trades, hold funds, or give financial advice.</p>
 <div class="grid">
   <div class="card"><h2>Use it for</h2><ul>${list(useCases)}</ul></div>
   <div class="card"><h2>Not for</h2><ul>${list(outOfScope)}</ul></div>

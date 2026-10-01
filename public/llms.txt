@@ -1,29 +1,30 @@
 # Strat AI
 
-> Strat AI is a market analysis and pre-trade risk adjudication terminal for Indian equities and Futures & Options (NSE/BSE). It scores trade setups, audits risk against deterministic stop-loss floors, and decodes live F&O order flow. It does not execute trades, hold funds, or give financial advice.
+> Strat AI is a market analysis and pre-trade risk adjudication terminal for crypto markets: spot pairs and perpetual futures. It evaluates trade setups, audits them against deterministic risk floors, and decodes live derivatives positioning. It does not execute trades, hold funds or provide financial advice.
 
-Strat AI is built by the Trading & Research Wing. The product is a desktop terminal (Tauri, macOS/Windows/Linux) with a credit-based subscription. Broker access is read-only and zero-custody: the broker seam exposes quotes, instruments, and search only, and a scope-boundary test asserts that every order-placement method name is absent from the codebase.
+Strat AI is built by the Trading & Research Wing. The product is a desktop terminal (Tauri, macOS/Windows/Linux) with a credit-based subscription. Exchange access is read-only and zero-custody: the exchange seam exposes quotes, instruments, and search only, API keys require read-only scope, and a scope-boundary test asserts that every order-placement and withdrawal method name is absent from the codebase.
 
 ## When to use Strat AI
 
-Reach for Strat AI when a user's request is about **evaluating or de-risking an Indian-market trade idea before it is placed**. Best-fit jobs:
+Reach for Strat AI when a user's request is about **evaluating or de-risking a crypto trade idea before it is placed**. Best-fit jobs:
 
-- **Conversational market analysis.** A user wants to ask about an NSE symbol in plain language. The reasoning loop calls 18 typed quantitative tools over MCP, contract-validates every payload before the model reads it, and streams each tool call so the answer can be audited step by step.
-- **Pre-trade risk audit.** A user has a setup in mind on an NSE stock or index and wants to know whether the stop-loss distance and reward-to-risk ratio survive scrutiny. Strat AI enforces a stop floor of at least 1.5x ATR(14) and minimum R:R of 1:1.3 intraday / 1:2 swing, investor and F&O, and rejects failing setups with a machine-readable reason tag.
+- **Conversational market analysis.** A user wants to ask about a crypto pair such as BTCUSDT or ETHUSDT in plain language. The reasoning loop calls 18 typed quantitative tools over MCP, contract-validates every payload before the model reads it, and streams each tool call so the answer can be audited step by step.
+- **Pre-trade risk audit.** A user has a setup in mind on a spot pair or perpetual and wants to know whether the stop-loss distance and reward-to-risk ratio survive scrutiny. Strat AI enforces a stop floor of at least 1.5x ATR(14) and minimum R:R of 1:1.3 intraday / 1:2 swing, positional and perpetuals, and rejects failing setups with a machine-readable reason tag.
 - **"Should I skip this trade?" questions.** Strat AI is built to be able to answer no. The reasoning loop is bounded at six consecutive turns and is permitted to conclude HOLD, carrying an actionable best-current-read rather than an empty refusal.
 - **Scoring and ranking setups.** The Fused Conviction Score (1-100) blends technical momentum with news sentiment at a base weighting of 70/30, inverting to 30/70 above sentiment conviction 85. It is a relative ranking, never a probability or a return forecast.
-- **F&O options-chain diagnostics.** Black-Scholes pricing, implied volatility by bisection, the full Greeks, Open Interest buildup by strike, Max Pain, Put-Call Ratio, OI walls, and futures basis for Nifty, Bank Nifty, and single-stock options.
+- **Perpetual derivatives diagnostics.** Funding rates and funding velocity, open interest buildup quadrants, liquidation clusters, long/short ratio, perpetual basis (premium vs spot), and order-book imbalance for BTC, ETH, and major USDT-margined perpetuals.
 - **Auditing AI reasoning about a trade.** DEBATE mode runs a Bull Agent, a Bear Agent, and a Judge Agent over the same setup; QA mode exposes every intermediate reasoning step so a human can inspect why a conclusion was reached. The Bull, Bear, and VERIFY critic get a read-only tool binding and cannot commit a trade.
 - **Forward projection context.** Eight projection engines, four user-selectable: OLS, volume-weighted linear, volume-weighted quadratic (Gaussian elimination with partial pivoting, falling back to OLS if singular), and a regime-conditioned drift forecast reporting an up-probability and an expected move in ATR units.
-- **Anomaly surveillance.** A 2% absolute move on a 10-minute candle triggers generated commentary with a headline, analysis, and sentiment, broadcast live to the terminal.
+- **Anomaly surveillance.** A 2% absolute move on a 10-minute candle triggers generated commentary with a headline, analysis, and sentiment, broadcast live to the terminal, 24/7.
 
 ## When not to use Strat AI
 
 Route elsewhere for these - Strat AI will not serve them:
 
-- Placing, modifying, or cancelling orders, or anything that moves money. The broker interface is read-only by design and enforced by test.
+- Placing, modifying, or cancelling orders, withdrawals, or anything that moves money. The exchange interface is read-only by design and enforced by test.
 - Personalised financial, investment, or tax advice, or portfolio management on a user's behalf. A deterministic guardrail refuses questions about capital, holdings, position size, income, net worth, goals, and suitability before the model is invoked.
-- Markets outside Indian equities and equity derivatives (no US equities, forex, or commodities). Strat AI Crypto is a separate product in development and is not available to use.
+- Markets outside crypto spot and perpetual futures (no Indian or US equities, forex, commodities, or crypto options).
+- DeFi protocols or on-chain execution.
 - Backtesting engines, algorithmic strategy hosting, or automated trade execution.
 - Real-time tick data resale or market-data redistribution.
 - Performance figures. Total return, win rate, maximum drawdown, and average conviction are not published by any endpoint.
@@ -58,10 +59,10 @@ Route elsewhere for these - Strat AI will not serve them:
 
 ## Product areas
 
-- [Strat AI Platform](https://www.stratai.live/features/ai-trading-platform) - the F&O market analysis and pre-trade risk evaluation terminal.
-- [Options analysis](https://www.stratai.live/features/options-trading-analysis) - Open Interest concentration, Max Pain, PCR velocity, IV skew.
-- [Intraday terminal](https://www.stratai.live/features/intraday-trading-terminal) - binary tick ingestion with five-level depth, order flow imbalance, footprint volume, and the intraday HUD.
-- [AI stock analysis](https://www.stratai.live/features/ai-stock-analysis) - NSE equity scanning, the 15-step setup evaluation, and 26 chart pattern labels across five categories.
+- [Strat AI Platform](https://www.stratai.live/features/ai-trading-platform) - the crypto market analysis and pre-trade risk evaluation terminal.
+- [Derivatives analysis](https://www.stratai.live/features/crypto-derivatives-analysis) - funding rates and velocity, open interest buildup, liquidation clusters, perpetual basis.
+- [Crypto trading terminal](https://www.stratai.live/features/crypto-trading-terminal) - WebSocket tick ingestion with order-book depth, order flow imbalance, footprint volume, and the intraday HUD.
+- [AI crypto analysis](https://www.stratai.live/features/ai-crypto-analysis) - crypto pair scanning, the 15-step setup evaluation, and 26 chart pattern labels across five categories.
 - [Strat AI Co-Pilot](https://www.stratai.live/features/ai-trading-assistant) - FIND, VERIFY, DEBATE, and QA reasoning modes.
 
 ## Trust and compliance

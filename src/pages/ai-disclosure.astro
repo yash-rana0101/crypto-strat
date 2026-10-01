@@ -93,7 +93,7 @@ const aiDisclosureSchema = {
               {
                 step: '01',
                 title: 'Fetches Market Data',
-                desc: 'Calls quantitative tools to retrieve real market data: candles, deterministic indicators, volume profile, option chain metrics, order-flow proxies, and recent news.',
+                desc: 'Calls quantitative tools to retrieve real market data: candles, deterministic indicators, volume profile, derivatives positioning metrics (funding, open interest, liquidations), order-flow proxies, and recent news.',
               },
               {
                 step: '02',
@@ -174,10 +174,11 @@ const aiDisclosureSchema = {
               cannot place, modify, or cancel an order
             </h3>
             <p class="type-body-sm text-muted leading-relaxed">
-              No capability to reach a broker order system exists anywhere in
-              the product. The internal broker interface is strictly read-only
-              and contains no order methods. Paper trading runs entirely in
-              local memory and never communicates with an external broker.
+              No capability to reach an exchange order system exists anywhere in
+              the product. The internal exchange interface uses read-only API
+              keys and contains no trading or withdrawal methods. Paper trading
+              runs entirely in local memory and never communicates with an
+              external exchange.
             </p>
           </Card>
 
@@ -207,7 +208,8 @@ const aiDisclosureSchema = {
             <p class="type-body-sm text-muted leading-relaxed">
               A proposed trade whose stop loss is closer than 1.5× the
               instrument's 14-period ATR, or whose reward-to-risk ratio falls
-              below the profile floor (1:1.3 intraday / 1:2 swing), is
+              below the profile floor (1:1.3 intraday / 1:2 swing, positional,
+              and perpetuals), is
               automatically rejected by a deterministic validator regardless of
               the model's confidence.
             </p>
@@ -250,14 +252,14 @@ const aiDisclosureSchema = {
                   >Price & Volume History</td
                 >
                 <td class="p-3.5"
-                  >Zerodha Kite Connect (NSE/NFO), stored in local time-series
-                  database.</td
+                  >Exchange WebSocket &amp; REST APIs (spot and perpetuals),
+                  stored in local time-series database.</td
                 >
               </tr>
               <tr>
                 <td class="p-3.5 font-medium text-ink">Live Ticks</td>
                 <td class="p-3.5"
-                  >Zerodha Kite Connect binary WebSocket stream.</td
+                  >Exchange WebSocket streams (spot and perpetuals), 24/7.</td
                 >
               </tr>
               <tr>
@@ -268,10 +270,12 @@ const aiDisclosureSchema = {
                 >
               </tr>
               <tr>
-                <td class="p-3.5 font-medium text-ink">Options Chain Data</td>
+                <td class="p-3.5 font-medium text-ink"
+                  >Derivatives Positioning Data</td
+                >
                 <td class="p-3.5"
-                  >Open interest, implied volatility, PCR, Max Pain, and strike
-                  buildup metrics.</td
+                  >Funding rates, open interest, liquidation clusters, long/short
+                  ratio, and perpetual basis vs spot.</td
                 >
               </tr>
               <tr>
@@ -418,7 +422,8 @@ const aiDisclosureSchema = {
             <span
               ><strong>Scope bounded to provided data:</strong> The model only evaluates
               market indicators and headlines passed to it. It has no visibility into
-              upcoming corporate actions or unannounced policy shifts.</span
+              upcoming token unlocks, exchange incidents, or unannounced policy
+              shifts.</span
             >
           </li>
           <li
@@ -435,8 +440,8 @@ const aiDisclosureSchema = {
           >
             <span class="text-brand-accent font-bold mt-0.5">•</span>
             <span
-              ><strong>Missing data is reported, not guessed:</strong> If open interest
-              or news feeds are offline, the system marks them unavailable rather
+              ><strong>Missing data is reported, not guessed:</strong> If open interest,
+              funding, or news feeds are offline, the system marks them unavailable rather
               than substituting synthetic numbers.</span
             >
           </li>
@@ -459,9 +464,11 @@ const aiDisclosureSchema = {
         <p class="type-body-xs text-muted leading-relaxed">
           Strat AI is a quantitative market research and decision support
           terminal. It does not execute trades, manage funds, or offer
-          personalized investment advice. Trading in securities, futures, and
-          options involves substantial risk of loss, including loss exceeding
-          initial capital. Past performance is not indicative of future returns.
+          personalized investment advice, and is not a registered investment
+          adviser. Crypto assets are highly volatile, and trading spot pairs or
+          leveraged perpetual futures involves substantial risk of loss,
+          including liquidation of your entire margin. Past performance is not
+          indicative of future returns.
         </p>
       </div>
     </Container>

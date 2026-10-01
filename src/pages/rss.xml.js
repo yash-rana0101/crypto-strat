@@ -19,7 +19,7 @@ export async function GET(context) {
       categories: [post.data.category, ...post.data.tags],
       author: post.data.author,
     })),
-    customData: `<language>en-IN</language>`,
+    customData: `<language>en</language>`,
     stylesheet: false,
   });
 }

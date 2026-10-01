@@ -12,46 +12,46 @@ export type SampleTrade = {
   reason: string;
   riskNote: string;
 };
-export const money = (n: number) => `₹${n.toFixed(2)}`;
+export const money = (n: number) => `$${n.toFixed(2)}`;
 export const findResponses: SampleTrade[] = [
   {
     id: 1,
-    symbol: 'TMPV',
+    symbol: 'ETHUSDT',
     side: 'SELL',
-    entry: 290.45,
-    stop: 291.55,
-    target: 289,
-    atr: 0.69,
+    entry: 2904.5,
+    stop: 2915.5,
+    target: 2890,
+    atr: 6.9,
     score: 66,
-    poc: 291.2,
+    poc: 2912,
     rsi: 42.8,
     reason: 'Price is below value with bearish 10m and 1h trends.',
     riskNote: 'Watch for a volume breakout above resistance.',
   },
   {
     id: 2,
-    symbol: 'RELIANCE',
+    symbol: 'BTCUSDT',
     side: 'BUY',
-    entry: 1420,
-    stop: 1408,
-    target: 1444,
-    atr: 7.5,
+    entry: 64200,
+    stop: 63660,
+    target: 65280,
+    atr: 340,
     score: 78,
-    poc: 1415,
+    poc: 63980,
     rsi: 61,
     reason: 'A high-volume breakout aligns with bullish intraday trends.',
     riskNote: 'A failed breakout back into the prior range weakens the thesis.',
   },
   {
     id: 3,
-    symbol: 'TCS',
+    symbol: 'SOLUSDT',
     side: 'SELL',
-    entry: 3250,
-    stop: 3274,
-    target: 3202,
-    atr: 15,
+    entry: 145,
+    stop: 147.4,
+    target: 140.2,
+    atr: 1.5,
     score: 73,
-    poc: 3260,
+    poc: 146,
     rsi: 39,
     reason:
       'Resistance rejection and negative momentum support bearish continuation.',
@@ -59,14 +59,14 @@ export const findResponses: SampleTrade[] = [
   },
   {
     id: 4,
-    symbol: 'HDFCBANK',
+    symbol: 'BNBUSDT',
     side: 'BUY',
-    entry: 980,
-    stop: 972,
-    target: 996,
-    atr: 5,
+    entry: 580,
+    stop: 575.2,
+    target: 589.6,
+    atr: 3,
     score: 71,
-    poc: 976,
+    poc: 577.6,
     rsi: 57,
     reason:
       'Support held on a pullback while the intraday trend remains bullish.',
@@ -74,14 +74,14 @@ export const findResponses: SampleTrade[] = [
   },
   {
     id: 5,
-    symbol: 'INFY',
+    symbol: 'LTCUSDT',
     side: 'SELL',
-    entry: 1480,
-    stop: 1492,
-    target: 1462,
-    atr: 7,
+    entry: 82,
+    stop: 82.6,
+    target: 81.1,
+    atr: 0.35,
     score: 64,
-    poc: 1486,
+    poc: 82.3,
     rsi: 44,
     reason:
       'Price trades below value with weak momentum and bearish alignment.',
@@ -90,14 +90,14 @@ export const findResponses: SampleTrade[] = [
   },
   {
     id: 6,
-    symbol: 'ICICIBANK',
+    symbol: 'AVAXUSDT',
     side: 'BUY',
-    entry: 1320,
-    stop: 1310,
-    target: 1345,
-    atr: 6,
+    entry: 28,
+    stop: 27.6,
+    target: 29,
+    atr: 0.24,
     score: 82,
-    poc: 1314,
+    poc: 27.76,
     rsi: 64,
     reason:
       'Positive momentum and relative strength support breakout continuation.',
@@ -106,14 +106,14 @@ export const findResponses: SampleTrade[] = [
   },
   {
     id: 7,
-    symbol: 'SBIN',
+    symbol: 'LINKUSDT',
     side: 'SELL',
-    entry: 810,
-    stop: 817.5,
-    target: 795,
-    atr: 4.5,
+    entry: 16.2,
+    stop: 16.35,
+    target: 15.9,
+    atr: 0.09,
     score: 69,
-    poc: 813,
+    poc: 16.26,
     rsi: 41,
     reason:
       'A lower high below the volume point of control supports the short bias.',
@@ -121,28 +121,28 @@ export const findResponses: SampleTrade[] = [
   },
   {
     id: 8,
-    symbol: 'ITC',
+    symbol: 'AAVEUSDT',
     side: 'BUY',
-    entry: 425,
-    stop: 421,
-    target: 431,
-    atr: 2.4,
+    entry: 170,
+    stop: 168.4,
+    target: 172.4,
+    atr: 0.96,
     score: 62,
-    poc: 423,
+    poc: 169.2,
     rsi: 55,
     reason: 'A support bounce and improving momentum suggest a bullish move.',
     riskNote: 'A choppy market can produce repeated false starts.',
   },
   {
     id: 9,
-    symbol: 'LT',
+    symbol: 'BCHUSDT',
     side: 'BUY',
-    entry: 3560,
-    stop: 3530,
-    target: 3620,
-    atr: 18,
+    entry: 356,
+    stop: 353,
+    target: 362,
+    atr: 1.8,
     score: 76,
-    poc: 3548,
+    poc: 354.8,
     rsi: 60,
     reason:
       'Price is above value with positive momentum across intraday timeframes.',
@@ -150,14 +150,14 @@ export const findResponses: SampleTrade[] = [
   },
   {
     id: 10,
-    symbol: 'AXISBANK',
+    symbol: 'ETCUSDT',
     side: 'SELL',
-    entry: 1140,
-    stop: 1149,
-    target: 1122,
-    atr: 5.5,
+    entry: 22.8,
+    stop: 22.98,
+    target: 22.44,
+    atr: 0.11,
     score: 74,
-    poc: 1144,
+    poc: 22.88,
     rsi: 38,
     reason: 'Bearish alignment and relative weakness support a downside move.',
     riskNote: 'Watch for a sharp rebound or a market regime change.',
@@ -192,11 +192,11 @@ export function measurements(t: SampleTrade) {
     `Trending · ${bias} bias`,
     `POC ${money(t.poc)} · ${t.side === 'BUY' ? 'above' : 'below'} value`,
     `Support ${money(t.side === 'BUY' ? t.stop : t.target)} · resistance ${money(t.side === 'BUY' ? t.target : t.stop)}`,
-    `ATR(14) ${money(t.atr)} · floor ₹${m.floor.toFixed(3)}`,
+    `ATR(14) ${money(t.atr)} · floor $${m.floor.toFixed(3)}`,
     `RSI ${t.rsi} · ${t.side === 'BUY' ? 'positive' : 'negative'} momentum`,
-    t.side === 'BUY' ? 'Outperforming benchmark' : 'Underperforming benchmark',
+    t.side === 'BUY' ? 'Outperforming BTC' : 'Underperforming BTC',
     'Sample liquidity · sufficient volume',
-    `Stop ${money(m.risk)} ${m.passed ? '≥' : '<'} ₹${m.floor.toFixed(3)} · ${m.passed ? 'passed' : 'failed'}`,
+    `Stop ${money(m.risk)} ${m.passed ? '≥' : '<'} $${m.floor.toFixed(3)} · ${m.passed ? 'passed' : 'failed'}`,
     `Reward ${money(m.reward)} / risk ${money(m.risk)} = ${m.rr.toFixed(2)}`,
   ];
 }
@@ -205,15 +205,15 @@ export function response(t: SampleTrade, mode: string) {
   if (mode === 'verify')
     return m.passed
       ? `Sample trade verified: the stop meets the ATR floor. ${t.reason}`
-      : `Sample trade needs revision: the stop is too tight for the measured ATR. Minimum distance: ₹${m.floor.toFixed(3)}. Review the stop and recalculate risk / reward.`;
+      : `Sample trade needs revision: the stop is too tight for the measured ATR. Minimum distance: $${m.floor.toFixed(3)}. Review the stop and recalculate risk / reward.`;
   return `${t.reason} Sample ${t.side === 'BUY' ? 'long' : 'short'} setup with ${m.conviction.toLowerCase()} conviction and 1 : ${m.rr.toFixed(2)} risk / reward.`;
 }
 export function reply(q: string, t: SampleTrade, mode: string) {
   const m = metrics(t);
   if (/stop|risk/i.test(q))
-    return `The sample stop is ${money(t.stop)}, ${money(m.risk)} from entry. This ${m.passed ? 'meets' : 'fails'} the ₹${m.floor.toFixed(3)} minimum (1.5 × ATR of ${money(t.atr)}). ${m.passed ? `Risk / reward is 1 : ${m.rr.toFixed(2)} before costs.` : 'Revise the stop before treating this plan as validated.'}`;
+    return `The sample stop is ${money(t.stop)}, ${money(m.risk)} from entry. This ${m.passed ? 'meets' : 'fails'} the $${m.floor.toFixed(3)} minimum (1.5 × ATR of ${money(t.atr)}). ${m.passed ? `Risk / reward is 1 : ${m.rr.toFixed(2)} before costs.` : 'Revise the stop before treating this plan as validated.'}`;
   if (/wrong|invalid/i.test(q))
-    return `A sustained move ${t.side === 'BUY' ? 'below' : 'above'} ${money(t.stop)} invalidates the ${t.side === 'BUY' ? 'bullish' : 'bearish'} thesis. ${t.riskNote} Gaps and slippage can exceed the planned stop.`;
+    return `A sustained move ${t.side === 'BUY' ? 'below' : 'above'} ${money(t.stop)} invalidates the ${t.side === 'BUY' ? 'bullish' : 'bearish'} thesis. ${t.riskNote} Liquidation wicks and slippage can exceed the planned stop.`;
   if (/sell|buy|why|trend|trade/i.test(q)) return response(t, mode);
   return `This ${t.symbol} replay explains sample trend, stop loss, risk / reward, and invalidation. It has no live market connection and cannot evaluate new prices.`;
 }

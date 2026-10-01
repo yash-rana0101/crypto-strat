@@ -17,7 +17,7 @@ import CopilotToolLibrary from './CopilotToolLibrary.astro';
   <div
     class="graph"
     role="img"
-    aria-label="Workflow: the backend sends instructions and stock context to the language model. The agent selects from 18 typed tools. Multi-timeframe trend, consensus report and market regime are shown here; 15 more are in the expandable library. Backend measurements return to the model, which produces the answer."
+    aria-label="Workflow: the backend sends instructions and market context to the language model. The agent selects from 18 typed tools. Multi-timeframe trend, consensus report and market regime are shown here; 15 more are in the expandable library. Backend measurements return to the model, which produces the answer."
   >
     <svg
       class="graph-wires"
@@ -59,7 +59,7 @@ import CopilotToolLibrary from './CopilotToolLibrary.astro';
       <path class="wire wire-return" d="M258 328 V423 H290 V100 H300"></path>
       <path class="wire wire-reason" d="M174 96 H126"></path>
     </svg>
-    <span class="graph-context-label">SYSTEM PROMPT + STOCK CONTEXT</span>
+    <span class="graph-context-label">SYSTEM PROMPT + MARKET CONTEXT</span>
     <div class="graph-node node-model" data-node="model">
       <span class="node-symbol"><Icon name="sparkles" size={22} /></span><strong
         >Language model</strong

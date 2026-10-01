@@ -4,9 +4,9 @@ import type { EngineContent } from '@/types/landing';
  * The three-layer explanation of why the model never authors a number.
  *
  * Claims:
- * - Kite binary frame decoding, mode inferred from packet length, five-level
- *   depth in full mode, open interest kept as an optional and never
- *   fabricated as zero — FEATURE_CATALOGUE 1.1
+ * - Exchange WebSocket stream decoding, tick streams plus order-book depth,
+ *   open interest kept as an optional and never fabricated as zero —
+ *   FEATURE_CATALOGUE 1.1
  * - Dual sink topology and bounded channel — 1.2
  * - Pure property-tested quant modules; NaN on the wire becomes JSON null;
  *   UNAVAILABLE is a distinct consensus state from NEUTRAL — 4.1, 4.2
@@ -29,12 +29,12 @@ export const engine: EngineContent = {
       index: '01',
       label: 'Market',
       heading: 'Ingested raw, decoded in Rust',
-      body: 'Exchange binary frames are decoded field by field — no JSON, no REST polling — with five levels of book depth in full mode. Open interest stays an optional value and is reported absent on packets that never carried it, rather than defaulted to zero.',
+      body: 'Exchange WebSocket streams are decoded field by field over read-only exchange API connections — no REST polling — with tick streams and order-book depth. Open interest stays an optional value and is reported absent on messages that never carried it, rather than defaulted to zero.',
       chips: [
-        'BINARY TICK FRAMES',
-        'FIVE-LEVEL DEPTH',
+        'WEBSOCKET TICK STREAMS',
+        'ORDER-BOOK DEPTH',
         'DUAL SINK',
-        'OPTION CHAIN SNAPSHOTS',
+        'FUNDING & OI SNAPSHOTS',
       ],
     },
     {

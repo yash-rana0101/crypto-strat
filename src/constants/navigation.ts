@@ -7,23 +7,23 @@ export const NAV_ITEMS: NavigationItem[] = [
     dropdownItems: [
       {
         label: 'Strat AI Platform',
-        desc: 'F&O market analysis & pre-trade risk evaluation',
+        desc: 'Crypto market analysis & pre-trade risk evaluation',
         href: '/features/ai-trading-platform',
       },
       {
-        label: 'Options Analysis',
-        desc: 'Open Interest & IV skew diagnostics',
-        href: '/features/options-trading-analysis',
+        label: 'Derivatives Analysis',
+        desc: 'Funding, open interest & liquidation diagnostics',
+        href: '/features/crypto-derivatives-analysis',
       },
       {
-        label: 'Intraday Terminal',
-        desc: 'Binary tick pipeline & order flow decoding',
-        href: '/features/intraday-trading-terminal',
+        label: 'Crypto Trading Terminal',
+        desc: 'WebSocket tick pipeline & order flow decoding',
+        href: '/features/crypto-trading-terminal',
       },
       {
-        label: 'AI Stock Analysis',
-        desc: 'NSE equities & 15-step setup scanning',
-        href: '/features/ai-stock-analysis',
+        label: 'AI Crypto Analysis',
+        desc: 'Spot & perpetual pairs with 15-step setup scanning',
+        href: '/features/ai-crypto-analysis',
       },
       {
         label: 'Strat AI Co-Pilot',
@@ -117,12 +117,15 @@ export const FOOTER_GROUPS: NavigationGroup[] = [
     title: 'Platform',
     items: [
       { label: 'Strat AI Platform', href: '/features/ai-trading-platform' },
-      { label: 'Options Analysis', href: '/features/options-trading-analysis' },
       {
-        label: 'Intraday Terminal',
-        href: '/features/intraday-trading-terminal',
+        label: 'Derivatives Analysis',
+        href: '/features/crypto-derivatives-analysis',
       },
-      { label: 'AI Stock Analysis', href: '/features/ai-stock-analysis' },
+      {
+        label: 'Crypto Trading Terminal',
+        href: '/features/crypto-trading-terminal',
+      },
+      { label: 'AI Crypto Analysis', href: '/features/ai-crypto-analysis' },
       { label: 'Strat AI Co-Pilot', href: '/features/ai-trading-assistant' },
       { label: 'Pricing Plans', href: '/pricing' },
       { label: 'Join Private Beta', href: '/waitlist' },

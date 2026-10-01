@@ -15,13 +15,14 @@ import type { PlatformContent } from '@/types/landing';
  *   6.4
  * - Volume profile implemented twice so agent levels equal rendered levels;
  *   value area at 70% of volume; HVN and LVN — 6.5
- * - Black-Scholes, IV by bisection, Greeks, PCR, max pain, OI buildup
- *   quadrants, OI walls, futures basis — 7
- * - Six-signal options bias vote requiring at least two signals — 7.1
+ * - Funding rates and velocity, OI buildup quadrants, liquidation clusters,
+ *   long/short ratio, perpetual basis vs spot, order-book imbalance — 7
+ * - Six-signal derivatives bias vote requiring at least two signals — 7.1
  * - Four workspace profiles with their own R:R floor, sidebar, remembered
  *   instrument and tool binding; split view gated at the store — 11, 11.1
  * - Regime as an orthogonal trend/volatility pair — 6.8
- * - Seven NSE session phases with expiry override — 6.10
+ * - 24/7 session model with UTC daily close, 8-hour funding windows and
+ *   weekend liquidity regimes — 6.10
  * - Event risk can only tighten, never loosen — 6.11
  * - Relative strength time-aligned with no lookahead — 6.9
  * - Journal records, scores and aggregates; discipline metrics replaced the
@@ -40,14 +41,14 @@ export const platform: PlatformContent = {
       accent: 'emerald',
       title: 'Patterns, completed and forming',
       body: 'Twenty-six pattern labels across five categories — reversal, continuation, bilateral, harmonic and institutional — each carrying a derived confidence and a volume-validation verdict. A second pass reports patterns still forming, with a progress estimate, using a provisional swing at the current bar.',
-      href: '/features/ai-stock-analysis',
+      href: '/features/ai-crypto-analysis',
     },
     {
       icon: 'cpu',
       accent: 'violet',
       title: 'Order flow, measured not assumed',
       body: 'Tick-level order flow imbalance signed by the tick rule and refined by quote location wherever a usable bid and ask exist. Below the minimum tick count it returns nothing rather than a neutral zero. Footprint cells carry bid- and ask-initiated volume at every price level.',
-      href: '/features/intraday-trading-terminal',
+      href: '/features/crypto-trading-terminal',
     },
     {
       icon: 'bar-chart',
@@ -58,22 +59,22 @@ export const platform: PlatformContent = {
     {
       icon: 'layers',
       accent: 'pink',
-      title: 'F&O options analytics',
-      body: 'Black-Scholes pricing, implied volatility solved by bisection, the full Greeks, put-call ratio, max pain, open-interest buildup quadrants, OI walls and futures basis. Six signals vote on positioning bias, and at least two must agree before it will say anything at all.',
-      href: '/features/options-trading-analysis',
+      title: 'Perpetuals derivatives analytics',
+      body: 'Funding rates and funding velocity, open-interest buildup quadrants, liquidation clusters, long/short ratio, perpetual basis against spot and order-book imbalance. Six signals vote on positioning bias, and at least two must agree before it will say anything at all.',
+      href: '/features/crypto-derivatives-analysis',
     },
     {
       icon: 'compass',
       accent: 'emerald',
       title: 'Four workspaces',
-      body: 'Intraday, Swing, Investor and F&O. Each carries its own reward-to-risk floor, its own sidebar, its own remembered instrument and its own tool binding. Split view is granted only where it makes sense, and that is enforced in the store rather than merely hidden in the interface.',
+      body: 'Intraday, Swing, Positional and Perpetuals. Each carries its own reward-to-risk floor, its own sidebar, its own remembered instrument and its own tool binding. Split view is granted only where it makes sense, and that is enforced in the store rather than merely hidden in the interface.',
       href: '/features/ai-trading-platform',
     },
     {
       icon: 'clock',
       accent: 'violet',
       title: 'Regime, session and relative strength',
-      body: 'Trend state and volatility state as an orthogonal pair rather than one flattened label. Seven NSE session phases with expiry-aware favourability. Relative strength against a resolved benchmark, time-aligned with no lookahead. Scheduled-event proximity that can only tighten a setup, never loosen one.',
+      body: 'Trend state and volatility state as an orthogonal pair rather than one flattened label. A 24/7 session model with a UTC daily close, 8-hour funding windows and weekend liquidity regimes. Relative strength against BTC as the resolved benchmark, time-aligned with no lookahead. Scheduled-event proximity that can only tighten a setup, never loosen one.',
     },
   ],
 };

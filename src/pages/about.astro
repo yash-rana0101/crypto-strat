@@ -45,7 +45,7 @@ import Icon from '@/components/ui/Icon.astro';
           class="type-body-md text-body text-base md:text-lg max-w-[750px] mx-auto leading-relaxed font-normal"
         >
           Strat AI is a market analysis and pre-trade risk adjudication terminal
-          for the Indian stock market (NSE). Developed by the <a
+          for crypto markets: spot pairs and perpetual futures. Developed by the <a
             href="https://www.tradingrw.com/"
             class="text-brand-accent hover:underline font-semibold"
             target="_blank"
@@ -81,7 +81,7 @@ import Icon from '@/components/ui/Icon.astro';
             Market analysis is often cluttered by conflicting media headlines
             and lagging indicators. Strat AI acts as an objective pre-trade
             research co-pilot, evaluating setups against hard volatility
-            constraints, order flow imbalances, and options concentration before
+            constraints, order flow imbalances, and derivatives positioning before
             capital is committed.
           </p>
         </Card>
@@ -184,7 +184,8 @@ import Icon from '@/components/ui/Icon.astro';
               <p class="text-xs text-muted leading-relaxed">
                 Stress-tests trade setups against strict 1.5× ATR volatility
                 stop floors, minimum R:R constraints (1:1.3 intraday / 1:2
-                swing), and unleashes a Bear Agent critique.
+                swing, positional, and perpetuals), and unleashes a Bear Agent
+                critique.
               </p>
             </div>
 
@@ -363,8 +364,9 @@ import Icon from '@/components/ui/Icon.astro';
             Rust Binary Tick Parser
           </h3>
           <p class="type-body-sm text-muted leading-relaxed">
-            Connects to Zerodha Kite WebSocket streams, parsing raw binary tick
-            packets in Rust with zero garbage collection pauses.
+            Connects to exchange WebSocket streams for spot and perpetuals,
+            parsing raw tick packets in Rust with zero garbage collection
+            pauses.
           </p>
         </Card>
 
@@ -430,7 +432,7 @@ import Icon from '@/components/ui/Icon.astro';
             {
               num: '02',
               title: 'Unbypassable Hard Risk Rules',
-              desc: 'Stop losses must be ≥ 1.5× ATR and R:R must clear minimum thresholds (1:1.3 intraday / 1:2 swing). Enforced deterministically in both Rust and Python.',
+              desc: 'Stop losses must be ≥ 1.5× ATR and R:R must clear minimum thresholds (1:1.3 intraday / 1:2 swing, positional, and perpetuals). Enforced deterministically in both Rust and Python.',
             },
             {
               num: '03',
@@ -450,7 +452,7 @@ import Icon from '@/components/ui/Icon.astro';
             {
               num: '06',
               title: 'Adversarial Self-Critique',
-              desc: 'Bear Agent critique stress-tests every trade setup against VWAP resistance, option walls, and session chop before outputting research.',
+              desc: 'Bear Agent critique stress-tests every trade setup against VWAP resistance, liquidation clusters, funding extremes, and weekend liquidity chop before outputting research.',
             },
           ].map((item) => (
             <Card variant="feature" padding="md" class="flex flex-col gap-3">
@@ -509,19 +511,24 @@ import Icon from '@/components/ui/Icon.astro';
         <div
           class="p-6 rounded-2xl bg-surface-soft/60 border border-hairline flex flex-col gap-2"
         >
-          <h3 class="type-title-md text-ink font-semibold">3. Investor Mode</h3>
+          <h3 class="type-title-md text-ink font-semibold">
+            3. Positional Mode
+          </h3>
           <p class="type-body-sm text-muted">
-            Macro indicators (Fed funds, CPI, Treasury, VIX), discipline
-            metrics, and sector trend analysis.
+            UTC daily-close structure, macro indicators (Fed funds, CPI,
+            Treasury yields), discipline metrics, and sector trend analysis.
           </p>
         </div>
         <div
           class="p-6 rounded-2xl bg-surface-soft/60 border border-hairline flex flex-col gap-2"
         >
-          <h3 class="type-title-md text-ink font-semibold">4. F&O Mode</h3>
+          <h3 class="type-title-md text-ink font-semibold">
+            4. Perpetuals Mode
+          </h3>
           <p class="type-body-sm text-muted">
-            Options chain analytics, Greeks, OI buildup and walls, with the
-            options tool bound to the agent and split view enabled.
+            Funding rates and velocity, open interest buildup, liquidation
+            clusters, and long/short ratio, with the derivatives tool bound to
+            the agent and split view enabled.
           </p>
         </div>
       </div>
@@ -544,7 +551,7 @@ import Icon from '@/components/ui/Icon.astro';
         <p
           class="type-body-md text-muted max-w-[600px] mx-auto mb-8 leading-relaxed"
         >
-          Join Indian traders using Strat AI to evaluate setups, audit risk
+          Join crypto traders using Strat AI to evaluate setups, audit risk
           parameters, and stream glass-box research.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">

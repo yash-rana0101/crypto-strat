@@ -33,22 +33,22 @@ import CopilotToolRows from './CopilotToolRows.astro';
   <dl class="plan-levels">
     <div>
       <dt>STOP LOSS</dt><dd class="stop">
-        ₹{sampleTrade.stop.toFixed(2)}
-      </dd><small>−₹1.10 risk</small>
+        ${sampleTrade.stop.toFixed(2)}
+      </dd><small>−$11.00 risk</small>
     </div><div>
-      <dt>ENTRY (SELL)</dt><dd>₹{sampleTrade.entry.toFixed(2)}</dd><small
+      <dt>ENTRY (SELL)</dt><dd>${sampleTrade.entry.toFixed(2)}</dd><small
         >Planned level</small
       >
     </div><div>
       <dt>TAKE PROFIT</dt><dd class="target">
-        ₹{sampleTrade.target.toFixed(2)}
-      </dd><small>+₹1.45 target</small>
+        ${sampleTrade.target.toFixed(2)}
+      </dd><small>+$14.50 target</small>
     </div>
   </dl>
   <div class="verification-note" data-verification hidden>
     <Icon name="shield-check" size={16} /><div>
       <strong>SAMPLE CHECKS PASSED</strong><p>
-        Stop 1.10 ≥ 1.035 (1.5× ATR). R:R 1:1.32 clears the intraday 1:1.3
+        Stop 11.00 ≥ 10.35 (1.5× ATR). R:R 1:1.32 clears the intraday 1:1.3
         floor. A pass is not a guarantee.
       </p>
     </div>
@@ -56,7 +56,7 @@ import CopilotToolRows from './CopilotToolRows.astro';
   <div class="plan-risk">
     <span><Icon name="alert-triangle" size={14} /> RISK & INVALIDATION</span><p>
       Bearish 1H / 4H / 1D alignment in this snapshot. The stop sits above the
-      ₹291.31 low-volume node. A move through ₹291.55 invalidates the sample
+      $2913.10 low-volume node. A move through $2915.50 invalidates the sample
       setup.
     </p>
   </div>

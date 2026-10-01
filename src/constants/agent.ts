@@ -14,7 +14,7 @@ export const BRAND_NAME = 'Strat AI';
 export const BRAND_TAGLINE = 'AI that tells you when not to trade.';
 
 export const PRODUCT_SUMMARY =
-  'Strat AI is a market analysis and pre-trade risk adjudication terminal for Indian equities and Futures & Options (NSE/BSE). It evaluates trade setups, audits them against deterministic risk floors, and decodes live F&O order flow. It does not execute trades, hold funds, or provide financial advice.';
+  'Strat AI is a market analysis and pre-trade risk adjudication terminal for crypto markets: spot pairs and perpetual futures. It evaluates trade setups, audits them against deterministic risk floors, and decodes live derivatives positioning. It does not execute trades, hold funds or provide financial advice.';
 
 export const PUBLISHER_NAME = 'Trading & Research Wing';
 
@@ -26,7 +26,7 @@ export const BEST_FIT_USE_CASES: string[] = [
   'Pre-trade risk audit: check whether a stop-loss distance and reward-to-risk ratio survive deterministic scrutiny before a trade is placed.',
   'Stand-aside decisions: the reasoning loop is permitted to conclude HOLD, and does so with an actionable best-current-read rather than an empty refusal.',
   'Setup scoring and ranking via the Fused Conviction Score (1-100), a relative ranking rather than a probability.',
-  'F&O options-chain diagnostics: Open Interest buildup, Max Pain, Put-Call Ratio, implied-volatility skew and the full Greeks.',
+  'Perpetual futures derivatives diagnostics: funding rates and funding velocity, open interest buildup quadrants, liquidation clusters, long/short ratio, perpetual basis vs spot and order-book imbalance.',
   'Auditing AI reasoning about a trade through DEBATE (Bull/Bear/Judge agents) and QA (glass-box step inspection) modes.',
   'Forward projections from four selectable models: OLS, volume-weighted linear, volume-weighted quadratic, and a regime-conditioned forecast.',
   'Anomaly surveillance: a 2% absolute move on a 10-minute candle triggers generated commentary with a headline, analysis and sentiment.',
@@ -34,9 +34,9 @@ export const BEST_FIT_USE_CASES: string[] = [
 
 /** Requests that should be routed elsewhere. */
 export const OUT_OF_SCOPE: string[] = [
-  'Placing, modifying or cancelling orders, or anything that moves money. The broker interface is read-only and a test asserts the absence of every order-placement method.',
+  'Placing, modifying or cancelling orders, withdrawals, or anything that moves money. The exchange interface is read-only, API keys need read-only scope, and a test asserts the absence of every order-placement and withdrawal method.',
   'Personalised financial, investment or tax advice, and discretionary portfolio management. A deterministic guardrail refuses questions about capital, holdings, position size, income, net worth, goals and suitability before the model is invoked.',
-  'Markets other than Indian equities and equity derivatives. No US equities, forex or commodities. Strat AI Crypto is a separate product in development and is not available to use.',
+  'Markets other than crypto spot pairs and perpetual futures. No equities, forex or commodities, no crypto options, and no DeFi or on-chain trade execution.',
   'Strategy backtesting, algo hosting or automated execution.',
   'Reselling or redistributing real-time market data.',
   'Performance figures. Total return, win rate, maximum drawdown and average conviction are not published by any endpoint.',
@@ -45,7 +45,7 @@ export const OUT_OF_SCOPE: string[] = [
 /** Deterministic, non-model risk rules. Arithmetic, so an LLM cannot argue them away. */
 export const RISK_RULES: string[] = [
   'Stop-loss distance must be at least 1.5x ATR(14). The constant is identical for every trading profile and is never relaxed. Setups below the floor are rejected, not silently resized.',
-  'Minimum reward-to-risk ratio of 1:1.3 for intraday and 1:2 for swing, investor and F&O horizons.',
+  'Minimum reward-to-risk ratio of 1:1.3 for intraday and 1:2 for swing, positional and perpetuals horizons.',
   'A rejection returns a stable machine-readable reason tag, and the five checks stop at the first failure.',
   'The base conviction blend weights technical momentum at 70% and news sentiment at 30%, but inverts to 30/70 when sentiment conviction exceeds 85.',
   'A conflict rule pulls the blended conviction 60% toward neutral when a strongly bearish technical read meets strongly bullish sentiment. The rule is asymmetric, applies in that direction only, and is suppressed while the inversion above is active. It is not a hard forced HOLD.',
@@ -77,12 +77,12 @@ export const COPILOT_MODES: Array<{ mode: string; purpose: string }> = [
 ];
 
 export const COMPLIANCE_NOTES: string[] = [
-  'Strat AI is analysis and risk tooling, not investment advice. It is not a SEBI-registered investment adviser.',
+  'Strat AI is analysis and risk tooling, not investment advice. It is not a registered investment adviser.',
   'A conviction score is a relative ranking of setup quality. It is never a buy or sell instruction, a probability, or a return forecast.',
-  'The broker seam is read-only. There is no order-placement method to call, and a scope-boundary test asserts that every such method name is absent.',
+  'The exchange interface is read-only and API keys need read-only scope. There is no order-placement or withdrawal method to call, and a scope-boundary test asserts that every such method name is absent.',
   'Values that could not be measured are reported as unavailable, never substituted with a neutral default.',
   'Every committed decision is written to an append-only, hash-chained record carrying the model identifier and prompt version, with no update or delete path.',
-  'Trading derivatives carries substantial risk of loss. Every trading decision remains the user\u2019s own.',
+  'Crypto assets are highly volatile and leveraged derivatives carry substantial risk of loss. Every trading decision remains the user\u2019s own.',
 ];
 
 /** Access path. Private beta, so there is no self-serve key to hand an agent. */
@@ -110,25 +110,25 @@ export const PRODUCT_AREAS: Array<{
     title: 'Strat AI Platform',
     path: '/features/ai-trading-platform',
     summary:
-      'The F&O market analysis and pre-trade risk evaluation terminal itself.',
+      'The crypto market analysis and pre-trade risk evaluation terminal itself.',
   },
   {
-    title: 'Options Analysis',
-    path: '/features/options-trading-analysis',
+    title: 'Derivatives Analysis',
+    path: '/features/crypto-derivatives-analysis',
     summary:
-      'Open Interest concentration, Max Pain, PCR velocity and IV skew for Nifty, Bank Nifty and stock options.',
+      'Funding rates and velocity, open interest buildup, liquidation clusters, long/short ratio and perpetual basis for BTC, ETH, SOL and other perpetual futures.',
   },
   {
-    title: 'Intraday Terminal',
-    path: '/features/intraday-trading-terminal',
+    title: 'Crypto Trading Terminal',
+    path: '/features/crypto-trading-terminal',
     summary:
-      'Binary tick ingestion from Zerodha Kite with five-level depth, order flow imbalance, footprint volume and the intraday heads-up display.',
+      'Exchange WebSocket stream decoding with order-book depth, order flow imbalance, footprint volume and the intraday heads-up display.',
   },
   {
-    title: 'AI Stock Analysis',
-    path: '/features/ai-stock-analysis',
+    title: 'AI Crypto Analysis',
+    path: '/features/ai-crypto-analysis',
     summary:
-      'NSE equity scanning with the 15-step setup evaluation across 26 chart pattern labels in five categories, plus a separate forming-pattern pass.',
+      'Crypto pair scanning with the 15-step setup evaluation across 26 chart pattern labels in five categories, plus a separate forming-pattern pass.',
   },
   {
     title: 'Strat AI Co-Pilot',

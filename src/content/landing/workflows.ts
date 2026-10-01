@@ -10,9 +10,11 @@ import type { WorkflowsContent } from '@/types/landing';
  * Claims:
  * - Regime reported as an orthogonal pair; every ranging row is unfavourable —
  *   FEATURE_CATALOGUE 6.8
- * - Seven session phases, expiry override on afternoon and closing — 6.10
+ * - 24/7 session model with a UTC daily close, 8-hour funding windows and
+ *   weekend liquidity regimes — 6.10
  * - Event risk only tightens — 6.11
- * - Opening range taken from the first fifteen candles — 6.7
+ * - Opening range taken from the first fifteen candles after the UTC daily
+ *   open — 6.7
  * - Volume profile POC and value area — 6.5
  * - Forming patterns with a progress estimate — 5.3
  * - VERIFY check order and reason tags — 8.2
@@ -27,20 +29,20 @@ export const workflows: WorkflowsContent = {
   intro: {
     id: 'workflows',
     badge: 'Where it fits',
-    heading: 'One session, from pre-open to journal',
+    heading: 'One session, from UTC open to journal',
     body: 'Not a promise about outcomes. A description of which surface answers which question, in roughly the order a trading day tends to ask them.',
   },
   steps: [
     {
-      phase: 'Pre-open',
-      title: 'Establish the regime before the bell',
-      body: 'Trend state is reported against volatility state as two separate readings, alongside the session phase ahead and whether a scheduled event falls inside the horizon. A ranging regime is classified unfavourable — which is information available before anyone has an opinion.',
+      phase: 'Before the session',
+      title: 'Establish the regime before anything else',
+      body: 'Trend state is reported against volatility state as two separate readings, alongside the next funding window, whether a weekend liquidity regime is in force and whether a scheduled event falls inside the horizon. A ranging regime is classified unfavourable — which is information available before anyone has an opinion.',
       artefact: 'REGIME · SESSION · EVENT RISK',
     },
     {
-      phase: 'Opening',
+      phase: 'UTC open',
       title: 'Let the structure print',
-      body: 'The opening range is taken from the first fifteen candles. Volume profile fills in the point of control and the value area, and the pattern pass reports what is still forming as well as what has completed.',
+      body: 'The opening range is taken from the first fifteen candles after the UTC daily open. Volume profile fills in the point of control and the value area, and the pattern pass reports what is still forming as well as what has completed.',
       artefact: 'OPENING RANGE · POC · FORMING PATTERNS',
     },
     {
