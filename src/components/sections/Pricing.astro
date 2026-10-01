@@ -36,7 +36,7 @@ const plans = apiPlans.map((plan) => {
     (plan.canSeeInstantNewsSantiments ?? true) &&
       'News sentiment & anomaly commentary',
     (plan.canGetAdvanceChartAccess ?? true) &&
-      'F&O options chain analytics (max pain & OI walls)',
+      'Derivatives analytics (funding, OI & liquidation clusters)',
   ].filter(Boolean) as string[];
 
   return {
@@ -73,8 +73,8 @@ const plans = apiPlans.map((plan) => {
         Transparent, credit-based plans
       </h2>
       <p class="type-body-md text-muted mt-4" data-reveal-item>
-        Transparent plans designed for active Indian options, futures, and
-        equity traders. Zero hidden costs.
+        Transparent plans designed for active crypto spot and perpetual futures
+        traders. Zero hidden costs.
       </p>
     </div>
   </Container>

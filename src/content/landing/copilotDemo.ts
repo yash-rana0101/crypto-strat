@@ -1,9 +1,9 @@
 export const sampleTrade = {
-  symbol: 'TMPV',
-  entry: 290.45,
-  stop: 291.55,
-  target: 289,
-  atr: 0.69,
+  symbol: 'ETHUSDT',
+  entry: 2904.5,
+  stop: 2915.5,
+  target: 2890,
+  atr: 6.9,
   rewardRisk: '1.32',
 } as const;
 
@@ -13,7 +13,7 @@ export const demoStages = [
     short: 'Build context',
     title: 'First, give the model the right context.',
     detail:
-      'Backend packages the system instructions, stock snapshot and tool contracts.',
+      'Backend packages the system instructions, market snapshot and tool contracts.',
   },
   {
     id: 'select',
@@ -60,19 +60,19 @@ export const demoQuestions = [
     id: 'why',
     label: 'Why a sell trade?',
     answer:
-      'In this sample, the 1H, 4H and daily trends all point down. Price at ₹290.45 is below VWAP ₹302.77 and the volume-profile POC ₹300.59. Together, these measurements support the illustrated short bias — they do not guarantee the next move.',
+      'In this sample, the 1H, 4H and daily trends all point down. Price at $2904.50 is below VWAP $3027.70 and the volume-profile POC $3005.90. Together, these measurements support the illustrated short bias — they do not guarantee the next move.',
   },
   {
     id: 'stop',
     label: 'Why this stop loss?',
     answer:
-      'The ₹291.55 stop is ₹1.10 above entry and above the ₹291.31 low-volume node. With ATR(14) at ₹0.69, the minimum stop distance is 1.5 × ₹0.69 = ₹1.035. The sample stop clears that floor; real fills and slippage can change the loss.',
+      'The $2915.50 stop is $11.00 above entry and above the $2913.10 low-volume node. With ATR(14) at $6.90, the minimum stop distance is 1.5 × $6.90 = $10.35. The sample stop clears that floor; real fills and slippage can change the loss.',
   },
   {
     id: 'risk',
     label: 'What could go wrong?',
     answer:
-      'A reversal can invalidate the bearish read. A move through ₹291.55 invalidates this sample plan; a gap or slippage can exceed the planned ₹1.10 risk. The ₹1.45 target is an example, not a promised return. Asking a follow-up does not change the saved plan.',
+      'A reversal can invalidate the bearish read. A move through $2915.50 invalidates this sample plan; a liquidation wick, gap or slippage can exceed the planned $11.00 risk. The $14.50 target is an example, not a promised return. Asking a follow-up does not change the saved plan.',
   },
 ] as const;
 

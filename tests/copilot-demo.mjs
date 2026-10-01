@@ -78,7 +78,7 @@ try {
     'idle state locks follow-up questions'
   );
   check(
-    "root.querySelector('[data-qa]').hidden && root.querySelector('[data-footer]').hidden && !root.querySelector('[data-empty]').textContent.includes('₹') && root.querySelector('[data-result]').hidden",
+    "root.querySelector('[data-qa]').hidden && root.querySelector('[data-footer]').hidden && !root.querySelector('[data-empty]').textContent.includes('$') && root.querySelector('[data-result]').hidden",
     'initial terminal has no sample levels, response or question block'
   );
   observePhases();
@@ -113,7 +113,7 @@ try {
     'FIND reveals a sample plan, not a verification result'
   );
   check(
-    "[...root.querySelectorAll('.plan-levels dd')].map(n => n.textContent.trim()).join('|') === '₹291.55|₹290.45|₹289.00'",
+    "[...root.querySelectorAll('.plan-levels dd')].map(n => n.textContent.trim()).join('|') === '$2915.50|$2904.50|$2890.00'",
     'sample stop, entry and target match the reference'
   );
   check(
@@ -123,7 +123,7 @@ try {
 
   for (const [id, expected] of [
     ['why', 'daily trends all point down'],
-    ['stop', '₹1.035'],
+    ['stop', '$10.35'],
     ['risk', 'gap or slippage'],
   ]) {
     observePhases();
@@ -139,7 +139,7 @@ try {
       `${id} question gets its fixed answer`
     );
     check(
-      "!root.querySelector('[data-result]').hidden && !root.querySelector('[data-conversation]').hidden && !root.querySelector('[data-qa]').hidden && root.querySelector('.plan-levels').textContent.includes('₹290.45')",
+      "!root.querySelector('[data-result]').hidden && !root.querySelector('[data-conversation]').hidden && !root.querySelector('[data-qa]').hidden && root.querySelector('.plan-levels').textContent.includes('$2904.50')",
       'follow-up returns the saved trade, fixed answer and question block'
     );
   }
@@ -157,7 +157,7 @@ try {
     'VERIFY displays its own outcome'
   );
   check(
-    "root.querySelector('[data-verification]').textContent.includes('1.035') && root.querySelectorAll('.qa-exchange').length === 0",
+    "root.querySelector('[data-verification]').textContent.includes('10.35') && root.querySelectorAll('.qa-exchange').length === 0",
     'VERIFY audits the same supplied levels and starts a fresh thread'
   );
   browser('click', '#copilot-q-stop');

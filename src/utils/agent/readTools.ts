@@ -123,7 +123,7 @@ export const pricingTool: WebMcpTool = {
 export const featuresTool: WebMcpTool = {
   name: 'list_features',
   description:
-    'List Strat AI product areas with a one-line summary and canonical URL for each. Use to route a user to the right part of the product, such as options analytics or the intraday terminal.',
+    'List Strat AI product areas with a one-line summary and canonical URL for each. Use to route a user to the right part of the product, such as derivatives analytics or the crypto trading terminal.',
   inputSchema: { type: 'object', properties: {} },
   annotations: { readOnlyHint: true, openWorldHint: true },
   execute: async () => {
@@ -147,7 +147,7 @@ export const featuresTool: WebMcpTool = {
 export const searchDocsTool: WebMcpTool = {
   name: 'search_documentation',
   description:
-    'Keyword search across Strat AI documentation and research articles. Returns matching titles, URLs and short excerpts. Use to answer specific questions about conviction scores, risk floors, the terminal UI, or F&O analytics.',
+    'Keyword search across Strat AI documentation and research articles. Returns matching titles, URLs and short excerpts. Use to answer specific questions about conviction scores, risk floors, the terminal UI, or derivatives analytics.',
   inputSchema: {
     type: 'object',
     properties: {

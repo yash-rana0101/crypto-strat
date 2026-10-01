@@ -20,15 +20,15 @@ export const faq: FaqContent = {
   items: [
     {
       q: 'What exactly is Strat AI?',
-      a: 'A market analysis and pre-trade risk terminal for Indian equities and equity derivatives (NSE/BSE F&O), built by the Trading & Research Wing. It evaluates setups, audits them against deterministic risk floors, decodes order flow and options positioning, and streams its reasoning while it works. It does not place orders, hold funds, or provide advice.',
+      a: 'A market analysis and pre-trade risk terminal for crypto markets, built by the Trading & Research Wing. It covers spot pairs and perpetual futures, such as BTC, ETH and SOL against USDT, on a 24/7 session model with a UTC daily close and 8-hour funding windows. It evaluates setups, audits them against deterministic risk floors, decodes order flow and derivatives positioning, and streams its reasoning while it works. Equities, forex, commodities and crypto options are out of scope. It does not place orders, hold funds, or provide advice.',
     },
     {
       q: 'What can I ask the Co-Pilot, and what does it actually call?',
-      a: 'Ask about a symbol in plain language. The reasoning loop has eighteen typed tools available over MCP: candles, a full indicator consensus, multi-timeframe trend, chart patterns, support and resistance, volume profile, news context, projections, market regime, relative strength, order flow, forecasts, session context, options analytics, event risk and its own track record — plus two control tools for arming a price watch and committing a decision. Every payload is contract-validated before the model is allowed to read it.',
+      a: 'Ask about a symbol in plain language. The reasoning loop has eighteen typed tools available over MCP: candles, a full indicator consensus, multi-timeframe trend, chart patterns, support and resistance, volume profile, news context, projections, market regime, relative strength, order flow, forecasts, session context, derivatives analytics, event risk and its own track record — plus two control tools for arming a price watch and committing a decision. Every payload is contract-validated before the model is allowed to read it.',
     },
     {
       q: 'How does VERIFY decide a setup is unacceptable?',
-      a: 'Five deterministic checks in a fixed order: levels present and finite, direction consistent with those levels, stop distance at least 1.5× ATR(14), and reward-to-risk at or above the floor for the profile — 1:2 for swing, investor and F&O, 1:1.3 for intraday. Checks stop at the first failure and return a stable reason tag. Setups below the floor are rejected outright, not silently resized. The validator is implemented twice, in Rust and in Python, with identical constants.',
+      a: 'Five deterministic checks in a fixed order: levels present and finite, direction consistent with those levels, stop distance at least 1.5× ATR(14), and reward-to-risk at or above the floor for the profile — 1:2 for swing, positional and perpetuals, 1:1.3 for intraday. Checks stop at the first failure and return a stable reason tag. Setups below the floor are rejected outright, not silently resized. The validator is implemented twice, in Rust and in Python, with identical constants.',
     },
     {
       q: 'Why are there four Ghost Line models?',
@@ -44,7 +44,7 @@ export const faq: FaqContent = {
     },
     {
       q: 'Is this financial advice, and can it trade for me?',
-      a: 'No to both. Strat AI is analysis and risk tooling, and is not a SEBI-registered investment adviser. The broker seam is read-only: there is no order method to call, and a test asserts the absence of every order-placement name. A deterministic guardrail additionally refuses questions about your capital, holdings, position size, income or suitability before the model is invoked, because impersonal research is what the product is.',
+      a: 'No to both. Strat AI is analysis and risk tooling, and is not a registered investment adviser. The exchange interface is read-only and API keys need read-only scope: there is no order or withdrawal method to call, and a test asserts the absence of every order-placement and withdrawal name. A deterministic guardrail additionally refuses questions about your capital, holdings, position size, income or suitability before the model is invoked, because impersonal research is what the product is.',
     },
     {
       q: 'What happens when a data feed goes down?',

@@ -32,7 +32,7 @@ export const deepDives: DeepDive[] = [
     badge: 'Strat AI Co-Pilot',
     eyebrow: 'FIND · VERIFY · DEBATE · QA',
     heading: 'Ask in plain language. It answers with eighteen typed tools.',
-    body: 'This is not a chat window bolted onto a chart. Your question enters a reasoning loop that calls deterministic quantitative tools over MCP — candles, a full indicator consensus, regime, order flow, options analytics, forecasts — and every result is contract-validated before the model is allowed to read it. The model reasons about measurements. It never authors them.',
+    body: 'This is not a chat window bolted onto a chart. Your question enters a reasoning loop that calls deterministic quantitative tools over MCP — candles, a full indicator consensus, regime, order flow, derivatives analytics, forecasts — and every result is contract-validated before the model is allowed to read it. The model reasons about measurements. It never authors them.',
     bullets: [
       {
         title: 'Four modes, one thread',
@@ -44,7 +44,7 @@ export const deepDives: DeepDive[] = [
       },
       {
         title: 'Three separate tool bindings',
-        body: 'The Bull, the Bear and the VERIFY critic are handed a read-only binding with the commit and watch tools removed, so they physically cannot open a position. Non-F&O workspaces lose the options tool altogether, because a tool that was never bound cannot be called.',
+        body: 'The Bull, the Bear and the VERIFY critic are handed a read-only binding with the commit and watch tools removed, so they physically cannot open a position. Spot workspaces don’t receive the derivatives tool at all, because a tool that was never bound cannot be called.',
       },
       {
         title: 'It is allowed to reach no conclusion',
@@ -79,15 +79,15 @@ export const deepDives: DeepDive[] = [
     bullets: [
       {
         title: 'A stop floor no profile can relax',
-        body: 'Your stop distance must be at least 1.5× ATR(14). That constant holds for intraday, swing, investor and F&O alike. A stop sitting inside normal market noise is rejected, not renegotiated.',
+        body: 'Your stop distance must be at least 1.5× ATR(14). That constant holds for intraday, swing, positional and perpetuals alike. A stop sitting inside normal market noise is rejected, not renegotiated.',
       },
       {
         title: 'Reward-to-risk floors that fit the session',
-        body: '1:2 for swing, investor and F&O. 1:1.3 for intraday — because a swing-calibrated floor makes a defensible intraday bracket arithmetically impossible and yields nothing but perpetual holds.',
+        body: '1:2 for swing, positional and perpetuals. 1:1.3 for intraday — because a swing-calibrated floor makes a defensible intraday bracket arithmetically impossible and yields nothing but perpetual holds.',
       },
       {
         title: 'Then something argues against you',
-        body: 'A Bear agent runs against your own proposal, hunting for overhead VWAP capping the move, call open-interest walls above your target, volume-profile gaps and unfavourable session timing. It returns a critique and nothing else — it has no authority to decide.',
+        body: 'A Bear agent runs against your own proposal, hunting for overhead VWAP capping the move, liquidation clusters sitting near your stop, crowded funding, volume-profile gaps and unfavourable session timing. It returns a critique and nothing else — it has no authority to decide.',
       },
       {
         title: 'Rejections you can act on',
@@ -190,7 +190,7 @@ export const chatMock: ChatMockContent = {
   frameLabel: 'STRAT_AI_COPILOT',
   status: 'STREAMING',
   promptLabel: 'You',
-  prompt: 'Is RELIANCE worth a long here, or should I sit this one out?',
+  prompt: 'Is SOLUSDT worth a long here, or should I sit this one out?',
   events: [
     {
       kind: 'tool',
@@ -200,7 +200,7 @@ export const chatMock: ChatMockContent = {
     {
       kind: 'tool',
       label: 'get_consensus_report',
-      detail: 'RSI 61.4 · MACD hist +2.10 · ATR 18.90',
+      detail: 'RSI 61.4 · MACD hist +0.21 · ATR 1.90',
     },
     {
       kind: 'tool',
@@ -210,7 +210,7 @@ export const chatMock: ChatMockContent = {
     {
       kind: 'tool',
       label: 'get_volume_profile',
-      detail: 'POC 1302.40 · price inside value area',
+      detail: 'POC 130.24 · price inside value area',
     },
     {
       kind: 'unavailable',
@@ -226,7 +226,7 @@ export const chatMock: ChatMockContent = {
     {
       kind: 'decision',
       label: 'HOLD',
-      detail: 'Best read: bias up, reference level 1302.40',
+      detail: 'Best read: bias up, reference level 130.24',
     },
   ],
   footnote:
@@ -236,8 +236,8 @@ export const chatMock: ChatMockContent = {
 /**
  * A genuine rejection, not a pass.
  *
- * Risk = |1298.50 − 1291.00| = 7.50. Floor = 1.5 × ATR(14) 18.90 = 28.35.
- * 7.50 < 28.35, so check 3 fails with `stop-too-tight`. Checks run in fixed
+ * SOLUSDT. Risk = |129.85 − 129.10| = 0.75. Floor = 1.5 × ATR(14) 1.90 = 2.85.
+ * 0.75 < 2.85, so check 3 fails with `stop-too-tight`. Checks run in fixed
  * order and stop at the first failure (catalogue 8.2), which is why the
  * reward-to-risk check is never reached.
  */
@@ -247,11 +247,11 @@ export const verifyMock: VerifyMockContent = {
   inputsLabel: 'YOUR LEVELS',
   inputs: [
     { label: 'Direction', value: 'BUY' },
-    { label: 'Entry', value: '1,298.50' },
-    { label: 'Stop', value: '1,291.00' },
-    { label: 'Target', value: '1,316.00' },
-    { label: 'ATR(14)', value: '18.90' },
-    { label: 'Floor (1.5× ATR)', value: '28.35' },
+    { label: 'Entry', value: '129.85' },
+    { label: 'Stop', value: '129.10' },
+    { label: 'Target', value: '131.60' },
+    { label: 'ATR(14)', value: '1.90' },
+    { label: 'Floor (1.5× ATR)', value: '2.85' },
   ],
   checksLabel: 'DETERMINISTIC CHECKS',
   checks: [
@@ -268,7 +268,7 @@ export const verifyMock: VerifyMockContent = {
     {
       label: 'Stop distance ≥ 1.5× ATR(14)',
       state: 'fail',
-      detail: '7.50 · needs 28.35',
+      detail: '0.75 · needs 2.85',
     },
     {
       label: 'Reward-to-risk ≥ 1:1.3',
@@ -283,9 +283,9 @@ export const verifyMock: VerifyMockContent = {
   },
   critiqueLabel: 'BEAR AGENT CRITIQUE',
   critique: [
-    'Overhead VWAP at 1,304.20 caps the path to your target',
-    'Call open-interest wall concentrated at the 1,300 strike',
-    'Midday session phase — historically thin and choppy',
+    'Overhead VWAP at 130.42 caps the path to your target',
+    'Long liquidation cluster stacked at 129.00, just below your stop',
+    'Weekend liquidity regime — historically thin and choppy',
   ],
   critiqueNote:
     'Advisory only. The Bear agent cannot commit, block, or override a decision.',
@@ -294,7 +294,7 @@ export const verifyMock: VerifyMockContent = {
 /** Catalogue 2.1 for the mathematics, 2.3 for projection length. */
 export const ghostLineMock: GhostLineMockContent = {
   frameLabel: 'PROJECTION MODEL',
-  status: 'RELIANCE · 10m',
+  status: 'SOLUSDT · 10m',
   modes: [
     {
       id: 'ols',
@@ -342,7 +342,7 @@ export const ghostLineMock: GhostLineMockContent = {
     },
   ],
   projectionNote:
-    'Projection length tracks zoom — twelve percent of visible bars, clamped between three and twenty, counted in actual bars so overnight and weekend gaps do not stretch it.',
+    'Projection length tracks zoom — twelve percent of visible bars, clamped between three and twenty, counted in actual bars so feed gaps do not stretch it.',
   confidenceNote:
     'R-squared comes from the dedicated ten-minute predictive model, not from these four fits.',
 };
@@ -351,7 +351,7 @@ export const ghostLineMock: GhostLineMockContent = {
 export const anomalyMock: AnomalyMockContent = {
   frameLabel: 'MARKET SURVEILLANCE',
   status: 'LIVE',
-  symbol: 'TATAMOTORS',
+  symbol: 'XRPUSDT',
   move: '+2.34%',
   window: '10m candle',
   severity: 'TRIGGERED',

@@ -128,8 +128,8 @@ class CopilotDemo extends HTMLElement {
       question
         ? question.label
         : mode === 'find'
-          ? 'Find an intraday setup for TMPV.'
-          : 'Verify SELL · entry ₹290.45 · stop ₹291.55 · target ₹289.00'
+          ? 'Find an intraday setup for ETHUSDT.'
+          : 'Verify SELL · entry $2904.50 · stop $2915.50 · target $2890.00'
     );
     resetToolActivity(this);
     if (question) {
@@ -150,7 +150,7 @@ class CopilotDemo extends HTMLElement {
     this.text(
       '[data-stage-detail]',
       index === 0 && question
-        ? 'Your follow-up, saved plan and stock context re-enter the same loop.'
+        ? 'Your follow-up, saved plan and market context re-enter the same loop.'
         : stage.detail
     );
     this.text(
@@ -211,7 +211,7 @@ class CopilotDemo extends HTMLElement {
       '[data-announcement]',
       question
         ? question.answer
-        : `Sample ${this.mode === 'verify' ? 'verification passed' : 'SELL plan ready'}. Entry ₹290.45, stop ₹291.55, target ₹289.00. Follow-up questions are available.`
+        : `Sample ${this.mode === 'verify' ? 'verification passed' : 'SELL plan ready'}. Entry $2904.50, stop $2915.50, target $2890.00. Follow-up questions are available.`
     );
     this.controls();
     if (question && document.activeElement === this.el('#copilot-reset'))

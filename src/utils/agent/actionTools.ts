@@ -169,7 +169,7 @@ export const contactInquiryTool: WebMcpTool = {
       mobile: {
         type: 'string',
         description:
-          "The user's phone number including country code, for example +91 9876543210.",
+          "The user's phone number including country code, for example +1 555 000 0000.",
       },
       type: {
         type: 'string',

@@ -221,19 +221,6 @@ export interface RefusalsContent {
   refusals: Refusal[];
 }
 
-/* ---------------------------------------------------------------- crypto */
-
-export interface CryptoContent {
-  id: string;
-  badge: string;
-  status: string;
-  heading: string;
-  body: string;
-  points: string[];
-  note: string;
-  cta: LinkTarget;
-}
-
 /* ------------------------------------------------------------- faq & cta */
 
 export interface FaqItem {

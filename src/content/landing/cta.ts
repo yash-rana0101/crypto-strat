@@ -11,7 +11,7 @@ export const cta: CtaContent = {
   id: 'cta',
   badge: 'Private beta',
   heading: 'Audit a setup before you fund it',
-  body: 'Strat AI is in private beta with a deliberately small group of traders working the Indian markets. If you care more about why than what, we want you in it.',
+  body: 'Strat AI is in private beta with a deliberately small group of traders working crypto markets. If you care more about why than what, we want you in it.',
   primary: {
     label: 'Join the private beta',
     href: '/waitlist',

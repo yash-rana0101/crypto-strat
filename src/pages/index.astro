@@ -17,7 +17,6 @@ import Features from '@/components/sections/Features.astro';
 import Workflows from '@/components/sections/Workflows.astro';
 import Stats from '@/components/sections/Stats.astro';
 import Security from '@/components/sections/Security.astro';
-import CryptoTeaser from '@/components/sections/CryptoTeaser.astro';
 import Pricing from '@/components/sections/Pricing.astro';
 import Blog from '@/components/sections/Blog.astro';
 import FAQ from '@/components/sections/FAQ.astro';
@@ -36,7 +35,7 @@ const productSchema = {
   applicationCategory: 'FinancialApplication',
   operatingSystem: 'Windows, macOS, Linux, Web',
   description:
-    'Strat AI: Market analysis and pre-trade risk adjudication terminal for NSE and NFO.',
+    'Strat AI: Market analysis and pre-trade risk adjudication terminal for crypto spot pairs and perpetual futures.',
   offers: {
     '@type': 'Offer',
     price: '0',
@@ -50,9 +49,9 @@ const productSchema = {
     'Ghost Line projections (OLS, VWLR, VWEPR, regime-conditioned forecast)',
     'Anomaly surveillance on 10-minute candles',
     'Chart pattern engine (26 labels across 5 categories)',
-    'F&O options chain analytics (Greeks, max pain, OI walls)',
+    'Perpetuals derivatives diagnostics (funding rates, open interest, liquidation clusters, long/short ratio, basis)',
     'Order flow imbalance and footprint volume profiles',
-    'Read-only broker integration with no order-placement path',
+    'Read-only exchange API integration with no order-placement or withdrawal path',
   ],
   audience: {
     '@type': 'Audience',
@@ -65,9 +64,8 @@ const serviceSchema = {
   name: 'Strat AI pre-trade risk adjudication',
   serviceType: 'Market analysis and pre-trade risk adjudication',
   description:
-    'Evaluates Indian equity and F&O trade setups, audits them against a deterministic 1.5× ATR(14) stop-loss floor and minimum reward-to-risk thresholds, and decodes live options order flow. Analysis and risk tooling only: no order execution, no custody, no financial advice.',
+    'Evaluates crypto spot and perpetual futures trade setups, audits them against a deterministic 1.5× ATR(14) stop-loss floor and minimum reward-to-risk thresholds, and decodes live derivatives positioning. Analysis and risk tooling only: no order execution, no custody, no financial advice.',
   provider: { '@id': 'https://www.stratai.live/#organization' },
-  areaServed: { '@type': 'Country', name: 'India' },
   audience: {
     '@type': 'Audience',
     audienceType: 'Traders, Quant Analysts, Risk Managers',
@@ -95,8 +93,8 @@ const faqSchema = {
 ---
 
 <BaseLayout
-  title="Strat AI — Market Analysis & Pre-Trade Risk Terminal for NSE & NFO"
-  description="Ask the market in plain language and get answers computed by 18 typed quantitative tools. Pre-trade risk audits against a deterministic 1.5× ATR stop floor, four projection models, and anomaly surveillance for Indian equities and F&O."
+  title="Strat AI — Market Analysis & Pre-Trade Risk Terminal for Crypto"
+  description="Ask the market in plain language and get answers computed by 18 typed quantitative tools. Pre-trade risk audits against a deterministic 1.5× ATR stop floor, four projection models, and anomaly surveillance for crypto spot pairs and perpetual futures."
   jsonLd={[productSchema, serviceSchema, faqSchema]}
   markdownHref="/index.md"
 >
@@ -123,7 +121,6 @@ const faqSchema = {
   <!-- Tier 4 — constraints, refusals, and what is not shipped yet -->
   <Stats />
   <Security />
-  <CryptoTeaser />
 
   <Pricing />
   <Blog />

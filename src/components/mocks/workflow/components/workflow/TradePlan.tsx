@@ -81,7 +81,7 @@ export default function TradePlan({ demo }: { demo: WorkflowController }) {
       </div>
       <div className={`validation ${!result.passed ? 'failed' : ''}`}>
         <Glyph kind="shield" /> Stop {money(result.risk)}{' '}
-        {result.passed ? '≥' : '<'} ₹{result.floor.toFixed(3)}{' '}
+        {result.passed ? '≥' : '<'} ${result.floor.toFixed(3)}{' '}
         <span>(1.5 × ATR)</span>
         <b>{result.passed ? 'PASS' : 'FAIL'}</b>
       </div>

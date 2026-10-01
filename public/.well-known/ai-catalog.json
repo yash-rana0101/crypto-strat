@@ -14,7 +14,7 @@
       "displayName": "Strat AI",
       "type": "application/mcp-server-card+json",
       "url": "https://www.stratai.live/.well-known/mcp/server-card.json",
-      "description": "Read-only MCP server for Strat AI, a market analysis and pre-trade risk adjudication terminal for Indian equities and Futures & Options (NSE/BSE). Exposes product scope, deterministic risk rules, live pricing, product areas and documentation search, plus MCP Apps ui:// views that render inline in conversation. No authentication required.",
+      "description": "Read-only MCP server for Strat AI, a market analysis and pre-trade risk adjudication terminal for crypto markets: spot pairs and perpetual futures. Exposes product scope, deterministic risk rules, live pricing, product areas and documentation search, plus MCP Apps ui:// views that render inline in conversation. No authentication required.",
       "version": "1.0.0",
       "icon": "https://www.stratai.live/strat.svg",
       "capabilities": ["tools", "resources", "mcp-apps"],
@@ -22,17 +22,17 @@
         "finance",
         "trading",
         "risk-management",
-        "indian-markets",
-        "nse",
-        "options",
+        "crypto",
+        "perpetual-futures",
+        "derivatives",
         "market-analysis"
       ],
       "representativeQueries": [
-        "is my stop loss wide enough for this NSE trade",
+        "is my stop loss wide enough for this BTCUSDT trade",
         "what does Strat AI cost per month",
-        "tools for analysing Nifty and Bank Nifty option chains",
+        "tools for analysing BTC and ETH perpetual funding and open interest",
         "how do I check reward to risk before placing an intraday trade",
-        "pre-trade risk audit for Indian F&O"
+        "pre-trade risk audit for crypto perpetual futures"
       ]
     },
     {

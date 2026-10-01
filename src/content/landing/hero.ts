@@ -16,7 +16,7 @@ export const hero: HeroContent = {
     href: 'https://www.tradingrw.com/',
   },
   heading: 'Ask the market. Every number is computed, not guessed.',
-  body: 'Strat AI is a market analysis and pre-trade risk terminal for the NSE. Ask about a symbol in plain language and it calls eighteen typed quantitative tools over MCP, streams every call to your screen as it happens, and tells you when not to trade.',
+  body: 'Strat AI is a market analysis and pre-trade risk terminal for crypto spot pairs and perpetual futures. Ask about a symbol in plain language and it calls eighteen typed quantitative tools over MCP, streams every call to your screen as it happens, and tells you when not to trade.',
   primaryCta: {
     label: 'Explore Terminal',
     href: '/waitlist',

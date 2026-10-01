@@ -4,10 +4,10 @@ import type { RefusalsContent } from '@/types/landing';
  * What the product cannot do, and the code that makes that true.
  *
  * Claims:
- * - The broker layer exposes quote, instruments and search only, with no order
- *   paths; a scope-boundary test maintains a denylist of order-placement names
- *   asserted absent, so read-only is enforced by test rather than convention —
- *   FEATURE_CATALOGUE 12.1
+ * - The exchange layer exposes quote, instruments and search only, with no
+ *   order or withdrawal paths; a scope-boundary test maintains a denylist of
+ *   order-placement and withdrawal names asserted absent, so read-only is
+ *   enforced by test rather than convention — FEATURE_CATALOGUE 12.1
  * - Unmeasurable indicator values are emitted as NaN and reach the wire as
  *   JSON null; UNAVAILABLE consensus states exist precisely to separate
  *   "measured and unremarkable" from "could not be measured" — 4.1, 4.2
@@ -37,13 +37,13 @@ export const refusals: RefusalsContent = {
   },
   pills: [
     { icon: 'shield-check', label: 'No order path', accent: 'emerald' },
-    { icon: 'layers', label: 'Read-only broker seam', accent: 'orange' },
+    { icon: 'layers', label: 'Read-only exchange interface', accent: 'orange' },
     { icon: 'zap', label: 'Honest failure', accent: 'violet' },
   ],
   refusals: [
     {
       title: 'It cannot place an order',
-      body: 'The broker layer exposes quotes, instruments and search. There is no order method to call. A test maintains a denylist — place order, execute trade, cancel order, modify order, submit order, close position, square off — and asserts every one of those names is absent, so the boundary fails the build the moment it is crossed.',
+      body: 'The exchange layer exposes quotes, instruments and search, and API keys need read-only scope. There is no order or withdrawal method to call. A test maintains a denylist — place order, execute trade, cancel order, modify order, submit order, close position, withdraw — and asserts every one of those names is absent, so the boundary fails the build the moment it is crossed.',
     },
     {
       title: 'It cannot fill a gap with a guess',

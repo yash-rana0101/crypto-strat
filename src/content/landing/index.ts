@@ -23,6 +23,5 @@ export { platform } from './platform';
 export { workflows } from './workflows';
 export { constraints } from './constraints';
 export { refusals } from './refusals';
-export { crypto } from './crypto';
 export { faq } from './faq';
 export { cta } from './cta';

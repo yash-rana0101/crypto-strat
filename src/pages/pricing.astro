@@ -18,7 +18,7 @@ const faqs = [
   },
   {
     q: 'What makes Strat AI different from typical indicator platforms?',
-    a: 'Strat AI provides an active pre-trade risk co-pilot. It stress-tests setups before entry against a 1.5× ATR stop floor (VERIFY mode) and rejects failures with a machine-readable reason tag, projects forward price paths from four selectable models, decodes F&O options chains, and is permitted to reach a HOLD rather than manufacture a directional call.',
+    a: 'Strat AI provides an active pre-trade risk co-pilot. It stress-tests setups before entry against a 1.5× ATR stop floor (VERIFY mode) and rejects failures with a machine-readable reason tag, projects forward price paths from four selectable models, decodes perpetuals positioning (funding, open interest, liquidation clusters), and is permitted to reach a HOLD rather than manufacture a directional call.',
   },
   {
     q: 'What is your refund policy?',
@@ -93,7 +93,7 @@ const pricingOffersSchema = {
 
 <PageLayout
   title="Pricing & Plans — Strat Ai"
-  description="Explore flexible, credit-based subscription plans tailored for professional options, futures, and intraday traders on the Strat Ai terminal."
+  description="Explore flexible, credit-based subscription plans tailored for professional crypto spot and perpetuals traders on the Strat Ai terminal."
   badge="Pricing"
   badgeVariant="emerald"
   breadcrumbs={[{ label: 'Pricing', href: '/pricing' }]}
