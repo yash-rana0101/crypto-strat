@@ -137,7 +137,7 @@ export default function SetupPanel({ demo }: { demo: WorkflowController }) {
           <textarea
             rows={3}
             maxLength={1000}
-            placeholder="E.g. Support held on the 10m chart; expecting a move toward resistance…"
+            placeholder="E.g., support held on the 10m chart; expecting a move toward resistance…"
             value={draft.notes}
             onChange={(event) => update('notes', event.target.value)}
           />

@@ -1,6 +1,6 @@
-import { PiCheckCircle, PiCircle, PiCircleNotch } from 'react-icons/pi';
 import { names } from './constants';
 import { toolPresentation } from '../../toolPresentation';
+import WorkflowIcon from './WorkflowIcon';
 import type { WorkflowController } from './useWorkflowDemo';
 
 export default function ToolFeed({ demo }: { demo: WorkflowController }) {
@@ -28,7 +28,7 @@ export default function ToolFeed({ demo }: { demo: WorkflowController }) {
       </div>
       <div className="feed-rows" ref={feed}>
         {visibleTools.map((name, index) => {
-          const Icon = toolPresentation[index].icon;
+          const icon = toolPresentation[index].icon;
           const completed = step > index;
           const active = step === index;
           const failed = completed && index === 9 && !result.passed;
@@ -38,13 +38,13 @@ export default function ToolFeed({ demo }: { demo: WorkflowController }) {
               className={`feed-row ${completed ? 'done' : active ? 'working' : 'pending'} ${failed ? 'check-failed' : ''}`}
             >
               <span className="chat-tool-icon">
-                <Icon aria-hidden="true" />
+                <WorkflowIcon name={icon} />
               </span>
               <div className="chat-tool-copy">
                 <span className="feed-tool-label">
                   {mode === 'verify' && index === 9
                     ? 'Verify supplied sample levels'
-                    : `Read ${name}`}
+                    : name}
                 </span>
                 <small>
                   {completed ? data[index] : `${trade.symbol} · 10m`}
@@ -62,22 +62,19 @@ export default function ToolFeed({ demo }: { demo: WorkflowController }) {
                         : 'Pending'
                 }
               >
-                {completed ? (
-                  <PiCheckCircle />
-                ) : active ? (
-                  <PiCircleNotch className="chat-spinner" />
-                ) : (
-                  <PiCircle />
-                )}
+                <WorkflowIcon
+                  name={completed ? 'complete' : active ? 'processing' : 'pending'}
+                  className={active ? 'chat-spinner' : undefined}
+                />
               </span>
             </div>
           );
         })}
       </div>
       <div className="chat-working-status">
-        <PiCircleNotch
+        <WorkflowIcon
+          name="processing"
           className={running || thinking ? 'chat-spinner' : ''}
-          aria-hidden="true"
         />
         <span>
           {running

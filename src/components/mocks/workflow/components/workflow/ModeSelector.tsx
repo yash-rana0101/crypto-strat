@@ -1,11 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import {
-  PiCaretDown,
-  PiCaretUp,
-  PiCircleNotch,
-  PiLightning,
-  PiShieldCheck,
-} from 'react-icons/pi';
+import WorkflowIcon from './WorkflowIcon';
 import type { WorkflowController } from './useWorkflowDemo';
 
 export default function ModeSelector({ demo }: { demo: WorkflowController }) {
@@ -13,8 +7,6 @@ export default function ModeSelector({ demo }: { demo: WorkflowController }) {
   const [open, setOpen] = useState(false);
   const container = useRef<HTMLDivElement>(null);
   const menuTrigger = useRef<HTMLButtonElement>(null);
-  const ModeIcon = mode === 'find' ? PiLightning : PiShieldCheck;
-  const Caret = open ? PiCaretUp : PiCaretDown;
 
   useEffect(() => {
     if (!open) return;
@@ -57,14 +49,16 @@ export default function ModeSelector({ demo }: { demo: WorkflowController }) {
                 ?.focus();
           }}
         >
-          {running && mode === 'find' ? (
-            <PiCircleNotch
-              className="analysis-mode-spinner"
-              aria-hidden="true"
-            />
-          ) : (
-            <ModeIcon aria-hidden="true" />
-          )}
+          <WorkflowIcon
+            name={
+              running && mode === 'find'
+                ? 'processing'
+                : mode === 'find'
+                  ? 'find-trade'
+                  : 'verify-trade'
+            }
+            className={running && mode === 'find' ? 'analysis-mode-spinner' : ''}
+          />
           {mode === 'find'
             ? running
               ? 'SCANNING MARKET…'
@@ -81,7 +75,7 @@ export default function ModeSelector({ demo }: { demo: WorkflowController }) {
           disabled={running}
           onClick={() => setOpen(!open)}
         >
-          <Caret aria-hidden="true" />
+          <WorkflowIcon name={open ? 'caret-up' : 'caret-down'} />
         </button>
       </div>
       {open && (
@@ -96,9 +90,9 @@ export default function ModeSelector({ demo }: { demo: WorkflowController }) {
             onClick={() => choose('find')}
             disabled={running}
           >
-            <PiLightning aria-hidden="true" />
+            <WorkflowIcon name="find-trade" />
             <span>
-              Find a Trade Setup
+              Find a trade setup
               <small>Scans breakouts &amp; quant signals</small>
             </span>
           </button>
@@ -108,10 +102,10 @@ export default function ModeSelector({ demo }: { demo: WorkflowController }) {
             onClick={() => choose('verify')}
             disabled={running}
           >
-            <PiShieldCheck aria-hidden="true" />
+            <WorkflowIcon name="verify-trade" />
             <span>
-              Verify My Trade Idea
-              <small>Co-pilot critical Risk Manager critique</small>
+              Verify my trade idea
+              <small>Critical co-pilot risk review</small>
             </span>
           </button>
         </div>

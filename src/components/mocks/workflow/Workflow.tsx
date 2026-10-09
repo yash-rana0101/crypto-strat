@@ -105,7 +105,7 @@ export default function Workflow() {
               </div>
               <aside
                 className="phone-preview"
-                aria-label="Strat Agent phone preview"
+                aria-label="Strat agent phone preview"
               >
                 <TerminalPanel demo={demo} />
               </aside>

@@ -6,6 +6,7 @@ import ToolFeed from './ToolFeed';
 import TradePlan from './TradePlan';
 import FollowUpConversation from './FollowUpConversation';
 import ReadyState from './ReadyState';
+import WorkflowIcon from './WorkflowIcon';
 import type { WorkflowController } from './useWorkflowDemo';
 export default function TerminalPanel({ demo }: { demo: WorkflowController }) {
   const { mode, running, trade, phase, step, thinking, setupNotes, viewport } =
@@ -15,9 +16,9 @@ export default function TerminalPanel({ demo }: { demo: WorkflowController }) {
       <div className="app-status-bar" aria-hidden="true">
         <span>9:41</span>
         <span className="app-status-icons">
-          <span className="app-signal" />
-          <span className="app-wifi" />
-          <span className="app-battery" />
+          <WorkflowIcon name="cellular-signal" className="app-signal" />
+          <WorkflowIcon name="wifi" className="app-wifi" />
+          <WorkflowIcon name="battery" className="app-battery" />
         </span>
       </div>
       <header className="chat-product-header">
@@ -29,7 +30,7 @@ export default function TerminalPanel({ demo }: { demo: WorkflowController }) {
           </div>
         </div>
         <span className="app-demo-badge">
-          <i /> SAMPLE REPLAY
+          <WorkflowIcon name="live-status" /> SAMPLE REPLAY
         </span>
       </header>
       <ModeSelector demo={demo} />
@@ -37,7 +38,7 @@ export default function TerminalPanel({ demo }: { demo: WorkflowController }) {
         <span>
           <i />
           {trade.symbol}
-          <b>·</b> 10m <b>·</b> Intraday
+          <b>·</b> 10m <b>·</b> intraday
         </span>
         <span className="replay-tag">
           SAMPLE {String(trade.id).padStart(2, '0')} / 10
