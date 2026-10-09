@@ -128,3 +128,14 @@ const faqSchema = {
   <CTA />
   <Partners />
 </BaseLayout>
+
+<script>
+  import { initSectionScroll } from '@/utils/effects/sectionScroll';
+
+  let cleanupSectionScroll = initSectionScroll();
+  document.addEventListener('astro:before-swap', () => cleanupSectionScroll());
+  document.addEventListener('astro:after-swap', () => {
+    cleanupSectionScroll();
+    cleanupSectionScroll = initSectionScroll();
+  });
+</script>

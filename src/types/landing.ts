@@ -32,6 +32,10 @@ export interface HeroContent {
   };
   heading: string;
   body: string;
+  signals: Array<{
+    label: string;
+    icon: string;
+  }>;
   primaryCta: LinkTarget;
   secondaryCta: LinkTarget;
   note: string;
@@ -179,6 +183,7 @@ export interface WorkflowStep {
   title: string;
   body: string;
   artefact: string;
+  icon: string;
 }
 
 export interface WorkflowsContent {

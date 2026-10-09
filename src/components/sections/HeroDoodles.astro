@@ -1,0 +1,189 @@
+---
+// Each viewBox displays one icon from the supplied transparent sheet.
+const doodles = [
+  { name: 'growth', crop: '60 70 225 255', left: '3%', top: '8%', width: '10%' },
+  { name: 'bitcoin', crop: '300 70 275 260', left: '15%', top: '18%', width: '10%' },
+  { name: 'candles', crop: '580 85 250 245', left: '8%', top: '43%', width: '9%' },
+  { name: 'search', crop: '888 125 195 200', left: '20%', top: '62%', width: '6%' },
+  { name: 'report', crop: '1115 120 285 220', left: '14%', top: '82%', width: '11%' },
+  { name: 'ethereum', crop: '835 345 270 220', left: '73%', top: '8%', width: '10%' },
+  { name: 'ai', crop: '1135 345 245 215', left: '88%', top: '15%', width: '10%' },
+  { name: 'network', crop: '55 570 185 190', left: '94%', top: '46%', width: '5%' },
+  { name: 'chart', crop: '315 575 320 200', left: '80%', top: '52%', width: '12%' },
+  { name: 'tether', crop: '695 575 240 210', left: '74%', top: '78%', width: '9%' },
+  { name: 'shield', crop: '1000 590 165 180', left: '89%', top: '90%', width: '7%' },
+  { name: 'bolt', crop: '1240 590 165 190', left: '92%', top: '70%', width: '6%' },
+  { name: 'radar', crop: '50 775 315 190', left: '80%', top: '105%', width: '11%' },
+  { name: 'sparkle-left', crop: '320 410 90 112', left: '24%', top: '2%', width: '3%' },
+  { name: 'sparkle-bottom', crop: '70 390 80 110', left: '4%', top: '85%', width: '3%' },
+  { name: 'sparkle-right', crop: '165 450 65 95', left: '76%', top: '41%', width: '3%' },
+  { name: 'plus', crop: '490 410 70 70', left: '6%', top: '66%', width: '2%' },
+];
+---
+
+<div class="hero-doodles" aria-hidden="true">
+  <svg class="doodle-trails" viewBox="0 0 1440 540" fill="none">
+    <g stroke="#059669" stroke-opacity="0.25" stroke-width="1" stroke-dasharray="8 10" stroke-linecap="round">
+      <path d="M 20 340 C 45 220 175 295 215 190" />
+      <path d="M 30 460 C 175 270 180 530 310 480" />
+      <path d="M 1160 95 C 1270 120 1245 215 1205 250" />
+      <path d="M 1140 450 C 1245 535 1255 350 1410 415" />
+    </g>
+    <g stroke="#047857" stroke-opacity="0.4" stroke-width="1.5">
+      <circle cx="68" cy="215" r="5" />
+      <circle cx="290" cy="450" r="4" />
+      <circle cx="1135" cy="325" r="5" />
+      <circle cx="1380" cy="515" r="4" />
+    </g>
+  </svg>
+  {
+    doodles.map((doodle, index) => (
+      <span
+        class={`doodle doodle-${doodle.name}`}
+        data-hero-parallax={[-56, 32, -84][index % 3]}
+        data-doodle-direction={index % 2 === 0 ? -1 : 1}
+        style={`--left: ${doodle.left}; --top: ${doodle.top}; --width: ${doodle.width}`}
+      >
+        <span class="doodle-hover">
+          <span class="doodle-artwork">
+            <svg viewBox={doodle.crop}>
+              <image href="/hero/doodles.png" width="1448" height="1086" />
+            </svg>
+          </span>
+        </span>
+      </span>
+    ))
+  }
+</div>
+
+<noscript>
+  <style is:inline>
+    .hero-doodles .doodle-artwork { opacity: 1; }
+  </style>
+</noscript>
+
+<style>
+  .hero-doodles {
+    position: absolute;
+    top: 72px;
+    left: 50%;
+    width: 100%;
+    max-width: 1600px;
+    height: 480px;
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+
+  .doodle-trails {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .doodle {
+    position: absolute;
+    left: var(--left);
+    top: var(--top);
+    width: clamp(24px, var(--width), 168px);
+    opacity: 0.56;
+    filter: saturate(0.72);
+  }
+
+  .doodle-hover,
+  .doodle-artwork {
+    display: block;
+    transform-origin: center;
+  }
+
+  .doodle-artwork {
+    opacity: 0;
+  }
+
+  .doodle svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+  }
+
+  @media (min-width: 1280px) {
+    .hero-doodles {
+      height: 510px;
+    }
+  }
+
+  @media (max-width: 1023px) {
+    .doodle {
+      opacity: 0.34;
+    }
+
+    .doodle-bitcoin {
+      left: 1%;
+      top: 28%;
+    }
+
+    .doodle-ethereum {
+      left: 88%;
+      top: 30%;
+    }
+
+    .doodle-search,
+    .doodle-chart,
+    .doodle-tether,
+    .doodle-sparkle-right {
+      display: none;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .hero-doodles {
+      top: 88px;
+      height: 400px;
+    }
+
+    .doodle,
+    .doodle-trails {
+      display: none;
+    }
+
+    .doodle-growth,
+    .doodle-ai,
+    .doodle-sparkle-bottom,
+    .doodle-bolt {
+      display: block;
+      width: 48px;
+      opacity: 0.22;
+    }
+
+    .doodle-growth {
+      left: -2%;
+      top: 8%;
+    }
+
+    .doodle-ai {
+      left: auto;
+      right: -2%;
+      top: 5%;
+    }
+
+    .doodle-sparkle-bottom {
+      left: 3%;
+      top: 85%;
+      width: 26px;
+    }
+
+    .doodle-bolt {
+      left: auto;
+      right: 2%;
+      top: 88%;
+      width: 32px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .doodle-artwork {
+      opacity: 1;
+    }
+  }
+</style>
