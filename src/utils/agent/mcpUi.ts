@@ -36,10 +36,7 @@ const VIEW_CSP = [
 ].join('; ');
 
 const STYLES = `
-:root { color-scheme: light dark; --bg: #ffffff; --fg: #0b1220; --muted: #5b6577; --line: #e3e7ee; --accent: #0f9d6e; --card: #f7f9fb; }
-@media (prefers-color-scheme: dark) {
-  :root { --bg: #0b0f14; --fg: #e8edf4; --muted: #97a2b4; --line: #1e2733; --accent: #10b981; --card: #111823; }
-}
+:root { color-scheme: only light; --bg: #ffffff; --fg: #123126; --muted: #60786f; --line: #bbf7d0; --accent: #059669; --card: #f0fdf4; }
 * { box-sizing: border-box; }
 body { margin: 0; padding: 20px; background: var(--bg); color: var(--fg);
   font: 15px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
@@ -74,7 +71,7 @@ function document_(title: string, body: string): string {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light dark">
+<meta name="color-scheme" content="light">
 <meta http-equiv="Content-Security-Policy" content="${escapeHtml(VIEW_CSP)}">
 <title>${escapeHtml(title)}</title>
 <style>${STYLES}</style>

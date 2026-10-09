@@ -33,15 +33,15 @@ const sizeClasses = {
 
 const variantClasses = {
   primary:
-    'bg-emerald-500/75 dark:bg-emerald-400/75 text-white dark:text-black border border-emerald-400/50 dark:border-emerald-300/60 shadow-[0_4px_24px_rgba(16,185,129,0.35),inset_0_1.5px_1px_rgba(255,255,255,0.5)] hover:bg-emerald-500/90 dark:hover:bg-emerald-400/90 hover:shadow-[0_8px_32px_rgba(16,185,129,0.55),inset_0_1.5px_1px_rgba(255,255,255,0.7)] hover:scale-[1.02]',
+    'bg-emerald-600/90 text-white border border-emerald-500/60 shadow-[0_4px_24px_rgba(5,150,105,0.28),inset_0_1.5px_1px_rgba(255,255,255,0.5)] hover:bg-emerald-700 hover:shadow-[0_8px_32px_rgba(5,150,105,0.38),inset_0_1.5px_1px_rgba(255,255,255,0.7)] hover:scale-[1.02]',
   secondary:
-    'bg-surface-soft/60 dark:bg-surface-card/60 text-ink border border-hairline shadow-[0_4px_18px_rgba(0,0,0,0.06),inset_0_1.5px_1px_rgba(255,255,255,0.35)] hover:bg-surface-card/90 hover:border-emerald-500/40 hover:shadow-[0_6px_24px_rgba(16,185,129,0.25),inset_0_1.5px_1px_rgba(255,255,255,0.6)] hover:scale-[1.02]',
+    'bg-surface-soft/80 text-ink border border-hairline shadow-[0_4px_18px_rgba(5,150,105,0.08),inset_0_1.5px_1px_rgba(255,255,255,0.7)] hover:bg-surface-card hover:border-emerald-500/40 hover:shadow-[0_6px_24px_rgba(5,150,105,0.18),inset_0_1.5px_1px_rgba(255,255,255,0.8)] hover:scale-[1.02]',
   glass:
-    'bg-white/20 dark:bg-white/10 text-ink border border-white/35 dark:border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.12),inset_0_1.5px_1.5px_rgba(255,255,255,0.5)] hover:bg-white/35 dark:hover:bg-white/20 hover:border-emerald-400/50 hover:scale-[1.02]',
+    'bg-white/70 text-ink border border-emerald-100 shadow-[0_8px_32px_rgba(5,150,105,0.12),inset_0_1.5px_1.5px_rgba(255,255,255,0.8)] hover:bg-white/90 hover:border-emerald-400/50 hover:scale-[1.02]',
   ghost:
     'bg-transparent text-ink border border-transparent hover:bg-surface-card hover:border-hairline',
   'text-link':
-    'bg-transparent text-ink border-none p-0 h-auto rounded-none hover:text-emerald-500 dark:hover:text-emerald-400',
+    'bg-transparent text-ink border-none p-0 h-auto rounded-none hover:text-emerald-600',
 };
 
 const isGlassVariant =
@@ -121,12 +121,4 @@ const isGlassVariant =
     initButtonLiquidGlass();
   });
 
-  // Observe theme updates to refresh glass maps
-  const observer = new MutationObserver(() => {
-    instances.forEach((inst) => inst.refresh());
-  });
-  observer.observe(document.documentElement, {
-    attributes: true,
-    attributeFilter: ['data-theme'],
-  });
 </script>

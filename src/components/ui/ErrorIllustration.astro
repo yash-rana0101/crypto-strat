@@ -19,7 +19,7 @@ const svgContent = fs.readFileSync(svgPath, 'utf-8');
     display: none !important;
   }
 
-  /* 2. Theme Adaptation styles for Dark mode (Default) */
+  /* 2. Adapt the illustration to the permanent light palette */
   #freepik_stories-404-error-with-people-holding-the-numbers
     [style*='fill: rgb(38, 50, 56)'],
   #freepik_stories-404-error-with-people-holding-the-numbers
@@ -52,31 +52,4 @@ const svgContent = fs.readFileSync(svgPath, 'utf-8');
     transition: fill 0.3s ease;
   }
 
-  /* Theme Adaptation styles for Light Mode */
-  html[data-theme='light']
-    #freepik_stories-404-error-with-people-holding-the-numbers
-    [style*='fill: rgb(38, 50, 56)'],
-  html[data-theme='light']
-    #freepik_stories-404-error-with-people-holding-the-numbers
-    [style*='fill:rgb(38,50,56)'] {
-    fill: #263238 !important;
-  }
-
-  html[data-theme='light']
-    #freepik_stories-404-error-with-people-holding-the-numbers
-    [style*='stroke: rgb(38, 50, 56)'],
-  html[data-theme='light']
-    #freepik_stories-404-error-with-people-holding-the-numbers
-    [style*='stroke:rgb(38,50,56)'] {
-    stroke: #263238 !important;
-  }
-
-  html[data-theme='light']
-    #freepik_stories-404-error-with-people-holding-the-numbers
-    [style*='fill: rgb(255, 255, 255)'],
-  html[data-theme='light']
-    #freepik_stories-404-error-with-people-holding-the-numbers
-    [style*='fill:rgb(255,255,255)'] {
-    fill: #ffffff !important;
-  }
 </style>

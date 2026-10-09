@@ -22,6 +22,12 @@ export default defineConfig({
   ],
   output: 'static',
 
+  markdown: {
+    shikiConfig: {
+      theme: 'github-light',
+    },
+  },
+
   trailingSlash: 'never',
 
   vite: {

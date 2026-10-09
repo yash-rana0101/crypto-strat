@@ -1,7 +1,6 @@
 import { liquidGlass } from '@/utils/liquid-glass';
 
 let currentGlassInstance: ReturnType<typeof liquidGlass> | null = null;
-let currentThemeObserver: MutationObserver | null = null;
 
 function initDynamicIsland() {
   const islandWrapper = document.getElementById('dynamic-island-wrapper');
@@ -20,11 +19,6 @@ function initDynamicIsland() {
     currentGlassInstance.destroy();
     currentGlassInstance = null;
   }
-  if (currentThemeObserver) {
-    currentThemeObserver.disconnect();
-    currentThemeObserver = null;
-  }
-
   let isExpanded = false;
 
   function updateLiquidGlass() {
@@ -153,19 +147,6 @@ function initDynamicIsland() {
   // Attach scroll listener
   window.addEventListener('scroll', handleScrollTransformation, {
     passive: true,
-  });
-
-  // Watch for theme toggling on <html> element
-  currentThemeObserver = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-      if (mutation.attributeName === 'data-theme') {
-        updateLiquidGlass();
-      }
-    });
-  });
-  currentThemeObserver.observe(document.documentElement, {
-    attributes: true,
-    attributeFilter: ['data-theme'],
   });
 
   function scheduleTransitionRefreshes() {

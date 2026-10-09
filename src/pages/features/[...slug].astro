@@ -120,7 +120,7 @@ const featureSchema = {
           class="relative rounded-2xl overflow-hidden border border-hairline/80 shadow-[0_20px_50px_rgba(16,185,129,0.06)] bg-surface-card p-4 aspect-video flex items-center justify-center"
         >
           <div
-            class="absolute inset-0 opacity-[0.03] dark:opacity-[0.12] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,black_20%,transparent_80%)]"
+            class="absolute inset-0 opacity-[0.03] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,black_20%,transparent_80%)]"
             style="background-image: linear-gradient(var(--color-hairline) 1px, transparent 1px), linear-gradient(90deg, var(--color-hairline) 1px, transparent 1px); background-size: 32px 32px;"
           >
           </div>
@@ -182,7 +182,7 @@ const featureSchema = {
       <!-- Render Markdown Body -->
       {
         htmlContent && (
-          <div class="prose dark:prose-invert max-w-[800px] mx-auto bg-surface-card border border-hairline rounded-2xl p-8 md:p-12">
+          <div class="prose max-w-[800px] mx-auto bg-surface-card border border-hairline rounded-2xl p-8 md:p-12">
             <div set:html={htmlContent} />
           </div>
         )

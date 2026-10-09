@@ -2,8 +2,7 @@
 
 /* ================================================
    Strat Ai Design System — Theme Tokens
-   Adapted from TRW design system.
-   Dark mode is DEFAULT. Light mode via [data-theme="light"]
+  Permanent light palette: white 60%, green 30%, red 10%.
    ================================================ */
 
 @theme {
@@ -20,30 +19,28 @@
     'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
   /* Brand */
-  --color-primary: #ffffff;
-  --color-primary-active: #e5e5e5;
-  --color-brand-accent: #10b981;
+  --color-primary: #047857;
+  --color-primary-active: #065f46;
+  --color-brand-accent: #059669;
+  --color-brand-red: #dc2626;
+  --color-brand-red-soft: #fef2f2;
 
-  /* Surface — Dark defaults */
-  --color-canvas: #0a0a0a;
-  --color-surface-soft: #111111;
-  --color-surface-card: #161616;
-  --color-surface-strong: #262626;
-  --color-surface-dark: #000000;
-  --color-surface-dark-elevated: #0d0d0d;
+  /* Light surfaces — white is the dominant 60% */
+  --color-canvas: #ffffff;
+  --color-surface-soft: #f0fdf4;
+  --color-surface-card: #ffffff;
+  --color-surface-strong: #dcfce7;
 
   /* Borders */
-  --color-hairline: #262626;
-  --color-hairline-soft: #1a1a1a;
+  --color-hairline: #bbf7d0;
+  --color-hairline-soft: #dcfce7;
 
   /* Text */
-  --color-ink: #f5f5f5;
-  --color-body: #d1d5db;
-  --color-muted: #9ca3af;
-  --color-muted-soft: #6b7280;
-  --color-on-primary: #0a0a0a;
-  --color-on-dark: #ffffff;
-  --color-on-dark-soft: #a1a1aa;
+  --color-ink: #123126;
+  --color-body: #365348;
+  --color-muted: #60786f;
+  --color-muted-soft: #71877e;
+  --color-on-primary: #ffffff;
 
   /* Badge Pastels */
   --color-badge-orange: #fb923c;
@@ -54,7 +51,7 @@
   /* Semantic */
   --color-success: #10b981;
   --color-warning: #f59e0b;
-  --color-error: #ef4444;
+  --color-error: #dc2626;
 
   /* Projection overlay — matches the ghost-line colour used in the terminal */
   --color-projection: #f59e0b;
@@ -73,86 +70,33 @@
 }
 
 /* ================================================
-   Theme: Light (unlayered to override @layer theme)
+   Dynamic Island Liquid Glass Styling
    ================================================ */
-[data-theme='light'] {
-  --color-primary: #111111;
-  --color-primary-active: #242424;
-  --color-brand-accent: #059669;
-  --color-canvas: #f5faf1;
-  --color-surface-soft: #e4f2dc;
-  --color-surface-card: #f5faf1;
-  --color-surface-strong: #d7e8cb;
-  --color-surface-dark: #101010;
-  --color-surface-dark-elevated: #1a1a1a;
-  --color-hairline: #d7e8cb;
-  --color-hairline-soft: #e1efe0;
-  --color-ink: #111111;
-  --color-body: #374151;
-  --color-muted: #6b7280;
-  --color-muted-soft: #898989;
-  --color-on-primary: #ffffff;
-  --color-on-dark: #ffffff;
-  --color-on-dark-soft: #a1a1aa;
-}
-
-/* ================================================
-   Dynamic Island Liquid Glass Styling (Light & Dark)
-   ================================================ */
-/* Light Mode — only when scrolled */
-html[data-theme='light'] #dynamic-island.is-scrolled {
+#dynamic-island.is-scrolled {
   background: linear-gradient(
     180deg,
-    rgba(238, 247, 231, 0.45),
-    rgba(238, 247, 231, 0.65)
+    rgba(255, 255, 255, 0.68),
+    rgba(240, 253, 244, 0.88)
   ) !important;
   box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.08),
+    0 20px 50px rgba(5, 150, 105, 0.12),
     inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.95),
     inset 0 -10px 24px 0 rgba(255, 255, 255, 0.15),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.4) !important;
-  border-color: rgba(255, 255, 255, 0.4) !important;
+    inset 0 0 0 1px rgba(5, 150, 105, 0.15) !important;
+  border-color: rgba(5, 150, 105, 0.18) !important;
 }
 
-html[data-theme='light'] #dynamic-island.is-expanded {
+#dynamic-island.is-expanded {
   background: linear-gradient(
     180deg,
-    rgba(238, 247, 231, 0.88),
-    rgba(238, 247, 231, 0.95)
+    rgba(255, 255, 255, 0.96),
+    rgba(240, 253, 244, 0.98)
   ) !important;
 }
 
-html[data-theme='light'] #dynamic-island.is-scrolled .desktop-nav-pill {
-  background-color: rgba(228, 242, 220, 0.35) !important;
-  border-color: rgba(255, 255, 255, 0.4) !important;
-}
-
-/* Dark Mode — only when scrolled */
-html:not([data-theme='light']) #dynamic-island.is-scrolled {
-  background: linear-gradient(
-    180deg,
-    rgba(16, 16, 24, 0.45),
-    rgba(10, 10, 16, 0.65)
-  ) !important;
-  box-shadow:
-    0 24px 60px rgba(0, 0, 0, 0.5),
-    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.35),
-    inset 0 -10px 24px 0 rgba(255, 255, 255, 0.05),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.15) !important;
-  border-color: rgba(255, 255, 255, 0.18) !important;
-}
-
-html:not([data-theme='light']) #dynamic-island.is-expanded {
-  background: linear-gradient(
-    180deg,
-    rgba(16, 16, 24, 0.88),
-    rgba(10, 10, 16, 0.95)
-  ) !important;
-}
-
-html:not([data-theme='light']) #dynamic-island.is-scrolled .desktop-nav-pill {
-  background-color: rgba(255, 255, 255, 0.06) !important;
-  border-color: rgba(255, 255, 255, 0.12) !important;
+#dynamic-island.is-scrolled .desktop-nav-pill {
+  background-color: rgba(220, 252, 231, 0.55) !important;
+  border-color: rgba(5, 150, 105, 0.16) !important;
 }
 
 /* Initial top state — force fully transparent */
@@ -220,6 +164,7 @@ html:not([data-theme='light']) #dynamic-island.is-scrolled .desktop-nav-pill {
   }
 
   html {
+    color-scheme: only light;
     font-family: var(--font-body);
     color: var(--color-body);
     background-color: var(--color-canvas);
@@ -545,51 +490,6 @@ html:not([data-theme='light']) #dynamic-island.is-scrolled .desktop-nav-pill {
 .animate-nav-item {
   opacity: 0;
   animation: fade-in-nav-item 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-/* ================================================
-   Butter Smooth Theme Switch Transitions (View Transitions API)
-   ================================================ */
-
-/* Disable standard transitions temporarily so snapshots capture the target styles instantly */
-html[data-theme-changing],
-html[data-theme-changing] *:not(.theme-toggle, .theme-toggle *) {
-  transition: none !important;
-}
-
-/* Custom styles for circular theme reveal animation */
-::view-transition-image-pair(root) {
-  isolation: auto;
-}
-
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation: none;
-  mix-blend-mode: normal;
-  display: block;
-}
-
-/* Old screen stays visible underneath */
-::view-transition-old(root) {
-  z-index: 1;
-}
-
-/* New screen animates clip-path over the old screen */
-::view-transition-new(root) {
-  z-index: 9999;
-  animation: 1500ms cubic-bezier(0.18, 1, 0.22, 1) reveal-theme;
-  background: var(--color-canvas);
-}
-
-@keyframes reveal-theme {
-  from {
-    clip-path: circle(0px at var(--theme-x, 50%) var(--theme-y, 50%));
-  }
-  to {
-    clip-path: circle(
-      var(--theme-r, 100%) at var(--theme-x, 50%) var(--theme-y, 50%)
-    );
-  }
 }
 
 /* ================================================
