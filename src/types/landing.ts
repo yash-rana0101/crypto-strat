@@ -32,6 +32,10 @@ export interface HeroContent {
   };
   heading: string;
   body: string;
+  signals: Array<{
+    label: string;
+    icon: string;
+  }>;
   primaryCta: LinkTarget;
   secondaryCta: LinkTarget;
   note: string;
@@ -164,6 +168,7 @@ export interface PlatformFeature {
   accent: Accent;
   title: string;
   body: string;
+  signal: string;
   href?: string;
 }
 
@@ -179,6 +184,7 @@ export interface WorkflowStep {
   title: string;
   body: string;
   artefact: string;
+  icon: string;
 }
 
 export interface WorkflowsContent {
@@ -213,6 +219,7 @@ export interface ConstraintsContent {
 export interface Refusal {
   title: string;
   body: string;
+  proof: string;
 }
 
 export interface RefusalsContent {

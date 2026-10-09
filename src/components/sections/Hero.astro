@@ -1,39 +1,35 @@
 ---
 /**
- * Hero — Center-aligned header & 3D cosmic planet hero section.
+ * Hero — Center-aligned copy framed by finance and crypto doodles.
  *
  * Copy comes from `src/content/landing/hero.ts`. Layering architecture:
- * z-0  : 3D cosmic planet horizon & glow arc
- * z-10 : vertical side border lines (overlay the planet glow curve)
+ * z-0  : decorative doodles, technical field, and glow
+ * z-10 : product terminal illustration
  * z-20 : header content
  */
 import Container from '@/components/ui/Container.astro';
 import Button from '@/components/ui/Button.astro';
+import Icon from '@/components/ui/Icon.astro';
 import HeroIllustration from './HeroIllustration.astro';
+import HeroDoodles from './HeroDoodles.astro';
 import { hero } from '@/content/landing';
 ---
 
 <section
-  class="relative pt-20 sm:pt-24 lg:pt-28 pb-0 overflow-hidden bg-canvas transition-colors duration-300 min-h-screen flex flex-col justify-between"
+  class="hero-shell relative pt-24 sm:pt-28 lg:pt-32 pb-0 overflow-hidden bg-canvas transition-colors duration-300 flex flex-col"
   id="hero"
   aria-labelledby="hero-heading"
 >
-  <!-- Subtle starfield & background radial ambient glow in brand emerald -->
+  <!-- Light technical field and the supplied transparent doodle sheet. -->
   <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
-    <div
-      class="hero-starfield absolute inset-0 opacity-[0.25]"
-      style="background-image: radial-gradient(circle at 1px 1px, rgba(5,150,105,0.14) 1px, transparent 0); background-size: 36px 36px;"
-    >
-    </div>
-    <div
-      class="absolute top-[8%] left-1/2 -translate-x-1/2 w-[700px] h-[240px] bg-[radial-gradient(ellipse_at_center,rgba(16,185,129,0.18)_0%,transparent_70%)] blur-[100px]"
-    >
-    </div>
+    <div class="hero-starfield absolute inset-0"></div>
+    <div class="hero-glow absolute inset-x-[15%] top-[8%] h-[520px]"></div>
+    <HeroDoodles />
   </div>
 
-  <Container size="wide" class="relative z-20">
+  <Container size="wide" class="hero-content relative z-20">
     <div
-      class="flex flex-col items-center text-center gap-3 max-w-3xl mx-auto"
+      class="flex flex-col items-center text-center gap-3 max-w-4xl mx-auto"
       data-reveal-group
     >
       <!-- Top pill badge -->
@@ -56,43 +52,69 @@ import { hero } from '@/content/landing';
 
       <h1
         id="hero-heading"
-        class="text-4xl sm:text-5xl md:text-6xl font-body font-bold tracking-tight text-ink leading-[1.08] text-center max-w-2xl reveal reveal-scale-up"
+        class="text-[2.65rem] sm:text-6xl lg:text-[4.5rem] font-body font-bold tracking-[-0.045em] text-ink leading-[1.04] text-center max-w-[900px] reveal reveal-scale-up"
         data-reveal-item
       >
         {hero.heading}
       </h1>
 
       <p
-        class="type-body-md text-body text-sm sm:text-base leading-relaxed max-w-xl text-center font-normal reveal reveal-scale-up"
+        class="type-body-md text-body text-sm sm:text-lg leading-relaxed max-w-2xl text-center font-normal reveal reveal-scale-up"
         data-reveal-item
       >
         {hero.body}
       </p>
 
       <div
-        class="flex flex-col sm:flex-row items-center justify-center gap-3 mt-1 reveal reveal-scale-up"
+        class="flex items-center justify-center gap-3 sm:gap-5 mt-3 reveal reveal-scale-up"
+        data-reveal-item
+        aria-label="Ask, compute, decide"
+      >
+        {
+          hero.signals.map((signal, index) => (
+            <>
+              {index > 0 && (
+                <span class="text-emerald-500/55 -mx-1" aria-hidden="true">
+                  <Icon name="arrow-right" size={18} />
+                </span>
+              )}
+              <div class="flex flex-col items-center gap-1.5">
+                <span
+                  class:list={[
+                    'grid h-11 w-11 place-items-center border border-dashed border-emerald-500/55 bg-emerald-50/85 text-emerald-700 shadow-[0_4px_18px_rgba(5,150,105,0.10)]',
+                    'rounded-[48%_52%_45%_55%/55%_44%_56%_45%]',
+                    index === 0 && '-rotate-3',
+                    index === 1 && 'rotate-2',
+                    index === 2 && '-rotate-1',
+                  ]}
+                >
+                  <Icon name={signal.icon} size={18} />
+                </span>
+                <span class="text-[11px] font-semibold tracking-wide text-body">
+                  {signal.label}
+                </span>
+              </div>
+            </>
+          ))
+        }
+      </div>
+
+      <div
+        class="flex flex-col sm:flex-row items-center justify-center gap-3 mt-3 reveal reveal-scale-up"
         data-reveal-item
       >
         <Button
           variant="primary"
           size="lg"
           href={hero.primaryCta.href}
-          class="!rounded-full px-8 py-3 bg-emerald-600 text-white font-semibold text-sm shadow-[0_0_30px_rgba(5,150,105,0.3)] hover:shadow-[0_0_40px_rgba(5,150,105,0.45)] hover:scale-[1.03] transition-all duration-300 border-none"
+          class="!rounded-full min-w-48 px-9 py-3.5 bg-emerald-600 text-white font-semibold text-sm shadow-[0_10px_34px_rgba(5,150,105,0.28)] hover:shadow-[0_12px_42px_rgba(5,150,105,0.38)] hover:scale-[1.03] transition-all duration-300 border-none"
         >
           {hero.primaryCta.label}
-        </Button>
-        <Button
-          variant="secondary"
-          size="lg"
-          href={hero.secondaryCta.href}
-          class="!rounded-full px-8 py-3 text-sm"
-        >
-          {hero.secondaryCta.label}
         </Button>
       </div>
 
       <p
-        class="text-xs text-muted-soft max-w-md leading-relaxed mt-1"
+        class="text-xs text-muted-soft max-w-md leading-relaxed mt-2"
         data-reveal-item
       >
         {hero.note}
@@ -100,28 +122,175 @@ import { hero } from '@/content/landing';
     </div>
   </Container>
 
-  <!-- Glowing 3D planet horizon (entry reveal & scroll parallax) -->
+  <!-- Product terminal rises from the base of the illustrated field. -->
   <div
-    class="w-full relative z-10 mt-6 sm:mt-8 md:mt-10 flex-1 flex flex-col justify-start reveal reveal-scale-up"
+    class="w-full relative z-10 mt-8 sm:mt-10 lg:mt-12 reveal reveal-scale-up"
     data-reveal-group
   >
     <HeroIllustration />
   </div>
 
-  <!-- Bottom seamless transition fade into bg-canvas -->
-  <div
-    class="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-b from-transparent via-canvas/70 to-canvas pointer-events-none z-30"
-  >
-  </div>
 </section>
+
+<script>
+  import { animate, scroll } from 'motion';
+
+  let cleanupHeroMotion = () => {};
+  let introPlayed = false;
+
+  function initHeroMotion() {
+    cleanupHeroMotion();
+
+    const heroSection = document.getElementById('hero');
+    if (!heroSection) return;
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const mobile = window.matchMedia('(max-width: 767px)');
+    const hoverPointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+    const cleanups: Array<() => void> = [];
+
+    [reducedMotion, mobile, hoverPointer].forEach((query) => {
+      query.addEventListener('change', initHeroMotion);
+      cleanups.push(() => query.removeEventListener('change', initHeroMotion));
+    });
+
+    if (!reducedMotion.matches) {
+      heroSection.querySelectorAll<HTMLElement>('[data-hero-parallax]').forEach((element) => {
+        if (getComputedStyle(element).display === 'none') return;
+
+        const distance = Number(element.dataset.heroParallax) * (mobile.matches ? 0.4 : 1);
+        const animation = animate(element, { y: [0, distance] }, { ease: 'linear' });
+        const stopScroll = scroll(animation, {
+          target: heroSection,
+          offset: ['start start', 'end start'],
+        });
+
+        cleanups.push(() => {
+          stopScroll();
+          animation.cancel();
+        });
+      });
+
+      const doodles = Array.from(heroSection.querySelectorAll<HTMLElement>('.doodle'))
+        .filter((element) => getComputedStyle(element).display !== 'none');
+
+      doodles.forEach((element, index) => {
+        const artwork = element.querySelector<HTMLElement>('.doodle-artwork');
+        if (!artwork) return;
+
+        // Let the text reveal finish before the artwork zooms into place.
+        const delay = introPlayed ? 0 : 1.4 + index * 0.035;
+        const duration = introPlayed ? 0 : 0.9;
+        const entrance = animate(artwork, {
+          opacity: [introPlayed ? 1 : 0, 1],
+          scale: [introPlayed ? 1 : 0.72, 1],
+        }, { delay, duration, ease: [0.16, 1, 0.3, 1] });
+
+        // Alternate directions and speeds for a gentle, continuous sway.
+        const angle = Number(element.dataset.doodleDirection) * 5;
+        const rotation = animate(artwork, { rotate: [angle, -angle] }, {
+          delay: delay + duration,
+          duration: 8 + index % 4,
+          ease: 'easeInOut',
+          repeat: Infinity,
+          repeatType: 'reverse',
+        });
+
+        cleanups.push(() => {
+          entrance.cancel();
+          rotation.cancel();
+          artwork.style.removeProperty('transform');
+          artwork.style.removeProperty('opacity');
+        });
+      });
+
+      if (hoverPointer.matches) {
+        const field = heroSection.querySelector<HTMLElement>('.hero-doodles');
+        const layers = doodles.map((element) => ({
+          element: element.querySelector<HTMLElement>('.doodle-hover'),
+          depth: Math.abs(Number(element.dataset.heroParallax)) * 0.18,
+        }));
+        const hoverAnimations = new Map<HTMLElement, { stop: () => void; cancel: () => void }>();
+
+        function moveDoodles(x: number, y: number) {
+          layers.forEach(({ element, depth }) => {
+            if (!element) return;
+            hoverAnimations.get(element)?.stop();
+            hoverAnimations.set(element, animate(element, {
+              x: x * depth,
+              y: y * depth,
+            }, { duration: 0.6, ease: 'easeOut' }));
+          });
+        }
+
+        function onPointerMove(event: PointerEvent) {
+          if (event.pointerType !== 'mouse' || !field) return;
+          const bounds = field.getBoundingClientRect();
+          if (event.clientY < bounds.top || event.clientY > bounds.bottom) {
+            moveDoodles(0, 0);
+            return;
+          }
+          const x = (event.clientX - bounds.left) / bounds.width * 2 - 1;
+          const y = (event.clientY - bounds.top) / bounds.height * 2 - 1;
+          moveDoodles(x, y);
+        }
+
+        const resetDoodles = () => moveDoodles(0, 0);
+        heroSection.addEventListener('pointermove', onPointerMove, { passive: true });
+        heroSection.addEventListener('pointerleave', resetDoodles);
+        window.addEventListener('blur', resetDoodles);
+        cleanups.push(() => {
+          heroSection.removeEventListener('pointermove', onPointerMove);
+          heroSection.removeEventListener('pointerleave', resetDoodles);
+          window.removeEventListener('blur', resetDoodles);
+          hoverAnimations.forEach((animation, element) => {
+            animation.cancel();
+            element.style.removeProperty('transform');
+          });
+        });
+      }
+    }
+
+    introPlayed = true;
+    cleanupHeroMotion = () => {
+      cleanups.forEach((cleanup) => cleanup());
+      cleanupHeroMotion = () => {};
+    };
+  }
+
+  initHeroMotion();
+  document.addEventListener('astro:after-swap', () => {
+    introPlayed = false;
+    initHeroMotion();
+  });
+  document.addEventListener('astro:before-swap', () => cleanupHeroMotion());
+</script>
 
 <style>
   .hero-starfield {
     background-image: radial-gradient(
       circle at 1px 1px,
-      rgba(5, 150, 105, 0.14) 1px,
+      rgba(5, 150, 105, 0.16) 0.8px,
       transparent 0
     ) !important;
-    opacity: 0.45 !important;
+    background-size: 26px 26px;
+    opacity: 0.42;
+    mask-image: linear-gradient(to bottom, black 0%, black 76%, transparent 100%);
+  }
+
+  .hero-glow {
+    background: radial-gradient(
+      ellipse at center,
+      rgba(16, 185, 129, 0.09) 0%,
+      rgba(110, 231, 183, 0.04) 46%,
+      transparent 74%
+    );
+    filter: blur(60px);
+  }
+
+  @media (max-width: 767px) {
+    .hero-content {
+      text-shadow: 0 1px 18px rgba(255, 255, 255, 0.92);
+    }
   }
 </style>

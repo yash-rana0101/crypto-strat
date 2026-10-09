@@ -31,9 +31,8 @@ export const refusals: RefusalsContent = {
   intro: {
     id: 'security',
     badge: 'What it refuses to do',
-    heading:
-      'The most useful thing about this terminal is the list of things it cannot do',
-    body: 'Most of what makes an analytics tool trustworthy is capability its authors deliberately did not build. Ours is enforced in code and asserted by tests, rather than promised in a policy document.',
+    heading: 'Five things the terminal cannot do.',
+    body: 'These are product boundaries—not policy promises.',
   },
   pills: [
     { icon: 'shield-check', label: 'No order path', accent: 'emerald' },
@@ -42,24 +41,29 @@ export const refusals: RefusalsContent = {
   ],
   refusals: [
     {
-      title: 'It cannot place an order',
-      body: 'The exchange layer exposes quotes, instruments and search, and API keys need read-only scope. There is no order or withdrawal method to call. A test maintains a denylist — place order, execute trade, cancel order, modify order, submit order, close position, withdraw — and asserts every one of those names is absent, so the boundary fails the build the moment it is crossed.',
+      title: 'Place or modify an order',
+      body: 'The exchange connection is read-only.',
+      proof: 'No order path',
     },
     {
-      title: 'It cannot fill a gap with a guess',
-      body: 'Values that could not be measured are emitted as null, never as zero. A momentum state that could not be computed reads UNAVAILABLE rather than NEUTRAL, because "measured and unremarkable" and "could not be measured" are different findings, and both the interface and the model read the answer as one.',
+      title: 'Turn missing data into a guess',
+      body: 'Unknown stays null or UNAVAILABLE.',
+      proof: 'Honest failure',
     },
     {
-      title: 'It cannot answer a question about you',
-      body: 'A deterministic guardrail runs before the model is invoked and refuses eight categories outright: position sizing, holdings, capital, income, net worth, goals, third-party requests and suitability. Because that refusal is arithmetic rather than a line in a prompt, it cannot be talked around and it reproduces identically years later.',
+      title: 'Give personal financial advice',
+      body: 'Personal circumstances are refused before the model runs.',
+      proof: 'Pre-model guardrail',
     },
     {
-      title: 'It cannot show you a win rate',
-      body: 'Total return, win rate, maximum drawdown and average conviction were removed from the dashboard. What replaced them is setups audited, setups rejected and forced holds — with an em-dash wherever a number has not actually been measured. The internal calibration loop still tracks expectancy; no endpoint publishes it.',
+      title: 'Claim performance it did not measure',
+      body: 'No published win rate, return or drawdown.',
+      proof: 'Metrics removed',
     },
     {
-      title: 'It cannot quietly change its mind',
-      body: 'Every committed decision is written to an append-only, hash-chained record carrying the model identifier and the prompt version that produced it. There is no update or delete path, so any output can be replayed later and shown to be unaltered.',
+      title: 'Rewrite a committed decision',
+      body: 'Final outputs are append-only and replayable.',
+      proof: 'Hash chained',
     },
   ],
 };

@@ -15,15 +15,20 @@ export const hero: HeroContent = {
     label: 'Trading & Research Wing',
     href: 'https://www.tradingrw.com/',
   },
-  heading: 'Ask the market. Every number is computed, not guessed.',
-  body: 'Strat AI is a market analysis and pre-trade risk terminal for crypto spot pairs and perpetual futures. Ask about a symbol in plain language and it calls eighteen typed quantitative tools over MCP, streams every call to your screen as it happens, and tells you when not to trade.',
+  heading: 'Ask the market. Get computed answers.',
+  body: 'Live crypto analysis and pre-trade risk—without guesswork.',
+  signals: [
+    { label: 'Ask', icon: 'search' },
+    { label: 'Compute', icon: 'cpu' },
+    { label: 'Decide', icon: 'shield-check' },
+  ],
   primaryCta: {
-    label: 'Explore Terminal',
+    label: 'Join Waitlist',
     href: '/waitlist',
   },
   secondaryCta: {
     label: 'See the pre-trade audit',
     href: '#verify',
   },
-  note: 'Analysis and pre-trade risk research only. Strat AI does not place orders, hold funds, or provide financial advice.',
+  note: 'Research only · No execution · Not financial advice',
 };

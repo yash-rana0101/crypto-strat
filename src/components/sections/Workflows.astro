@@ -8,6 +8,7 @@
  */
 import Container from '@/components/ui/Container.astro';
 import Badge from '@/components/ui/Badge.astro';
+import Icon from '@/components/ui/Icon.astro';
 import { workflows } from '@/content/landing';
 
 const { intro, steps, note } = workflows;
@@ -20,7 +21,7 @@ const { intro, steps, note } = workflows;
 >
   <Container>
     <div
-      class="max-w-[800px] mx-auto text-center mb-12 md:mb-16"
+      class="max-w-[720px] mx-auto text-center mb-10 md:mb-12"
       data-reveal-group
     >
       <div data-reveal-item>
@@ -35,7 +36,7 @@ const { intro, steps, note } = workflows;
       </h2>
       {
         intro.body && (
-          <p class="type-body-md text-muted mt-4" data-reveal-item>
+          <p class="type-body-md text-muted mt-3" data-reveal-item>
             {intro.body}
           </p>
         )
@@ -43,32 +44,42 @@ const { intro, steps, note } = workflows;
     </div>
   </Container>
 
-  <Container size="wide" class="!px-0">
+  <Container size="wide">
     <div
-      class="border-y border-hairline overflow-hidden bg-surface-soft/5 flex flex-col divide-y divide-hairline"
+      class="workflow-path relative border-y border-hairline py-8 md:py-10"
+      data-workflow-path
       data-reveal-group
     >
+      <div
+        class="workflow-rail absolute border-l md:border-l-0 md:border-t border-dashed border-emerald-300/80 pointer-events-none"
+        aria-hidden="true"
+      ></div>
+      <div class="workflow-progress absolute pointer-events-none" aria-hidden="true"></div>
       {
         steps.map((step, index) => (
-          <div class="reveal-item grid grid-cols-1 md:grid-cols-[auto_1fr_auto] items-start gap-4 md:gap-8 p-6 sm:p-8 md:px-12 hover:bg-surface-soft/10 transition-colors">
-            <div class="flex items-center gap-3 md:w-[160px] shrink-0">
-              <span class="font-mono text-xs font-bold text-muted-soft">
+          <article class="workflow-step reveal-item relative grid grid-cols-[48px_1fr] md:flex md:flex-col items-start md:items-center gap-x-5 md:gap-0 text-left md:text-center" data-workflow-step>
+            <span class="col-start-2 md:col-auto font-mono text-[10px] uppercase tracking-[0.18em] text-badge-emerald mb-2 md:mb-4">
+              {step.phase}
+            </span>
+
+            <div class="workflow-node row-start-1 row-span-4 md:row-auto relative z-10 grid h-12 w-12 place-items-center rounded-full border-2 border-solid border-slate-300 bg-canvas text-emerald-700 md:mb-5">
+              <Icon name={step.icon} size={20} />
+              <span class="workflow-number absolute -top-2 -right-2 grid h-5 min-w-5 place-items-center rounded-full bg-emerald-100 px-1 font-mono text-[9px] font-bold text-emerald-700">
                 {String(index + 1).padStart(2, '0')}
               </span>
-              <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-badge-emerald">
-                {step.phase}
-              </span>
             </div>
 
-            <div class="flex flex-col gap-1.5 min-w-0">
-              <h3 class="type-title-md text-ink font-semibold">{step.title}</h3>
-              <p class="type-body-sm text-muted leading-relaxed">{step.body}</p>
-            </div>
+            <h3 class="col-start-2 md:col-auto type-title-md text-ink font-semibold mb-1.5">
+              {step.title}
+            </h3>
+            <p class="col-start-2 md:col-auto text-sm text-muted leading-relaxed max-w-[220px] md:min-h-10">
+              {step.body}
+            </p>
 
-            <span class="font-mono text-[10px] tracking-wider px-2.5 py-1.5 rounded border border-hairline/60 bg-surface-card text-muted-soft md:max-w-[220px] md:text-right justify-self-start md:justify-self-end">
+            <span class="col-start-2 md:col-auto inline-flex mt-3 font-mono text-[9px] font-semibold tracking-[0.12em] px-2.5 py-1 rounded-full border border-emerald-200 bg-emerald-50/70 text-emerald-700">
               {step.artefact}
             </span>
-          </div>
+          </article>
         ))
       }
     </div>
@@ -82,3 +93,219 @@ const { intro, steps, note } = workflows;
     </p>
   </Container>
 </section>
+
+<script>
+  import { animate, scroll } from 'motion';
+
+  interface WorkflowWindow extends Window {
+    __workflowCleanup?: () => void;
+  }
+
+  function initWorkflowProgress() {
+    const workflowWindow = window as WorkflowWindow;
+    workflowWindow.__workflowCleanup?.();
+
+    const path = document.querySelector<HTMLElement>('[data-workflow-path]');
+    if (!path) return;
+
+    const steps = Array.from(
+      path.querySelectorAll<HTMLElement>('[data-workflow-step]')
+    );
+    const progress = path.querySelector<HTMLElement>('.workflow-progress');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const cleanups: Array<() => void> = [];
+    const desktop = window.matchMedia('(min-width: 768px)');
+    const palette = [
+      { color: '#10b981' },
+      { color: '#14b8a6' },
+      { color: '#ef4444' },
+      { color: '#f59e0b' },
+      { color: '#22c55e' },
+    ];
+    const thresholds = [0.08, 0.29, 0.5, 0.71, 0.92];
+    const restart = () => initWorkflowProgress();
+
+    if (!progress) return;
+
+    desktop.addEventListener('change', restart);
+    reduceMotion.addEventListener('change', restart);
+    cleanups.push(() => desktop.removeEventListener('change', restart));
+    cleanups.push(() => reduceMotion.removeEventListener('change', restart));
+
+    if (reduceMotion.matches) {
+      progress.style.transform = desktop.matches ? 'scaleX(1)' : 'scaleY(1)';
+      steps.forEach((step, index) => {
+        const node = step.querySelector<HTMLElement>('.workflow-node');
+        const milestone = palette[index];
+
+        if (node) {
+          Object.assign(node.style, {
+            backgroundColor: '#ffffff',
+            borderColor: milestone.color,
+            color: milestone.color,
+            boxShadow: 'none',
+          });
+        }
+        step.classList.add('is-complete');
+      });
+      workflowWindow.__workflowCleanup = () => {
+        cleanups.forEach((cleanup) => cleanup());
+      };
+      return;
+    }
+
+    const progressAnimation = animate(
+      progress,
+      desktop.matches ? { scaleX: [0, 1] } : { scaleY: [0, 1] },
+      { ease: 'linear' }
+    );
+    cleanups.push(
+      scroll(progressAnimation, {
+        target: path,
+        offset: ['start 82%', 'center 55%'],
+      })
+    );
+
+    const states: Array<boolean | null> = steps.map(() => null);
+    cleanups.push(
+      scroll(
+        (scrollProgress) => {
+          steps.forEach((step, index) => {
+            const complete = scrollProgress >= thresholds[index];
+            if (states[index] === complete) return;
+
+            states[index] = complete;
+            step.classList.toggle('is-complete', complete);
+
+            const node = step.querySelector<HTMLElement>('.workflow-node');
+            const copy = Array.from(
+              step.querySelectorAll<HTMLElement>('h3, p, :scope > span')
+            );
+            const milestone = palette[index];
+
+            if (node) {
+              animate(
+                node,
+                complete
+                  ? {
+                      backgroundColor: '#ffffff',
+                      borderColor: milestone.color,
+                      color: milestone.color,
+                      boxShadow: '0 0 0 rgba(15, 23, 42, 0)',
+                      transform: 'translateY(-2px) scale(1)',
+                    }
+                  : {
+                      backgroundColor: '#ffffff',
+                      borderColor: '#cbd5e1',
+                      color: '#94a3b8',
+                      boxShadow: '0 0 0 rgba(15, 23, 42, 0)',
+                      transform: 'translateY(0) scale(0.96)',
+                    },
+                { duration: 0.3, ease: 'easeOut' }
+              );
+            }
+
+            animate(copy, { opacity: complete ? 1 : 0.48 }, { duration: 0.25 });
+          });
+        },
+        { target: path, offset: ['start 82%', 'center 55%'] }
+      )
+    );
+
+    steps.forEach((step, index) => {
+      const node = step.querySelector<HTMLElement>('.workflow-node');
+      node?.setAttribute('aria-label', `Milestone ${index + 1}`);
+    });
+
+    workflowWindow.__workflowCleanup = () => {
+      cleanups.forEach((cleanup) => cleanup());
+    };
+  }
+
+  initWorkflowProgress();
+  document.addEventListener('astro:after-swap', initWorkflowProgress);
+</script>
+
+<style>
+  .workflow-path {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .workflow-rail {
+    top: 3.5rem;
+    bottom: 3.5rem;
+    left: 1.5rem;
+  }
+
+  .workflow-progress {
+    top: 3.5rem;
+    bottom: 3.5rem;
+    left: calc(1.5rem - 0.5px);
+    width: 2px;
+    background: linear-gradient(to bottom, #34d399, #059669);
+    box-shadow: 0 0 14px rgba(5, 150, 105, 0.3);
+    transform: scaleY(0);
+    transform-origin: top;
+    will-change: transform;
+  }
+
+  .workflow-node {
+    color: #94a3b8;
+    background: #ffffff;
+    border-color: #cbd5e1;
+    box-shadow: none;
+    transform: scale(0.96);
+  }
+
+  .workflow-number {
+    color: #64748b;
+    background: #f1f5f9;
+  }
+
+  @media (min-width: 768px) {
+    .workflow-path {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .workflow-rail {
+      top: 6.3rem;
+      right: 10%;
+      bottom: auto;
+      left: 10%;
+    }
+
+    .workflow-progress {
+      top: calc(6.3rem - 0.5px);
+      right: 10%;
+      bottom: auto;
+      left: 10%;
+      width: auto;
+      height: 2px;
+      background: linear-gradient(
+        to right,
+        #10b981,
+        #14b8a6 25%,
+        #ef4444 50%,
+        #f59e0b 75%,
+        #22c55e
+      );
+      box-shadow: 0 0 16px rgba(16, 185, 129, 0.24);
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .workflow-progress,
+    .workflow-node,
+    .workflow-number,
+    .workflow-step h3,
+    .workflow-step p,
+    .workflow-step > span {
+      transition: none;
+    }
+  }
+</style>

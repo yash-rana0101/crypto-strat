@@ -57,8 +57,8 @@
   --color-projection: #f59e0b;
 
   /* Section rhythm — consumed by the .section-y utility below */
-  --spacing-section: 4rem;
-  --spacing-section-lg: 5rem;
+  --spacing-section: 3rem;
+  --spacing-section-lg: 4rem;
 
   /* Radii */
   --radius-panel: 0.75rem;
@@ -178,6 +178,31 @@
     min-height: 100vh;
     line-height: 1.5;
     font-size: 16px;
+  }
+
+  /* Snap the landing page at section boundaries without adding scroll containers.
+     Sections taller than the viewport retain their native internal scroll range. */
+  html:has(#hero) {
+    scroll-snap-type: y mandatory;
+    scroll-padding-top: 5rem;
+  }
+
+  html:has(#hero) #main-content > section,
+  html:has(#hero) body > footer {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  /* Motion handles wheel easing while active; native snapping resumes on settle. */
+  html:has(#hero)[data-section-scroll-active] {
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html:has(#hero) {
+      scroll-behavior: auto;
+    }
   }
 
   ::selection {
@@ -327,8 +352,7 @@
     line-height: 1.4;
   }
 
-  /* Vertical section rhythm. Replaces the `py-16 md:py-20` literal that was
-     repeated across every landing section. */
+  /* Shared vertical spacing for landing sections at each breakpoint. */
   .section-y {
     padding-block: var(--spacing-section);
   }
