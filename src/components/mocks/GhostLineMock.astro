@@ -30,116 +30,148 @@ const tabs = ghostLineMock.modes.map((mode) => ({
   label={ghostLineMock.frameLabel}
   status={ghostLineMock.status}
   statusVariant="violet"
+  class="ghostline-comparator"
 >
-  <TabSwitcher group="ghostline" tabs={tabs} class="self-start" />
+  <div class="grid gap-4 sm:grid-cols-[8.5rem_1fr]">
+    <aside class="flex flex-col gap-3">
+      <div>
+        <span
+          class="font-mono text-[9px] uppercase tracking-[0.2em] text-muted-soft"
+        >
+          Select model
+        </span>
+        <TabSwitcher
+          group="ghostline"
+          tabs={tabs}
+          class="mt-2 !grid !w-full !grid-cols-2 !rounded-panel"
+        />
+      </div>
 
-  <!-- Chart: shared history, one forward path per model -->
-  <div
-    class="bg-surface-card border border-hairline/50 rounded-panel p-3 overflow-hidden"
-  >
-    <svg
-      viewBox="0 0 320 120"
-      class="w-full h-auto"
-      role="img"
-      aria-label="Price history with a dashed forward projection"
-    >
-      <!-- Gridlines -->
-      {
-        [24, 48, 72, 96].map((y) => (
-          <line
-            x1="0"
-            y1={y}
-            x2="320"
-            y2={y}
-            stroke="currentColor"
-            stroke-width="0.5"
-            class="text-hairline"
-          />
-        ))
-      }
-
-      <!-- Boundary between measured history and projection -->
-      <line
-        x1="200"
-        y1="4"
-        x2="200"
-        y2="116"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-dasharray="2 3"
-        class="text-muted-soft"></line>
-
-      <!-- Measured history -->
-      <path
-        d={HISTORY}
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="text-brand-accent"></path>
-
-      <!-- Projections -->
       {
         ghostLineMock.modes.map((mode, index) => (
-          <path
+          <div
             data-tab-panel="ghostline"
             data-tab={mode.id}
-            class:list={['text-projection', index !== 0 && 'hidden']}
-            d={projectionPaths[mode.id]}
+            class:list={[
+              'rounded-panel bg-ink p-4 text-white',
+              index !== 0 && 'hidden',
+            ]}
+          >
+            <span class="font-mono text-[9px] uppercase tracking-[0.2em] text-emerald-300">
+              Active model
+            </span>
+            <strong class="mt-2 block text-xl tracking-tight">{mode.label}</strong>
+            <p class="mt-1 text-[10px] leading-relaxed text-white/65">
+              {mode.math}
+            </p>
+            <span class="mt-4 block border-t border-white/15 pt-3 font-mono text-[9px] text-white/55">
+              {mode.window} window
+            </span>
+          </div>
+        ))
+      }
+    </aside>
+
+    <div class="flex min-w-0 flex-col gap-3">
+      <!-- Chart: shared history, one forward path per model -->
+      <div class="overflow-hidden rounded-panel border border-hairline/70 bg-white p-3">
+        <div class="mb-2 flex items-center justify-between gap-3">
+          <span class="font-mono text-[9px] uppercase tracking-[0.18em] text-muted-soft">
+            Measured
+          </span>
+          <span class="font-mono text-[9px] uppercase tracking-[0.18em] text-projection">
+            Projected →
+          </span>
+        </div>
+        <svg
+          viewBox="0 0 320 120"
+          class="w-full h-auto"
+          role="img"
+          aria-label="Price history with a dashed forward projection"
+        >
+          {
+            [24, 48, 72, 96].map((y) => (
+              <line
+                x1="0"
+                y1={y}
+                x2="320"
+                y2={y}
+                stroke="currentColor"
+                stroke-width="0.5"
+                class="text-hairline"
+              />
+            ))
+          }
+          <line
+            x1="200"
+            y1="4"
+            x2="200"
+            y2="116"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-dasharray="2 3"
+            class="text-muted-soft"></line>
+          <path
+            d={HISTORY}
             fill="none"
             stroke="currentColor"
             stroke-width="2"
-            stroke-dasharray="5 4"
             stroke-linecap="round"
-          />
+            stroke-linejoin="round"
+            class="text-brand-accent"></path>
+          {
+            ghostLineMock.modes.map((mode, index) => (
+              <path
+                data-tab-panel="ghostline"
+                data-tab={mode.id}
+                class:list={['text-projection', index !== 0 && 'hidden']}
+                d={projectionPaths[mode.id]}
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-dasharray="5 4"
+                stroke-linecap="round"
+              />
+            ))
+          }
+          <circle cx="200" cy="54" r="3" fill="currentColor" class="text-ink"
+          ></circle>
+        </svg>
+      </div>
+
+      {
+        ghostLineMock.modes.map((mode, index) => (
+          <dl
+            data-tab-panel="ghostline"
+            data-tab={mode.id}
+            class:list={[
+              'grid grid-cols-3 divide-x divide-hairline overflow-hidden rounded-panel border border-hairline/70 bg-white',
+              index !== 0 && 'hidden',
+            ]}
+          >
+            {mode.rows.map((row) => (
+              <div class="min-w-0 p-3">
+                <dt class="text-[9px] uppercase tracking-wide text-muted-soft">
+                  {row.label}
+                </dt>
+                <dd class="mt-1 break-words font-mono text-[10px] font-semibold text-ink">
+                  {row.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
         ))
       }
-
-      <!-- Anchor on the last close -->
-      <circle cx="200" cy="54" r="3" fill="currentColor" class="text-ink"
-      ></circle>
-    </svg>
-  </div>
-
-  <!-- Model readouts -->
-  {
-    ghostLineMock.modes.map((mode, index) => (
-      <div
-        data-tab-panel="ghostline"
-        data-tab={mode.id}
-        class:list={[
-          'bg-surface-card border border-hairline/50 p-4 rounded-panel flex flex-col gap-3',
-          index !== 0 && 'hidden',
-        ]}
-      >
-        <div class="flex items-start justify-between gap-3 flex-wrap">
-          <span class="text-xs font-mono font-bold text-badge-violet">
-            {mode.label}
-          </span>
-          <span class="text-[10px] font-mono text-muted-soft">
-            window {mode.window}
-          </span>
-        </div>
-        <p class="text-xs text-muted leading-relaxed">{mode.math}</p>
-        <dl class="flex flex-col gap-0">
-          {mode.rows.map((row) => (
-            <div class="flex items-baseline justify-between gap-3 text-xs py-1.5 border-b border-hairline/30 last:border-b-0">
-              <dt class="text-muted-soft">{row.label}</dt>
-              <dd class="font-mono font-semibold text-ink text-right">
-                {row.value}
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </div>
-    ))
-  }
-
-  <div
-    class="flex flex-col gap-1.5 border-t border-hairline/40 pt-3 text-[10px] text-muted-soft leading-relaxed"
-  >
-    <p>{ghostLineMock.projectionNote}</p>
-    <p>{ghostLineMock.confidenceNote}</p>
+    </div>
   </div>
 </TerminalFrame>
+
+<style>
+  :global(.ghostline-comparator) {
+    background-image:
+      linear-gradient(rgba(5, 150, 105, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(5, 150, 105, 0.035) 1px, transparent 1px);
+    background-size: 20px 20px;
+    box-shadow: 0 10px 28px rgba(18, 49, 38, 0.08);
+  }
+</style>

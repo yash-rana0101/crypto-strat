@@ -168,6 +168,7 @@ export interface PlatformFeature {
   accent: Accent;
   title: string;
   body: string;
+  signal: string;
   href?: string;
 }
 
@@ -218,6 +219,7 @@ export interface ConstraintsContent {
 export interface Refusal {
   title: string;
   body: string;
+  proof: string;
 }
 
 export interface RefusalsContent {

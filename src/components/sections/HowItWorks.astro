@@ -17,28 +17,30 @@ const { intro, layers, punchline } = engine;
 ---
 
 <section
-  class="section-y bg-canvas transition-colors duration-300"
+  class="section-y bg-canvas"
   id={intro.id}
   aria-labelledby="engine-heading"
 >
   <Container>
     <div
-      class="max-w-[800px] mx-auto text-center mb-12 md:mb-16"
+      class="mx-auto mb-10 grid max-w-[1080px] gap-5 md:grid-cols-[0.82fr_1.18fr] md:items-end md:gap-14"
       data-reveal-group
     >
-      <div data-reveal-item>
-        <Badge variant="emerald" class="mb-4">{intro.badge}</Badge>
+      <div>
+        <div data-reveal-item>
+          <Badge variant="emerald" class="mb-4">{intro.badge}</Badge>
+        </div>
+        <h2
+          id="engine-heading"
+          class="type-display-lg leading-[1.05] tracking-tight text-ink"
+          data-reveal-item
+        >
+          {intro.heading}
+        </h2>
       </div>
-      <h2
-        id="engine-heading"
-        class="type-display-lg leading-[1.1] tracking-tight text-ink"
-        data-reveal-item
-      >
-        {intro.heading}
-      </h2>
       {
         intro.body && (
-          <p class="type-body-md text-muted mt-4" data-reveal-item>
+          <p class="type-body-md max-w-[560px] text-muted md:pb-1" data-reveal-item>
             {intro.body}
           </p>
         )
@@ -46,65 +48,103 @@ const { intro, layers, punchline } = engine;
     </div>
   </Container>
 
-  <Container size="wide" class="!px-0">
-    <div class="border-y border-hairline overflow-hidden bg-surface-soft/5">
-      <!-- The three layers -->
+  <Container>
+    <div
+      class="mx-auto max-w-[1080px] overflow-hidden rounded-[1.5rem] border border-hairline bg-white"
+      data-reveal-group
+    >
+      <div class="flex items-center justify-between gap-4 border-b border-hairline px-5 py-3 sm:px-7">
+        <span class="font-mono text-[9px] uppercase tracking-[0.22em] text-muted-soft">
+          Number provenance
+        </span>
+        <span class="flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.16em] text-badge-emerald">
+          <span class="h-1.5 w-1.5 rounded-full bg-badge-emerald"></span>
+          Contract enforced
+        </span>
+      </div>
+
+      <!-- One continuous route replaces three prose-heavy cards. -->
       <div
-        class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-hairline border-b border-hairline"
-        data-reveal-group
+        class="grid md:grid-cols-[1fr_2.5rem_1fr_2.5rem_1fr]"
+        aria-label="Market data to model path"
       >
         {
-          layers.map((layer) => (
-            <div class="reveal-item p-6 sm:p-8 md:p-10 flex flex-col gap-4 hover:bg-surface-soft/10 transition-colors">
-              <div class="flex items-center gap-3">
-                <span class="font-mono text-xs font-bold text-muted-soft">
+          layers.map((layer, index) => (
+            <>
+              <article
+                class:list={[
+                  'reveal-item relative min-h-[270px] overflow-hidden p-6 sm:p-8',
+                  index === 1 ? 'bg-success/10' : 'bg-white',
+                ]}
+              >
+                <span class="pointer-events-none absolute -right-2 -top-8 font-mono text-[7rem] font-bold leading-none text-ink/[0.035]">
                   {layer.index}
                 </span>
-                <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-badge-emerald">
-                  {layer.label}
-                </span>
-              </div>
-              <h3 class="type-title-lg text-ink font-bold leading-snug">
-                {layer.heading}
-              </h3>
-              <p class="type-body-sm text-muted leading-relaxed flex-1">
-                {layer.body}
-              </p>
-              <ul class="list-none flex flex-wrap gap-1.5 mt-1" role="list">
-                {layer.chips.map((chip) => (
-                  <li class="font-mono text-[9px] tracking-wider px-2 py-1 rounded border border-hairline/60 bg-surface-card text-muted-soft">
-                    {chip}
-                  </li>
-                ))}
-              </ul>
-            </div>
+                <div class="relative flex h-full flex-col">
+                  <span class="font-mono text-[9px] uppercase tracking-[0.22em] text-badge-emerald">
+                    {layer.index} / {layer.label}
+                  </span>
+                  <h3 class="mt-8 text-2xl font-bold tracking-tight text-ink">
+                    {layer.heading}
+                  </h3>
+                  <p class="mt-2 text-sm leading-relaxed text-muted">
+                    {layer.body}
+                  </p>
+                  <ul class="mt-auto flex list-none flex-wrap gap-1.5 pt-7" role="list">
+                    {layer.chips.map((chip) => (
+                      <li class="rounded border border-hairline/70 bg-white/70 px-2 py-1 font-mono text-[8px] tracking-wider text-muted-soft">
+                        {chip}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+
+              {index < layers.length - 1 && (
+                <div class="relative hidden items-center justify-center bg-white md:flex" aria-hidden="true">
+                  <span class="absolute h-px w-full bg-hairline"></span>
+                  <span class="relative grid h-6 w-6 place-items-center rounded-full border border-success/30 bg-white font-mono text-xs text-badge-emerald">
+                    →
+                  </span>
+                </div>
+              )}
+            </>
           ))
         }
       </div>
 
-      <!-- Why it matters -->
-      <div class="p-6 sm:p-8 md:p-12" data-reveal-group>
-        <div class="max-w-[800px] mx-auto text-center md:text-left">
-          <div
-            class="flex items-center gap-2 mb-4 justify-center md:justify-start"
-            data-reveal-item
-          >
-            <span class="w-1.5 h-1.5 rounded-full bg-badge-emerald"></span>
-            <span
-              class="text-[10px] font-mono font-bold tracking-widest uppercase text-badge-emerald"
-              >{punchline.label}</span
-            >
-          </div>
-          <h3
-            class="type-display-sm text-ink leading-snug mb-4"
-            data-reveal-item
-          >
+      <div class="grid border-t border-hairline bg-surface-soft/40 md:grid-cols-[1.25fr_0.75fr]">
+        <div class="p-6 sm:p-8">
+          <span class="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-badge-emerald">
+            {punchline.label}
+          </span>
+          <h3 class="mt-2 text-xl font-bold tracking-tight text-ink sm:text-2xl">
             {punchline.heading}
           </h3>
-          <p class="type-body-md text-muted leading-relaxed" data-reveal-item>
+          <p class="mt-2 max-w-[620px] text-sm leading-relaxed text-muted">
             {punchline.body}
           </p>
         </div>
+
+        <dl class="grid grid-cols-2 border-t border-hairline md:border-l md:border-t-0">
+          <div class="flex flex-col justify-center p-5 sm:p-6">
+            <dt class="font-mono text-[8px] uppercase tracking-[0.18em] text-muted-soft">
+              Missing value
+            </dt>
+            <dd class="mt-2 flex items-center gap-2 font-mono text-xs font-bold text-error">
+              <span class="h-1.5 w-1.5 rounded-full bg-error"></span>
+              UNAVAILABLE
+            </dd>
+          </div>
+          <div class="flex flex-col justify-center border-l border-hairline p-5 sm:p-6">
+            <dt class="font-mono text-[8px] uppercase tracking-[0.18em] text-muted-soft">
+              Reasoning
+            </dt>
+            <dd class="mt-2 font-mono text-xs font-bold text-badge-emerald">
+              TRACEABLE
+            </dd>
+          </div>
+        </dl>
       </div>
     </div>
   </Container>

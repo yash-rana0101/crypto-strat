@@ -53,6 +53,182 @@ const productSchema = {
     'Order flow imbalance and footprint volume profiles',
     'Read-only exchange API integration with no order-placement or withdrawal path',
   ],
+  additionalProperty: [
+    {
+      '@type': 'PropertyValue',
+      name: 'VERIFY validation order',
+      value:
+        'Five deterministic checks run in a fixed order before model reasoning and stop at the first failure.',
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'VERIFY risk thresholds',
+      value:
+        'Stop distance must be at least 1.5× ATR(14). Minimum reward-to-risk is 1:1.3 for intraday and 1:2 for swing, positional, and perpetual setups.',
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'VERIFY failure tags',
+      value:
+        'Machine-readable failures cover missing levels, inconsistent direction, stop too tight, reward-to-risk too low, leg fraction out of range, target ordering inconsistent, breakeven out of range, and blended reward-to-risk too low.',
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'VERIFY multi-leg validation',
+      value:
+        'Leg fractions must sum correctly, targets must be ordered, the breakeven trigger must sit between entry and first target, and blended reward-to-risk must clear the profile floor.',
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'VERIFY implementation and critique',
+      value:
+        'The validator is implemented in Rust and Python with identical constants and reason tags. A read-only Bear agent can critique VWAP, liquidation, funding, volume-profile, and session risks but cannot approve, block, or execute a trade.',
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Ghost Line OLS projection',
+      value:
+        'Unweighted least squares fits a straight line over a 50-bar window, counts every bar equally, and re-anchors the result to the last close.',
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Ghost Line VWLR projection',
+      value:
+        'Volume-weighted least squares uses volume weights floored at one so higher-volume bars exert more influence than quiet bars.',
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Ghost Line VWEPR projection',
+      value:
+        'The volume-weighted quadratic model uses Gaussian elimination with partial pivoting, falls back to OLS for singular systems, and exposes its second-order acceleration coefficient.',
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Ghost Line regime-conditioned forecast',
+      value:
+        'The forecast applies exponentially weighted drift over log returns, amplifies it in trending regimes, dampens it in ranging regimes, and reports direction, up-probability, expected move in ATR units, and confidence.',
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Ghost Line calibration',
+      value:
+        'The 50-bar projection window matches the agent tool constant. R-squared is reported only by the dedicated predictive model and only for its calibrated 10-minute interval.',
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Market Surveillance trigger',
+      value:
+        'A separate service watches 10-minute candles and triggers on a 2% absolute price move. Terminal shading escalates when the move reaches 3%.',
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Market Surveillance commentary',
+      value:
+        'After a price-behaviour trigger, the service checks for an explanation and broadcasts a headline, written analysis, and sentiment assessment. If no explanatory cause is found, it reports that rather than inventing a narrative.',
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Market Surveillance pattern contract',
+      value:
+        'A separate 100-candle structural pattern pass returns a pinned four-field contract containing type, sentiment, description, and confidence clamped between zero and one.',
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Market Surveillance delivery',
+      value:
+        'Surveillance insights are broadcast to the terminal as they are produced rather than waiting for client polling.',
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Market data ingestion',
+      value:
+        'Read-only exchange WebSocket streams are decoded field by field in Rust, including tick streams and order-book depth. Open interest remains optional when a source message does not contain it rather than defaulting to zero. A bounded channel feeds a dual-sink topology.',
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Deterministic quant layer',
+      value:
+        'Indicators, pivots, volume profile, 26 pattern labels across five categories, projection fits, and risk validators run as pure property-tested modules. Non-measurable numeric values serialize as null, while UNAVAILABLE remains distinct from NEUTRAL.',
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Typed model boundary',
+      value:
+        'Eighteen typed quantitative tools expose deterministic calculations to the reasoning layer. Every payload passes contract validation across three distinct tool bindings and produces a glass-box typed event stream.',
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Numerical provenance',
+      value:
+        'Every numerical value shown to the model originates in a deterministic function. Missing measurements remain explicitly unavailable, and model reasoning can be inspected line by line.',
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Pattern measurement',
+      value:
+        'The platform classifies 26 completed pattern labels across reversal, continuation, bilateral, harmonic, and institutional categories, with derived confidence and volume validation. A separate engine reports forming patterns with provisional current-bar swings and formation progress.',
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Order-flow measurement',
+      value:
+        'Tick-level order-flow imbalance uses the tick rule refined by quote location when usable bid and ask values exist. It returns unavailable below the minimum usable tick count. Footprint cells retain bid- and ask-initiated volume at each price level, and candles without ticks produce zero cells.',
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Volume-profile measurement',
+      value:
+        'Volume profile reports point of control, 70% value-area high and low, and high- and low-volume nodes. Independent matching implementations ensure the agent receives the same levels rendered on the chart.',
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Perpetuals positioning measurement',
+      value:
+        'Derivatives diagnostics cover funding rate and velocity, open-interest buildup quadrants, liquidation clusters, long/short ratio, perpetual basis against spot, and order-book imbalance. At least two of six signals must agree before a positioning bias is returned.',
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Trading workspace profiles',
+      value:
+        'Intraday, Swing, Positional, and Perpetuals profiles each define a reward-to-risk floor, sidebar, remembered instrument, and tool binding. Split-view eligibility is enforced in application state rather than only hidden in the interface.',
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Market-context measurement',
+      value:
+        'Trend and volatility are modeled as an orthogonal regime pair. The 24/7 session model includes UTC daily close, 8-hour funding windows, and weekend liquidity. BTC-relative strength is time-aligned without lookahead, and scheduled-event risk can tighten but never loosen a setup.',
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Read-only exchange boundary',
+      value:
+        'The exchange layer exposes quotes, instruments, and search only, and API keys require read-only scope. No order or withdrawal method exists. A boundary test asserts the absence of place, execute, cancel, modify, submit, close-position, and withdrawal method names.',
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Honest unavailable states',
+      value:
+        'Values that cannot be measured serialize as null rather than zero. A state that cannot be computed is UNAVAILABLE rather than NEUTRAL, preserving the distinction between an unremarkable measurement and a missing measurement.',
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Personalization guardrail',
+      value:
+        'A deterministic pre-model guardrail refuses position sizing, holdings, capital, income, net worth, goals, third-party requests, and suitability questions. Inputs are normalized before the ordered checks run.',
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Unpublished performance metrics',
+      value:
+        'Total return, win rate, maximum drawdown, and average conviction are not published. The dashboard instead reports discipline measures such as setups audited, setups rejected, and forced holds, and displays an em dash when a value was not measured.',
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Immutable decision records',
+      value:
+        'Committed decisions are stored as append-only, hash-chained records carrying the model identifier and prompt version. No update or delete path exists, allowing outputs to be replayed and checked for alteration.',
+    },
+  ],
   audience: {
     '@type': 'Audience',
     audienceType: 'Traders, Quant Analysts, Risk Managers',
@@ -94,7 +270,7 @@ const faqSchema = {
 
 <BaseLayout
   title="Strat AI — Market Analysis & Pre-Trade Risk Terminal for Crypto"
-  description="Ask the market in plain language and get answers computed by 18 typed quantitative tools. Pre-trade risk audits against a deterministic 1.5× ATR stop floor, four projection models, and anomaly surveillance for crypto spot pairs and perpetual futures."
+  description="Strat AI runs fixed-order pre-trade checks with a 1.5× ATR stop floor, profile-specific reward thresholds, stable failure tags, and read-only Bear critique."
   jsonLd={[productSchema, serviceSchema, faqSchema]}
   markdownHref="/index.md"
 >

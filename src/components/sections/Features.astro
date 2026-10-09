@@ -14,82 +14,114 @@ import { platform } from '@/content/landing';
 const { intro, features } = platform;
 
 const accentClasses = {
-  emerald: 'bg-badge-emerald/15 text-badge-emerald',
-  violet: 'bg-badge-violet/15 text-badge-violet',
-  orange: 'bg-badge-orange/15 text-badge-orange',
-  pink: 'bg-badge-pink/15 text-badge-pink',
+  emerald: 'text-badge-emerald border-badge-emerald/25 bg-badge-emerald/5',
+  violet: 'text-badge-violet border-badge-violet/25 bg-badge-violet/5',
+  orange: 'text-badge-orange border-badge-orange/25 bg-badge-orange/5',
+  pink: 'text-badge-pink border-badge-pink/25 bg-badge-pink/5',
 };
 ---
 
 <section
-  class="section-y bg-canvas transition-colors duration-300"
+  class="section-y bg-canvas"
   id={intro.id}
   aria-labelledby="features-heading"
 >
   <Container>
     <div
-      class="max-w-[800px] mx-auto text-center mb-12 md:mb-16"
+      class="mx-auto grid max-w-[1080px] gap-9 lg:grid-cols-[0.62fr_1.38fr] lg:gap-16"
       data-reveal-group
     >
-      <div data-reveal-item>
-        <Badge variant="emerald" class="mb-4">{intro.badge}</Badge>
-      </div>
-      <h2
-        id="features-heading"
-        class="type-display-lg leading-[1.1] tracking-tight text-ink"
-        data-reveal-item
-      >
-        {intro.heading}
-      </h2>
-      {
-        intro.body && (
-          <p class="type-body-md text-muted mt-4" data-reveal-item>
-            {intro.body}
-          </p>
-        )
-      }
-    </div>
-  </Container>
+      <div class="lg:pt-5">
+        <div data-reveal-item>
+          <Badge variant="emerald" class="mb-4">{intro.badge}</Badge>
+        </div>
+        <h2
+          id="features-heading"
+          class="type-display-lg leading-[1.05] tracking-tight text-ink"
+          data-reveal-item
+        >
+          {intro.heading}
+        </h2>
+        {
+          intro.body && (
+            <p class="mt-4 max-w-[420px] text-base leading-relaxed text-muted" data-reveal-item>
+              {intro.body}
+            </p>
+          )
+        }
 
-  <Container size="wide" class="!px-0">
-    <div
-      class="border-y border-hairline overflow-hidden bg-surface-soft/5 grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-hairline"
-      data-reveal-group
-    >
-      {
-        features.map((feature, index) => {
-          const Tag = feature.href ? 'a' : 'div';
-          return (
-            <Tag
-              href={feature.href}
-              class:list={[
-                'reveal-item p-6 sm:p-8 md:p-10 flex flex-col gap-4 no-underline group hover:bg-surface-soft/10 transition-colors',
-                index < features.length - 3 && 'md:border-b md:border-hairline',
-              ]}
-            >
-              <div
-                class:list={[
-                  'w-12 h-12 flex items-center justify-center rounded-panel shrink-0 group-hover:scale-105 transition-transform',
-                  accentClasses[feature.accent],
-                ]}
-              >
-                <Icon name={feature.icon} size={24} />
-              </div>
-              <h3
-                class:list={[
-                  'type-title-lg text-ink font-bold leading-snug transition-colors',
-                  feature.href && 'group-hover:text-brand-accent',
-                ]}
-              >
-                {feature.title}
-              </h3>
-              <p class="type-body-sm text-muted leading-relaxed">
-                {feature.body}
-              </p>
-            </Tag>
-          );
-        })
-      }
+        <div class="mt-8 hidden items-center gap-3 lg:flex" aria-hidden="true">
+          <span class="font-mono text-[9px] uppercase tracking-[0.2em] text-muted-soft">
+            Market input
+          </span>
+          <span class="h-px flex-1 bg-gradient-to-r from-hairline to-transparent"></span>
+          <span class="grid h-7 w-7 place-items-center rounded-full border border-success/25 bg-success/5 text-xs text-badge-emerald">
+            ↓
+          </span>
+        </div>
+      </div>
+
+      <!-- A capability ledger is faster to scan than six repeated cards. -->
+      <div class="overflow-hidden rounded-[1.5rem] border border-hairline bg-white" data-reveal-item>
+        <div class="grid grid-cols-[1fr_auto] items-center gap-4 border-b border-hairline bg-ink px-5 py-3 text-white sm:px-6">
+          <span class="font-mono text-[9px] uppercase tracking-[0.22em] text-emerald-300">
+            Measurement ledger
+          </span>
+          <span class="font-mono text-[9px] uppercase tracking-[0.18em] text-white/50">
+            06 modules
+          </span>
+        </div>
+
+        <ol class="list-none" role="list">
+          {
+            features.map((feature, index) => {
+              const Tag = feature.href ? 'a' : 'div';
+              return (
+                <li class="border-b border-hairline/80 last:border-b-0">
+                  <Tag
+                    href={feature.href}
+                    class="group grid gap-3 p-4 no-underline transition-colors hover:bg-surface-soft/60 sm:grid-cols-[2.5rem_1fr_auto] sm:items-center sm:gap-5 sm:px-6 sm:py-5"
+                  >
+                    <div
+                      class:list={[
+                        'grid h-9 w-9 place-items-center rounded-lg border transition-transform group-hover:scale-105',
+                        accentClasses[feature.accent],
+                      ]}
+                    >
+                      <Icon name={feature.icon} size={17} />
+                    </div>
+
+                    <div class="min-w-0">
+                      <div class="flex items-baseline gap-2">
+                        <span class="font-mono text-[9px] text-muted-soft">
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
+                        <h3 class="text-base font-bold leading-tight text-ink transition-colors group-hover:text-brand-accent">
+                          {feature.title}
+                        </h3>
+                      </div>
+                      <p class="mt-1 text-xs leading-relaxed text-muted sm:pl-6">
+                        {feature.body}
+                      </p>
+                    </div>
+
+                    <div class="flex items-center gap-3 sm:justify-end">
+                      <span class="rounded border border-hairline bg-surface-soft/50 px-2 py-1 font-mono text-[8px] uppercase tracking-[0.12em] text-muted-soft">
+                        {feature.signal}
+                      </span>
+                      {feature.href && (
+                        <span class="text-sm text-badge-emerald transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+                          →
+                        </span>
+                      )}
+                    </div>
+                  </Tag>
+                </li>
+              );
+            })
+          }
+        </ol>
+      </div>
     </div>
   </Container>
 </section>
