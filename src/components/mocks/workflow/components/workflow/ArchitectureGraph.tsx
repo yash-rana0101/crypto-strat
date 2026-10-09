@@ -1,8 +1,12 @@
 import GraphToolGroups from './GraphToolGroups';
 import GraphIcon from './GraphIcon';
+import WorkflowIcon from './WorkflowIcon';
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import type { WorkflowController } from './useWorkflowDemo';
 const GRAPH_WIDTH = 1035;
+const GRAPH_HEIGHT = 650;
+const PHONE_HEIGHT = 844;
+const GRAPH_SCALE = PHONE_HEIGHT / GRAPH_HEIGHT;
 function FlowWire({
   kind,
   path,
@@ -32,11 +36,16 @@ export default function ArchitectureGraph({
   const [scale, setScale] = useState(1);
   useEffect(() => {
     if (!frame.current) return;
-    const observer = new ResizeObserver(([entry]) => {
-      const next = Math.min(1, entry.contentRect.width / GRAPH_WIDTH);
-      setScale((current) =>
-        Math.abs(current - next) < 0.001 ? current : next
-      );
+    const observer = new ResizeObserver(() => {
+      const graphFrame = frame.current;
+      if (!graphFrame) return;
+      const availableScale = graphFrame.clientWidth / GRAPH_WIDTH;
+      const next =
+        availableScale < GRAPH_SCALE ? availableScale : GRAPH_SCALE;
+      setScale((current) => {
+        const difference = current - next;
+        return difference > -0.001 && difference < 0.001 ? current : next;
+      });
     });
     observer.observe(frame.current);
     return () => observer.disconnect();
@@ -45,7 +54,12 @@ export default function ArchitectureGraph({
     <div
       className="graph-frame"
       ref={frame}
-      style={{ height: 700 * scale, '--graph-scale': scale } as CSSProperties}
+      style={
+        {
+          height: GRAPH_HEIGHT * scale,
+          '--graph-scale': scale,
+        } as CSSProperties
+      }
     >
       <div className="graph">
         <svg
@@ -156,8 +170,9 @@ export default function ArchitectureGraph({
         <div className={'context-node ' + (phase === 0 ? 'active' : '')}>
           <GraphIcon kind="chat" />
           <span>
-            System prompt
-            <br />+ market context
+            System prompt +
+            <br />
+            Market context
           </span>
         </div>
         <div
@@ -223,7 +238,7 @@ export default function ArchitectureGraph({
           <small>BACKEND</small>
         </div>
         <div className="return-label">
-          VALIDATED MEASUREMENTS <span>✓</span>
+          Validated measurements <WorkflowIcon name="standalone-check" />
         </div>
       </div>
     </div>

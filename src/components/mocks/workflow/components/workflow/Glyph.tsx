@@ -1,43 +1,32 @@
-import type { IconType } from 'react-icons';
-import {
-  PiSparkle,
-  PiTrendUp,
-  PiChartBar,
-  PiChartLine,
-  PiRobot,
-  PiDatabase,
-  PiShieldCheck,
-  PiChatText,
-  PiSquaresFour,
-  PiChartLineUp,
-  PiSlidersHorizontal,
-  PiPaperPlaneTilt,
-  PiArrowUpRight,
-  PiCaretRight,
-  PiPlus,
-  PiMinus,
-} from 'react-icons/pi';
+import WorkflowIcon, { type WorkflowIconName } from './WorkflowIcon';
 
-const icons: Record<string, IconType> = {
-  spark: PiSparkle,
-  trend: PiTrendUp,
-  volume: PiChartBar,
-  levels: PiChartLine,
-  agent: PiRobot,
-  data: PiDatabase,
-  shield: PiShieldCheck,
-  chat: PiChatText,
-  grid: PiSquaresFour,
-  options: PiSlidersHorizontal,
-  candles: PiChartLineUp,
-  send: PiPaperPlaneTilt,
-  external: PiArrowUpRight,
-  next: PiCaretRight,
-  plus: PiPlus,
-  minus: PiMinus,
+const icons: Record<string, WorkflowIconName> = {
+  spark: 'spark',
+  trend: 'trend',
+  volume: 'conviction',
+  levels: 'target-level',
+  agent: 'agent',
+  data: 'database',
+  shield: 'verify-trade',
+  chat: 'user-message',
+  grid: 'ready-market',
+  options: 'set-context',
+  candles: 'candlesticks',
+  send: 'send',
+  external: 'external',
+  next: 'next',
+  plus: 'expand',
+  minus: 'collapse',
 };
 
 export default function Glyph({ kind }: { kind: string }) {
-  const Icon = icons[kind] ?? PiSparkle;
-  return <Icon className={`glyph ${kind}`} aria-hidden="true" />;
+  return (
+    <WorkflowIcon
+      name={icons[kind] ?? 'spark'}
+      className={`glyph ${kind}`}
+      width="1em"
+      height="1em"
+      focusable="false"
+    />
+  );
 }

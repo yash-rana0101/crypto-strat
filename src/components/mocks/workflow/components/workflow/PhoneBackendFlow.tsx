@@ -89,14 +89,14 @@ export default function PhoneBackendFlow({
       <defs>
         <marker
           id="phone-backend-arrow"
-          viewBox="0 0 10 10"
-          refX="8"
-          refY="5"
+          viewBox="0 0 24 24"
+          refX="16"
+          refY="12"
           markerWidth="4"
           markerHeight="4"
           orient="auto"
         >
-          <path d="m0 0 10 5-10 5" fill="context-stroke" />
+          <path d="M9 7l7 5-7 5Z" fill="context-stroke" stroke="none" />
         </marker>
       </defs>
       <path className="phone-backend-link" d={request} />

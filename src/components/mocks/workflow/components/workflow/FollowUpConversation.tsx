@@ -30,7 +30,7 @@ export default function FollowUpConversation({
   } = demo;
   return (
     <>
-      <div className="followup-label">FOLLOW UP QUESTIONS</div>
+      <div className="followup-label">Follow-up questions</div>
       <div className="followups">
         {questions.map((q) => (
           <button
@@ -90,7 +90,7 @@ export default function FollowUpConversation({
         />
         <div className="composer-footer">
           <span>
-            <Glyph kind="spark" /> Sample co-pilot <span>·</span> No live data
+            <Glyph kind="spark" /> Sample Co-Pilot <span>·</span> No live data
           </span>
           <button
             aria-label="Send question"
