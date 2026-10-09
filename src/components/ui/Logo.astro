@@ -1,11 +1,9 @@
 ---
 interface Props {
-  variant?: 'default' | 'light';
   class?: string;
   asSpan?: boolean;
 }
-const { variant = 'default', class: className, asSpan = false } = Astro.props;
-const forceWhite = variant === 'light';
+const { class: className, asSpan = false } = Astro.props;
 ---
 
 {
@@ -31,12 +29,7 @@ const forceWhite = variant === 'light';
         alt="Strat Ai"
         class="h-[22px] md:h-[24px] w-auto object-contain shrink-0"
       />
-      <span
-        class:list={[
-          'text-sm font-semibold tracking-tight',
-          forceWhite ? 'text-on-dark' : 'text-ink',
-        ]}
-      >
+      <span class="text-sm font-semibold tracking-tight text-ink">
         Strat Ai
       </span>
     </a>

@@ -8,7 +8,11 @@
 @import './mobile.css';
 
 .copilot-demo {
-  --demo-highlight: var(--color-badge-emerald);
+  --demo-highlight: color-mix(
+    in srgb,
+    var(--color-brand-accent) 75%,
+    var(--color-ink)
+  );
   --demo-border: color-mix(
     in srgb,
     var(--color-muted) 35%,
@@ -20,13 +24,6 @@
   background: var(--color-surface-soft);
   overflow: hidden;
   color: var(--color-ink);
-}
-[data-theme='light'] .copilot-demo {
-  --demo-highlight: color-mix(
-    in srgb,
-    var(--color-brand-accent) 75%,
-    var(--color-ink)
-  );
 }
 .copilot-demo [hidden] {
   display: none !important;

@@ -26,6 +26,7 @@ const { title, description, ogImage, ogType, jsonLd, noindex, markdownHref } =
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
     <link rel="icon" type="image/svg+xml" href="/strat.svg" />
     <meta name="generator" content={Astro.generator} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -101,13 +102,6 @@ const { title, description, ogImage, ogType, jsonLd, noindex, markdownHref } =
     </script>
   </body>
 </html>
-
-<script is:inline>
-  (function () {
-    const theme = localStorage.getItem('strat-theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', theme);
-  })();
-</script>
 
 <script>
   function initScrollReveal() {
