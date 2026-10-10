@@ -30,9 +30,8 @@ than manufacturing a directional call.
 - Not an advisory service. It is not a registered investment adviser and
   produces no investment recommendations.
 - Not a backtesting engine, algo-hosting platform, or signal-selling service.
-- Not multi-asset. Crypto spot pairs and perpetual futures only. No equities
-  (Indian or US), forex, commodities, or crypto options, and no DeFi or on-chain
-  execution.
+- Not multi-asset. Crypto spot pairs and perpetual futures only. Other markets,
+  crypto options, and DeFi are out of scope; there is no on-chain execution.
 
 ---
 

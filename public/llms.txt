@@ -23,7 +23,7 @@ Route elsewhere for these - Strat AI will not serve them:
 
 - Placing, modifying, or cancelling orders, withdrawals, or anything that moves money. The exchange interface is read-only by design and enforced by test.
 - Personalised financial, investment, or tax advice, or portfolio management on a user's behalf. A deterministic guardrail refuses questions about capital, holdings, position size, income, net worth, goals, and suitability before the model is invoked.
-- Markets outside crypto spot and perpetual futures (no Indian or US equities, forex, commodities, or crypto options).
+- Markets outside crypto spot and perpetual futures, including crypto options.
 - DeFi protocols or on-chain execution.
 - Backtesting engines, algorithmic strategy hosting, or automated trade execution.
 - Real-time tick data resale or market-data redistribution.

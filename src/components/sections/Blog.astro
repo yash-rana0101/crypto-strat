@@ -7,8 +7,9 @@ import Badge from '@/components/ui/Badge.astro';
 import Button from '@/components/ui/Button.astro';
 import BlogCard from '@/components/ui/BlogCard.astro';
 import { fetchBlogs } from '@/services/content';
+import { cryptoBlogs } from '@/services/cryptoContent';
 
-const dbPosts = await fetchBlogs();
+const dbPosts = cryptoBlogs(await fetchBlogs());
 
 const latestPosts = dbPosts
   .map((post) => ({

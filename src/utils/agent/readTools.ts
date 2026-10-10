@@ -7,7 +7,8 @@
  */
 import type { ToolArguments, WebMcpTool } from '@/types/agent';
 import { fetchPlans } from '@/services/pricing';
-import { fetchBlogs, fetchDocs, fetchFeatures } from '@/services/content';
+import { fetchBlogs, fetchDocs } from '@/services/content';
+import { cryptoBlogs, cryptoDocs } from '@/services/cryptoContent';
 import {
   ACCESS_PATH,
   BEST_FIT_USE_CASES,
@@ -126,22 +127,14 @@ export const featuresTool: WebMcpTool = {
     'List Strat AI product areas with a one-line summary and canonical URL for each. Use to route a user to the right part of the product, such as derivatives analytics or the crypto trading terminal.',
   inputSchema: { type: 'object', properties: {} },
   annotations: { readOnlyHint: true, openWorldHint: true },
-  execute: async () => {
-    const remote = await fetchFeatures();
-
-    const entries =
-      remote.length > 0
-        ? remote.map(
-            (feature) =>
-              `- **${feature.title}** (${SITE_URL}/features/${feature.key}): ${feature.subtitle || feature.description}`
-          )
-        : PRODUCT_AREAS.map(
-            (area) =>
-              `- **${area.title}** (${SITE_URL}${area.path}): ${area.summary}`
-          );
-
-    return ['# Strat AI product areas', '', entries.join('\n')].join('\n');
-  },
+  execute: async () =>
+    [
+      '# Strat AI product areas',
+      '',
+      PRODUCT_AREAS.map(
+        (area) => `- **${area.title}** (${SITE_URL}${area.path}): ${area.summary}`
+      ).join('\n'),
+    ].join('\n'),
 };
 
 export const searchDocsTool: WebMcpTool = {
@@ -178,7 +171,9 @@ export const searchDocsTool: WebMcpTool = {
       ? Math.min(Math.max(Math.trunc(rawLimit), 1), 10)
       : 5;
 
-    const [docs, blogs] = await Promise.all([fetchDocs(), fetchBlogs()]);
+    const [remoteDocs, remoteBlogs] = await Promise.all([fetchDocs(), fetchBlogs()]);
+    const docs = cryptoDocs(remoteDocs);
+    const blogs = cryptoBlogs(remoteBlogs);
 
     const corpus = [
       ...docs.map((doc) => ({

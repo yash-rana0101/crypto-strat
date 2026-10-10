@@ -7,21 +7,21 @@ import PageLayout from '@/layouts/PageLayout.astro';
 import Container from '@/components/ui/Container.astro';
 import Prose from '@/components/ui/Prose.astro';
 import Badge from '@/components/ui/Badge.astro';
-import { fetchDocs, fetchDocBySlug } from '@/services/content';
+import { fetchDocs } from '@/services/content';
+import { cryptoDocs } from '@/services/cryptoContent';
 import { marked } from 'marked';
 
 export async function getStaticPaths() {
-  const docs = await fetchDocs();
+  const docs = cryptoDocs(await fetchDocs());
   return docs.map((doc) => ({
     params: { slug: doc.slug },
     props: { doc },
   }));
 }
 
-const { slug } = Astro.params;
 const initialDoc = Astro.props.doc;
 
-const doc = initialDoc || (slug ? await fetchDocBySlug(slug) : null);
+const doc = cryptoDocs(initialDoc ? [initialDoc] : [])[0];
 
 if (!doc) {
   return Astro.redirect('/404');

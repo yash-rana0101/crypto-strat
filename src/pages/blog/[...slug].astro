@@ -7,21 +7,21 @@ import PageLayout from '@/layouts/PageLayout.astro';
 import Container from '@/components/ui/Container.astro';
 import Prose from '@/components/ui/Prose.astro';
 import Badge from '@/components/ui/Badge.astro';
-import { fetchBlogs, fetchBlogBySlug } from '@/services/content';
+import { fetchBlogs } from '@/services/content';
+import { cryptoBlogs } from '@/services/cryptoContent';
 import { marked } from 'marked';
 
 export async function getStaticPaths() {
-  const blogs = await fetchBlogs();
+  const blogs = cryptoBlogs(await fetchBlogs());
   return blogs.map((blog) => ({
     params: { slug: blog.slug },
     props: { blog },
   }));
 }
 
-const { slug } = Astro.params;
 const initialBlog = Astro.props.blog;
 
-const blog = initialBlog || (slug ? await fetchBlogBySlug(slug) : null);
+const blog = cryptoBlogs(initialBlog ? [initialBlog] : [])[0];
 
 if (!blog) {
   return Astro.redirect('/404');
