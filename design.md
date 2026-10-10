@@ -6,7 +6,7 @@ This document outlines the design tokens, layout principles, typography rules, c
 
 ## 1. Core Principles
 
-1. **White-Led Palette:** White canvas and cards provide the dominant 60%. Lavender sections, panels, borders, and illustrations supply 30%. Pink calls to action, projections, and alerts supply the remaining 10%.
+1. **White-Led Palette:** White canvas and cards provide the dominant 60%. Lavender sections, panels, borders, illustrations, and buttons supply 30%. Pink highlights, projections, and alerts supply the remaining 10%.
 2. **Borderless Structure:** Replaced rigid, spreadsheet-like horizontal/vertical border dividers with content grouping, unified spacing (`gap`), and subtle card backgrounds (`bg-surface-soft/5` or `bg-surface-card`) to create a clear layout.
 3. **Physical Micro-Animations:** Interaction elements (buttons, nav pills, transitions) use ease-out curves and subtle spring-like scales (`scale-[0.98]`) to feel tactile, responsive, and alive.
 4. **Symmetrical Balance:** Precise visual alignment constraints across all screen breakpoints, with special care taken on mobile views to keep layouts uncluttered and visually balanced.
@@ -15,7 +15,11 @@ This document outlines the design tokens, layout principles, typography rules, c
 
 ## 2. Color Palette & Theme Tokens
 
-The design system uses Tailwind v4 theme tokens in `src/styles/global.css` and a permanent light color scheme. Shared tokens also style the interactive workflow and phone demo.
+The design system uses Tailwind v4 theme tokens in `src/styles/global.css` and a permanent light color scheme for the marketing site. The phone demo uses a scoped dark palette with light text and lavender/pink accents. Its Find Trade button and dropdown align with the phone's content and input field.
+
+Hero doodle icons use black and gray shades at 30% opacity on every screen size. Their decorative trails and circles use black strokes at 30% opacity.
+
+All button colors, the reference purple gradient, white labels, border highlight, and shadows are centralized in `src/styles/buttons.css`. Shared Button components and native buttons use the same appearance; hover changes the shadow, and selected controls have a white inset outline. Page text remains black and gray.
 
 ### Color Tokens Mappings
 
@@ -32,8 +36,11 @@ The design system uses Tailwind v4 theme tokens in `src/styles/global.css` and a
 | `muted` | `#525252` | Secondary text |
 | `muted-soft` | `#666666` | Captions |
 | `brand-accent` | `#7c3aed` | Lavender accents and focus rings |
-| `primary` | `#f9a8d4` | Pink primary actions |
-| `primary-active` | `#f472b6` | Pink hover and active actions |
+| `primary-top` | `#9a6bee` | Button gradient top |
+| `primary` | `#7c39ec` | Button gradient middle |
+| `primary-active` | `#7437dd` | Button gradient bottom |
+| `primary-edge` | `#c7a8fa` | Button border highlight |
+| `on-primary` | `#ffffff` | Button labels |
 | `brand-pink` | `#be185d` | Pink highlights and alerts |
 | `brand-pink-soft` | `#fdf2f8` | Pink alert surfaces |
 
