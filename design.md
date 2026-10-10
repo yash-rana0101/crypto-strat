@@ -17,6 +17,8 @@ This document outlines the design tokens, layout principles, typography rules, c
 
 The design system uses Tailwind v4 theme tokens in `src/styles/global.css` and a permanent light color scheme for the marketing site. The phone demo uses a scoped dark palette with light text and lavender/pink accents. Its Find Trade button and dropdown align with the phone's content and input field.
 
+Hero doodle icons use black and gray shades at 30% opacity on every screen size. Their decorative trails and circles use black strokes at 30% opacity.
+
 ### Color Tokens Mappings
 
 | Token | Color | Usage |
