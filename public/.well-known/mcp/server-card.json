@@ -45,7 +45,7 @@
     {
       "name": "get_risk_rules",
       "title": "Get Risk Rules",
-      "description": "Return the deterministic pre-trade risk rules Strat AI enforces: the 1.5x ATR(14) stop-loss floor, minimum reward-to-risk ratios, conviction score weighting, and the Capital Preservation Guardrail that forces a HOLD.",
+      "description": "Return the deterministic crypto pre-trade risk rules Strat AI enforces: the 1.5x ATR(14) stop-loss floor, minimum reward-to-risk ratios, conviction score weighting, and the conflict rule that pulls the score toward neutral rather than forcing a HOLD.",
       "annotations": { "readOnlyHint": true },
       "_meta": { "ui": { "resourceUri": "ui://stratai/risk-rules" } }
     },

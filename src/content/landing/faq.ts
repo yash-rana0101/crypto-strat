@@ -20,7 +20,7 @@ export const faq: FaqContent = {
   items: [
     {
       q: 'What exactly is Strat AI?',
-      a: 'A market analysis and pre-trade risk terminal for crypto markets, built by the Trading & Research Wing. It covers spot pairs and perpetual futures, such as BTC, ETH and SOL against USDT, on a 24/7 session model with a UTC daily close and 8-hour funding windows. It evaluates setups, audits them against deterministic risk floors, decodes order flow and derivatives positioning, and streams its reasoning while it works. Equities, forex, commodities and crypto options are out of scope. It does not place orders, hold funds, or provide advice.',
+      a: 'A market analysis and pre-trade risk terminal for crypto markets, built by the Trading & Research Wing. It covers spot pairs and perpetual futures, such as BTC, ETH and SOL against USDT, on a 24/7 session model with a UTC daily close and 8-hour funding windows. It evaluates setups, audits them against deterministic risk floors, decodes order flow and derivatives positioning, and streams its reasoning while it works. Other markets, crypto options and DeFi are out of scope. It does not place orders, hold funds, or provide advice.',
     },
     {
       q: 'What can I ask the Co-Pilot, and what does it actually call?',

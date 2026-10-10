@@ -7,9 +7,9 @@ export async function GET(context) {
   );
 
   return rss({
-    title: 'Strat Ai Blog — Trading Research & Insights',
+    title: 'Strat AI Blog — Crypto Market Research & Insights',
     description:
-      'Insights on quantitative research, financial markets, and trading intelligence from the Trading and Research Wing.',
+      'Crypto market analysis and quantitative research from the Trading and Research Wing.',
     site: context.site,
     items: posts.map((post) => ({
       title: post.data.title,

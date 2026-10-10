@@ -7,8 +7,9 @@ import Container from '@/components/ui/Container.astro';
 import Badge from '@/components/ui/Badge.astro';
 import Icon from '@/components/ui/Icon.astro';
 import { fetchDocs } from '@/services/content';
+import { cryptoDocs } from '@/services/cryptoContent';
 
-const dbDocs = await fetchDocs();
+const dbDocs = cryptoDocs(await fetchDocs());
 
 const allDocs = dbDocs
   .filter((doc) => doc.slug !== 'api-reference' && doc.slug !== 'sdks-clients')
@@ -62,11 +63,28 @@ const sections = [
 
 <PageLayout
   title="Documentation & Terminal Guides"
-  description="Explore detailed guides, core terminal concepts, risk management rules, and setup tutorials for the Strat Ai trading platform."
+  description="Explore guides to Strat AI crypto market analysis, pre-trade risk rules, and perpetual-futures research."
   badge="Docs"
   badgeVariant="lavender"
   breadcrumbs={[{ label: 'Documentation' }]}
 >
+  {
+    allDocs.length === 0 && (
+      <section class="py-20 bg-canvas">
+        <Container>
+          <div class="max-w-[700px] mx-auto text-center">
+            <Badge variant="lavender" class="mb-4">Documentation</Badge>
+            <h1 class="type-display-sm text-ink mb-4">Crypto guides are being updated</h1>
+            <p class="type-body-md text-muted">
+              We're reviewing our guides for crypto spot and perpetual-futures analysis.
+              Explore the platform overview in the meantime.
+            </p>
+            <a href="/#features" class="inline-block mt-6 text-brand-accent underline">Explore crypto analysis</a>
+          </div>
+        </Container>
+      </section>
+    )
+  }
   {
     sections.map(
       (section) =>

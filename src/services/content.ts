@@ -83,8 +83,8 @@ async function fetchWithTimeout(
  */
 export async function fetchBlogs(): Promise<DbBlog[]> {
   try {
-    console.log(`📡 [API CALL] GET ${API_BASE_URL}/blogs`);
-    const res = await fetchWithTimeout(`${API_BASE_URL}/blogs`);
+    console.log(`📡 [API CALL] GET ${API_BASE_URL}/crypto/blogs`);
+    const res = await fetchWithTimeout(`${API_BASE_URL}/crypto/blogs`);
     if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
     const json = await res.json();
     return json.data || [];
@@ -99,8 +99,8 @@ export async function fetchBlogs(): Promise<DbBlog[]> {
  */
 export async function fetchBlogBySlug(slug: string): Promise<DbBlog | null> {
   try {
-    console.log(`📡 [API CALL] GET ${API_BASE_URL}/blogs/${slug}`);
-    const res = await fetchWithTimeout(`${API_BASE_URL}/blogs/${slug}`);
+    console.log(`📡 [API CALL] GET ${API_BASE_URL}/crypto/blogs/${slug}`);
+    const res = await fetchWithTimeout(`${API_BASE_URL}/crypto/blogs/${slug}`);
     if (!res.ok) return null;
     const json = await res.json();
     return json.data || null;

@@ -9,10 +9,11 @@
 import type { APIRoute, GetStaticPaths } from 'astro';
 import { fetchBlogs } from '@/services/content';
 import type { DbBlog } from '@/services/content';
+import { cryptoBlogs } from '@/services/cryptoContent';
 import { SITE_URL } from '@/constants/agent';
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const blogs = await fetchBlogs();
+  const blogs = cryptoBlogs(await fetchBlogs());
   return blogs.map((blog) => ({
     params: { slug: blog.slug },
     props: { blog },
@@ -50,7 +51,7 @@ Published by Trading & Research Wing — ${SITE_URL}
 }
 
 export const GET: APIRoute = async ({ props }) => {
-  const blog = props.blog as DbBlog | undefined;
+  const blog = cryptoBlogs(props.blog ? [props.blog as DbBlog] : [])[0];
 
   if (!blog) {
     return new Response('Not found', {
