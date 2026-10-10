@@ -15,7 +15,7 @@ This document outlines the design tokens, layout principles, typography rules, c
 
 ## 2. Color Palette & Theme Tokens
 
-The design system uses Tailwind v4 theme tokens in `src/styles/global.css` and a permanent light color scheme. Shared tokens also style the interactive workflow and phone demo.
+The design system uses Tailwind v4 theme tokens in `src/styles/global.css` and a permanent light color scheme for the marketing site. The phone demo uses a scoped dark palette with light text and lavender/pink accents. Its Find Trade button and dropdown align with the phone's content and input field.
 
 ### Color Tokens Mappings
 
