@@ -13,11 +13,7 @@ export const cta: CtaContent = {
   heading: 'Audit a setup before you fund it',
   body: 'Strat AI is in private beta with a deliberately small group of traders working crypto markets. If you care more about why than what, we want you in it.',
   primary: {
-    label: 'Join the private beta',
+    label: 'Join Waitlist',
     href: '/waitlist',
-  },
-  secondary: {
-    label: 'Read the pre-trade audit',
-    href: '#verify',
   },
 };

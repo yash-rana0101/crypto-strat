@@ -1,5 +1,4 @@
 @import 'tailwindcss';
-@import './buttons.css';
 
 /* ================================================
    Strat Ai Design System — Theme Tokens
@@ -20,7 +19,7 @@
     'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
   /* Brand */
-  --color-primary-top: #9a6bee;
+  --color-primary-top: #9b6dee;
   --color-primary: #7c39ec;
   --color-primary-active: #7437dd;
   --color-primary-edge: #c7a8fa;

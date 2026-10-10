@@ -30,7 +30,7 @@ import { cta } from '@/content/landing';
         {cta.body}
       </p>
       <div
-        class="flex flex-col sm:flex-row gap-4 mt-2 w-full sm:w-auto"
+        class="flex justify-center mt-2 w-full"
         data-reveal-item
       >
         <Button
@@ -40,14 +40,6 @@ import { cta } from '@/content/landing';
           class="!rounded-full px-8 py-3.5 hover:scale-[1.02] transition-transform"
         >
           {cta.primary.label}
-        </Button>
-        <Button
-          variant="secondary"
-          size="lg"
-          href={cta.secondary.href}
-          class="!rounded-full px-8 py-3.5"
-        >
-          {cta.secondary.label}
         </Button>
       </div>
     </div>

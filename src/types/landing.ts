@@ -246,5 +246,4 @@ export interface CtaContent {
   heading: string;
   body: string;
   primary: LinkTarget;
-  secondary: LinkTarget;
 }
