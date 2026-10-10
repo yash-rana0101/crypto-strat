@@ -1,11 +1,15 @@
 /* One button appearance for native controls and link-based Button components.
    Color overrides are intentional: component skins must not change this palette. */
 :root {
+  --button-label: #ffffff;
+  --button-edge: #c7a8fa;
   --button-background: linear-gradient(
     180deg,
-    var(--color-primary-top) 0%,
-    var(--color-primary) 55%,
-    var(--color-primary-active) 100%
+    #9b6dee 0%,
+    #8e53f2 22%,
+    #7c3bed 48%,
+    #7938e9 66%,
+    #7437dd 100%
   );
   --button-shadow:
     0 10px 28px rgba(124, 57, 236, 0.18),
@@ -15,8 +19,8 @@
 .action-button,
 button {
   background: var(--button-background) !important;
-  color: var(--color-on-primary) !important;
-  border-color: var(--color-primary-edge) !important;
+  color: var(--button-label) !important;
+  border-color: var(--button-edge) !important;
   box-shadow: var(--button-shadow) !important;
   text-align: center;
 }
