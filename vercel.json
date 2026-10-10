@@ -81,6 +81,10 @@
       ]
     },
     {
+      "source": "/blog/:slug.md",
+      "headers": [{ "key": "Cache-Control", "value": "no-store" }]
+    },
+    {
       "source": "/llms.txt",
       "headers": [
         { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
