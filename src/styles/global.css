@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import './buttons.css';
 
 /* ================================================
    Strat Ai Design System — Theme Tokens
@@ -19,8 +20,10 @@
     'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
   /* Brand */
-  --color-primary: #c4b5fd;
-  --color-primary-active: #a78bfa;
+  --color-primary-top: #9a6bee;
+  --color-primary: #7c39ec;
+  --color-primary-active: #7437dd;
+  --color-primary-edge: #c7a8fa;
   --color-brand-accent: #7c3aed;
   --color-brand-pink: #be185d;
   --color-brand-pink-soft: #fdf2f8;
@@ -40,7 +43,7 @@
   --color-body: #262626;
   --color-muted: #525252;
   --color-muted-soft: #666666;
-  --color-on-primary: #000000;
+  --color-on-primary: #ffffff;
 
   /* Badge accents — deeper shades keep text legible on pastel surfaces. */
   --color-badge-orange: #be185d;

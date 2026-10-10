@@ -19,6 +19,8 @@ The design system uses Tailwind v4 theme tokens in `src/styles/global.css` and a
 
 Hero doodle icons use black and gray shades at 30% opacity on every screen size. Their decorative trails and circles use black strokes at 30% opacity.
 
+All button colors, the reference purple gradient, white labels, border highlight, and shadows are centralized in `src/styles/buttons.css`. Shared Button components and native buttons use the same appearance; hover changes the shadow, and selected controls have a white inset outline. Page text remains black and gray.
+
 ### Color Tokens Mappings
 
 | Token | Color | Usage |
@@ -34,8 +36,11 @@ Hero doodle icons use black and gray shades at 30% opacity on every screen size.
 | `muted` | `#525252` | Secondary text |
 | `muted-soft` | `#666666` | Captions |
 | `brand-accent` | `#7c3aed` | Lavender accents and focus rings |
-| `primary` | `#c4b5fd` | Lavender primary actions |
-| `primary-active` | `#a78bfa` | Lavender hover and active actions |
+| `primary-top` | `#9a6bee` | Button gradient top |
+| `primary` | `#7c39ec` | Button gradient middle |
+| `primary-active` | `#7437dd` | Button gradient bottom |
+| `primary-edge` | `#c7a8fa` | Button border highlight |
+| `on-primary` | `#ffffff` | Button labels |
 | `brand-pink` | `#be185d` | Pink highlights and alerts |
 | `brand-pink-soft` | `#fdf2f8` | Pink alert surfaces |
 

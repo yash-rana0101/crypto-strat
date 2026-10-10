@@ -40,13 +40,13 @@ const categories = [...new Set(posts.map((p) => p.data.category))];
     <Container>
       <div class="flex flex-wrap gap-2">
         <span
-          class="px-4 py-2 rounded-full bg-primary text-on-primary type-body-sm font-medium cursor-pointer"
+          class="action-button px-4 py-2 rounded-full type-body-sm font-medium cursor-pointer"
         >
           All Posts
         </span>
         {
           categories.map((cat) => (
-            <span class="px-4 py-2 rounded-full border border-hairline text-muted type-body-sm font-medium hover:bg-surface-card hover:text-ink cursor-pointer transition-colors duration-200">
+            <span class="action-button px-4 py-2 rounded-full border type-body-sm font-medium cursor-pointer transition-colors duration-200">
               {cat}
             </span>
           ))

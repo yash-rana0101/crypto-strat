@@ -23,25 +23,12 @@ const {
 const Tag = href ? 'a' : 'button';
 
 const baseClass =
-  'liquid-glass-btn relative inline-flex items-center justify-center gap-2 font-body font-semibold cursor-pointer no-underline transition-all duration-300 ease-out active:scale-[0.96] overflow-hidden group select-none';
+  'action-button liquid-glass-btn relative inline-flex items-center justify-center gap-2 font-body font-semibold cursor-pointer no-underline transition-all duration-300 ease-out active:scale-[0.96] overflow-hidden group select-none border hover:scale-[1.02]';
 
 const sizeClasses = {
   sm: 'px-4 py-2 text-[13px] h-[36px] rounded-full',
   md: 'px-6 py-2.5 text-sm h-[42px] rounded-full',
   lg: 'px-8 py-3.5 text-base h-[50px] rounded-full',
-};
-
-const variantClasses = {
-  primary:
-    'bg-primary text-on-primary border border-brand-accent/30 shadow-[0_4px_24px_rgba(124,58,237,0.22),inset_0_1.5px_1px_rgba(255,255,255,0.5)] hover:bg-primary-active hover:shadow-[0_8px_32px_rgba(124,58,237,0.3),inset_0_1.5px_1px_rgba(255,255,255,0.7)] hover:scale-[1.02]',
-  secondary:
-    'bg-surface-soft/80 text-ink border border-hairline shadow-[0_4px_18px_rgba(124,58,237,0.08),inset_0_1.5px_1px_rgba(255,255,255,0.7)] hover:bg-surface-strong hover:border-violet-500/40 hover:shadow-[0_6px_24px_rgba(124,58,237,0.18),inset_0_1.5px_1px_rgba(255,255,255,0.8)] hover:scale-[1.02]',
-  glass:
-    'bg-surface-strong/70 text-ink border border-violet-100 shadow-[0_8px_32px_rgba(124,58,237,0.12),inset_0_1.5px_1.5px_rgba(255,255,255,0.8)] hover:bg-surface-strong/90 hover:border-violet-400/50 hover:scale-[1.02]',
-  ghost:
-    'bg-surface-soft text-ink border border-transparent hover:bg-surface-strong hover:border-hairline',
-  'text-link':
-    'bg-surface-soft text-ink border-none p-0 h-auto rounded-none hover:bg-surface-strong hover:text-ink',
 };
 
 const isGlassVariant =
@@ -56,23 +43,10 @@ const isGlassVariant =
   class:list={[
     baseClass,
     sizeClasses[size],
-    variantClasses[variant],
     className,
   ]}
   data-liquid-glass={enableLiquidGlass && isGlassVariant ? 'true' : undefined}
 >
-  {/* Specular Liquid Reflection Highlight Bar */}
-  {
-    isGlassVariant && (
-      <span class="absolute inset-0 rounded-full bg-gradient-to-b from-white/35 via-transparent to-black/10 pointer-events-none opacity-80 group-hover:opacity-100 transition-opacity" />
-    )
-  }
-  {/* Subtle Hover Radial Liquid Shine */}
-  {
-    isGlassVariant && (
-      <span class="absolute -inset-full bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.4)_0%,transparent_60%)] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-    )
-  }
   <span class="relative z-10 flex items-center justify-center gap-2">
     <slot />
   </span>

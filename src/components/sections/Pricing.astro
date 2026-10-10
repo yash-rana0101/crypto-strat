@@ -147,11 +147,7 @@ const plans = apiPlans.map((plan) => {
             <Button
               variant={plan.featured ? 'primary' : 'secondary'}
               href={plan.href}
-              class:list={[
-                '!rounded-full w-full justify-center text-xs font-bold py-2.5 mt-2',
-                plan.featured &&
-                  '!bg-primary !text-on-primary !border-transparent hover:!bg-primary-active active:scale-[0.98]',
-              ]}
+              class="!rounded-full w-full justify-center text-xs font-bold py-2.5 mt-2"
             >
               {plan.cta}
             </Button>
