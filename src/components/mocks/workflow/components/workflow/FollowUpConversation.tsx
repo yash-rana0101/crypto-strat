@@ -30,7 +30,7 @@ export default function FollowUpConversation({
   } = demo;
   return (
     <>
-      <div className="followup-label">Follow-up questions</div>
+      <div className="followup-label">Ask a follow-up</div>
       <div className="followups">
         {questions.map((q) => (
           <button
@@ -73,10 +73,10 @@ export default function FollowUpConversation({
           aria-label="Ask about the sample trade"
           placeholder={
             running
-              ? 'Agent is analyzing — chat unlocks when the scan completes…'
+              ? 'Analyzing…'
               : step < 12
-                ? 'Run an analysis, then ask about the trade…'
-                : 'Ask a question about this trade…'
+                ? 'Run a scan to ask a question'
+                : 'Ask about this setup…'
           }
           value={input}
           onChange={(e) => setInput(e.target.value)}
@@ -90,7 +90,7 @@ export default function FollowUpConversation({
         />
         <div className="composer-footer">
           <span>
-            <Glyph kind="spark" /> Sample Co-Pilot <span>·</span> No live data
+            <Glyph kind="spark" /> Demo <span>·</span> No live data
           </span>
           <button
             aria-label="Send question"

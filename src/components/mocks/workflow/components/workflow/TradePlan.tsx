@@ -14,8 +14,8 @@ export default function TradePlan({ demo }: { demo: WorkflowController }) {
         <div className="empty-icon">
           <Glyph kind={running ? 'agent' : 'spark'} />
         </div>
-        <h3>Building a plan from evidence…</h3>
-        <p>Typed tools are validating the sample market data.</p>
+        <h3>Checking the setup…</h3>
+        <p>Validating sample data.</p>
         <span>MEASURE → VALIDATE → REASON</span>
       </div>
     );
@@ -24,7 +24,7 @@ export default function TradePlan({ demo }: { demo: WorkflowController }) {
     <div className={`trade-plan ${trade.side === 'BUY' ? 'bullish' : ''}`}>
       <div className="response-topline">
         <span>
-          <Glyph kind="agent" /> CO-PILOT RESPONSE
+          <Glyph kind="agent" /> ANALYSIS
         </span>
         <small>
           <i /> {step === -2 ? 'Sample preview' : 'Just now'}
@@ -94,7 +94,7 @@ export default function TradePlan({ demo }: { demo: WorkflowController }) {
         onClick={() => setTelemetry(!telemetry)}
         aria-expanded={telemetry}
       >
-        View raw measurements <Glyph kind={telemetry ? 'minus' : 'plus'} />
+        Tool measurements <Glyph kind={telemetry ? 'minus' : 'plus'} />
       </button>
       {telemetry && (
         <div className="telemetry">
