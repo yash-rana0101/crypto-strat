@@ -14,15 +14,15 @@ import { platform } from '@/content/landing';
 const { intro, features } = platform;
 
 const accentClasses = {
-  emerald: 'text-badge-emerald border-badge-emerald/25 bg-badge-emerald/5',
-  violet: 'text-badge-violet border-badge-violet/25 bg-badge-violet/5',
-  orange: 'text-badge-orange border-badge-orange/25 bg-badge-orange/5',
-  pink: 'text-badge-pink border-badge-pink/25 bg-badge-pink/5',
+  lavender: 'text-ink border-badge-lavender/25 bg-badge-lavender/5',
+  violet: 'text-ink border-badge-violet/25 bg-badge-violet/5',
+  orange: 'text-ink border-badge-orange/25 bg-badge-orange/5',
+  pink: 'text-ink border-badge-pink/25 bg-badge-pink/5',
 };
 ---
 
 <section
-  class="section-y bg-canvas"
+  class="section-y bg-surface-soft"
   id={intro.id}
   aria-labelledby="features-heading"
 >
@@ -33,7 +33,7 @@ const accentClasses = {
     >
       <div class="lg:pt-5">
         <div data-reveal-item>
-          <Badge variant="emerald" class="mb-4">{intro.badge}</Badge>
+          <Badge variant="lavender" class="mb-4">{intro.badge}</Badge>
         </div>
         <h2
           id="features-heading"
@@ -55,7 +55,7 @@ const accentClasses = {
             Market input
           </span>
           <span class="h-px flex-1 bg-gradient-to-r from-hairline to-transparent"></span>
-          <span class="grid h-7 w-7 place-items-center rounded-full border border-success/25 bg-success/5 text-xs text-badge-emerald">
+          <span class="grid h-7 w-7 place-items-center rounded-full border border-success/25 bg-success/5 text-xs text-ink">
             ↓
           </span>
         </div>
@@ -63,11 +63,11 @@ const accentClasses = {
 
       <!-- A capability ledger is faster to scan than six repeated cards. -->
       <div class="overflow-hidden rounded-[1.5rem] border border-hairline bg-white" data-reveal-item>
-        <div class="grid grid-cols-[1fr_auto] items-center gap-4 border-b border-hairline bg-ink px-5 py-3 text-white sm:px-6">
-          <span class="font-mono text-[9px] uppercase tracking-[0.22em] text-emerald-300">
+        <div class="grid grid-cols-[1fr_auto] items-center gap-4 border-b border-hairline bg-surface-strong px-5 py-3 text-ink sm:px-6">
+          <span class="font-mono text-[9px] uppercase tracking-[0.22em] text-ink">
             Measurement ledger
           </span>
-          <span class="font-mono text-[9px] uppercase tracking-[0.18em] text-white/50">
+          <span class="font-mono text-[9px] uppercase tracking-[0.18em] text-muted">
             06 modules
           </span>
         </div>
@@ -96,7 +96,7 @@ const accentClasses = {
                         <span class="font-mono text-[9px] text-muted-soft">
                           {String(index + 1).padStart(2, '0')}
                         </span>
-                        <h3 class="text-base font-bold leading-tight text-ink transition-colors group-hover:text-brand-accent">
+                        <h3 class="text-base font-bold leading-tight text-ink transition-colors group-hover:text-ink">
                           {feature.title}
                         </h3>
                       </div>
@@ -110,7 +110,7 @@ const accentClasses = {
                         {feature.signal}
                       </span>
                       {feature.href && (
-                        <span class="text-sm text-badge-emerald transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+                        <span class="text-sm text-ink transition-transform group-hover:translate-x-0.5" aria-hidden="true">
                           →
                         </span>
                       )}

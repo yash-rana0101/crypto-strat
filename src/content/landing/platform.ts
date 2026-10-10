@@ -38,7 +38,7 @@ export const platform: PlatformContent = {
   features: [
     {
       icon: 'search',
-      accent: 'emerald',
+      accent: 'lavender',
       title: 'Pattern structure',
       body: 'Completed and still-forming structures.',
       signal: '26 labels · 5 families',
@@ -69,7 +69,7 @@ export const platform: PlatformContent = {
     },
     {
       icon: 'compass',
-      accent: 'emerald',
+      accent: 'lavender',
       title: 'Trading workspaces',
       body: 'A risk floor and toolset for each style.',
       signal: '4 profiles',

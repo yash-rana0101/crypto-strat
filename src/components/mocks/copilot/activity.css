@@ -35,7 +35,7 @@
   min-width: 0;
 }
 .copilot-demo .tool-icon {
-  color: var(--demo-highlight);
+  color: var(--color-ink);
 }
 .copilot-demo .tool-row strong {
   display: block;
@@ -61,7 +61,7 @@
 }
 .copilot-demo .tool-state {
   margin-left: auto;
-  color: var(--demo-highlight);
+  color: var(--color-ink);
 }
 .copilot-demo .trace-note {
   color: var(--color-muted);
@@ -81,7 +81,7 @@
   font: 10px var(--font-code);
 }
 .copilot-demo .tool-progress > span:last-child {
-  color: var(--demo-highlight);
+  color: var(--color-ink);
 }
 @keyframes tool-pop {
   50% {

@@ -11,11 +11,11 @@ import { verifyMock } from '@/content/landing';
 
 const stateStyles = {
   pass: {
-    text: 'text-success',
+    text: 'text-ink',
     mark: '✓',
   },
   fail: {
-    text: 'text-error',
+    text: 'text-ink',
     mark: '✕',
   },
   skipped: {
@@ -34,9 +34,9 @@ const stateStyles = {
   <!-- A compact audit receipt: inputs, ordered gates, then one clear verdict. -->
   <div class="grid gap-4 sm:grid-cols-[0.72fr_1.28fr] sm:items-start">
     <aside class="flex flex-col gap-3 sm:sticky sm:top-4">
-      <div class="rounded-panel bg-ink p-4 text-white shadow-card">
+      <div class="rounded-panel bg-surface-strong p-4 text-ink shadow-card">
         <span
-          class="font-mono text-[9px] uppercase tracking-[0.22em] text-emerald-300"
+          class="font-mono text-[9px] uppercase tracking-[0.22em] text-ink"
         >
           {verifyMock.inputsLabel}
         </span>
@@ -50,10 +50,10 @@ const stateStyles = {
                   index === 0 && 'border-b border-white/15 pb-3',
                 ]}
               >
-                <dt class="text-[9px] uppercase tracking-wider text-white/55">
+                <dt class="text-[9px] uppercase tracking-wider text-muted">
                   {input.label}
                 </dt>
-                <dd class="mt-0.5 font-mono text-sm font-bold text-white">
+                <dd class="mt-0.5 font-mono text-sm font-bold text-ink">
                   {input.value}
                 </dd>
               </div>
@@ -63,15 +63,15 @@ const stateStyles = {
       </div>
 
       <div class="rounded-panel border border-error/40 bg-error/5 p-4">
-        <span class="font-mono text-[9px] uppercase tracking-[0.2em] text-error/70">
+        <span class="font-mono text-[9px] uppercase tracking-[0.2em] text-ink">
           Final decision
         </span>
         <div class="mt-2 flex flex-col items-start gap-1.5">
-          <strong class="text-xl tracking-tight text-error">
+          <strong class="text-xl tracking-tight text-ink">
             {verifyMock.verdict.label}
           </strong>
           <span
-            class="rounded border border-error/30 px-1.5 py-0.5 font-mono text-[9px] text-error"
+            class="rounded border border-error/30 px-1.5 py-0.5 font-mono text-[9px] text-ink"
           >
             {verifyMock.verdict.tag}
           </span>
@@ -108,9 +108,9 @@ const stateStyles = {
                     class:list={[
                       'flex h-7 w-7 items-center justify-center rounded-full border font-mono text-[10px] font-bold',
                       check.state === 'pass' &&
-                        'border-success/30 bg-success/10 text-success',
+                        'border-success/30 bg-success/10 text-ink',
                       check.state === 'fail' &&
-                        'border-error/40 bg-error text-white',
+                        'border-error/40 bg-error text-ink',
                       check.state === 'skipped' &&
                         'border-hairline bg-surface-soft text-muted-soft',
                     ]}
@@ -166,9 +166,9 @@ const stateStyles = {
 <style>
   :global(.verify-receipt) {
     background-image:
-      linear-gradient(rgba(5, 150, 105, 0.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(5, 150, 105, 0.035) 1px, transparent 1px);
+      linear-gradient(rgba(124, 58, 237, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(124, 58, 237, 0.035) 1px, transparent 1px);
     background-size: 20px 20px;
-    box-shadow: 0 10px 28px rgba(18, 49, 38, 0.08);
+    box-shadow: 0 10px 28px rgba(46, 36, 64, 0.08);
   }
 </style>

@@ -56,7 +56,7 @@
 }
 .copilot-demo .demo-separator {
   padding: 0 8px;
-  color: var(--color-brand-accent);
+  color: var(--color-ink);
 }
 .copilot-demo .demo-workspace {
   display: grid;

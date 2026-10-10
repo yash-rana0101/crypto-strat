@@ -1,12 +1,12 @@
 # Strat Ai — Design System Specifications
 
-This document outlines the design tokens, layout principles, typography rules, component architectures, and interaction systems governing the **Strat Ai** platform. Adapted from the **Trading & Research Wing (TRW)** design standards, this system prioritizes high-density data clarity, sleek dark-mode aesthetics, physics-based micro-interactions, and a borderless, grid-free modern UI.
+This document outlines the design tokens, layout principles, typography rules, component architectures, and interaction systems governing the **Strat Ai** platform. The permanent light palette uses approximately **60% white, 30% lavender, and 10% pink**, with black and neutral gray text and subtle micro-interactions.
 
 ---
 
 ## 1. Core Principles
 
-1. **Dark-Mode Primacy:** Default black canvas (`#0a0a0a`) paired with high-contrast indicator highlights to reduce eye strain during prolonged trading analysis sessions.
+1. **White-Led Palette:** White canvas and cards provide the dominant 60%. Lavender sections, panels, borders, and illustrations supply 30%. Pink calls to action, projections, and alerts supply the remaining 10%.
 2. **Borderless Structure:** Replaced rigid, spreadsheet-like horizontal/vertical border dividers with content grouping, unified spacing (`gap`), and subtle card backgrounds (`bg-surface-soft/5` or `bg-surface-card`) to create a clear layout.
 3. **Physical Micro-Animations:** Interaction elements (buttons, nav pills, transitions) use ease-out curves and subtle spring-like scales (`scale-[0.98]`) to feel tactile, responsive, and alive.
 4. **Symmetrical Balance:** Precise visual alignment constraints across all screen breakpoints, with special care taken on mobile views to keep layouts uncluttered and visually balanced.
@@ -15,37 +15,40 @@ This document outlines the design tokens, layout principles, typography rules, c
 
 ## 2. Color Palette & Theme Tokens
 
-The design system operates a dual-theme token structure utilizing Tailwind v4 custom theme mappings. Dark mode is default, with light mode toggled via a root `[data-theme="light"]` attribute.
+The design system uses Tailwind v4 theme tokens in `src/styles/global.css` and a permanent light color scheme. Shared tokens also style the interactive workflow and phone demo.
 
 ### Color Tokens Mappings
 
-| Token            | Dark (Default) | Light     | Usage Description                               |
-| :--------------- | :------------- | :-------- | :---------------------------------------------- |
-| `canvas`         | `#0a0a0a`      | `#ffffff` | Primary background canvas                       |
-| `surface-soft`   | `#111111`      | `#f8f9fa` | Subtle card background blocks                   |
-| `surface-card`   | `#161616`      | `#f5f5f5` | Main standalone content card backgrounds        |
-| `surface-strong` | `#262626`      | `#e5e7eb` | Interactive hovered button/pill fills           |
-| `surface-dark`   | `#000000`      | `#101010` | High-contrast overlays and callouts             |
-| `hairline`       | `#262626`      | `#e5e7eb` | Soft outline dividers / borders                 |
-| `hairline-soft`  | `#1a1a1a`      | `#f3f4f6` | Extremely faint card detail lines               |
-| `ink`            | `#f5f5f5`      | `#111111` | Primary text and major headers                  |
-| `body`           | `#d1d5db`      | `#374151` | Standard copy text                              |
-| `muted`          | `#9ca3af`      | `#6b7280` | Sub-titles, captions, and secondary copy        |
-| `muted-soft`     | `#6b7280`      | `#898989` | De-emphasized labels and placeholder indicators |
-| `brand-accent`   | `#10b981`      | `#059669` | TRW Brand Emerald highlight                     |
+| Token | Color | Usage |
+| :---- | :---- | :---- |
+| `canvas` | `#ffffff` | Main background |
+| `surface-card` | `#ffffff` | Content cards |
+| `surface-soft` | `#f5f3ff` | Lavender sections and panels |
+| `surface-strong` | `#ede9fe` | Lavender media panels and selected states |
+| `hairline` | `#ddd6fe` | Lavender borders |
+| `hairline-soft` | `#ede9fe` | Subtle dividers |
+| `ink` | `#000000` | Headings and primary text |
+| `body` | `#262626` | Body text |
+| `muted` | `#525252` | Secondary text |
+| `muted-soft` | `#666666` | Captions |
+| `brand-accent` | `#7c3aed` | Lavender accents and focus rings |
+| `primary` | `#f9a8d4` | Pink primary actions |
+| `primary-active` | `#f472b6` | Pink hover and active actions |
+| `brand-pink` | `#be185d` | Pink highlights and alerts |
+| `brand-pink-soft` | `#fdf2f8` | Pink alert surfaces |
 
 ### Semantic Color Indicators
 
-- **Success:** `#10b981` (emerald highlights, positive trend overlays)
-- **Warning:** `#f59e0b` (caution alerts, conviction transitions)
-- **Error:** `#ef4444` (downside projections, alert warnings)
+- **Success:** `#7c3aed` (positive trends and completed states)
+- **Warning:** `#db2777` (caution and projection overlays)
+- **Error:** `#be185d` (negative trends and alerts)
+- Labels and icons continue to identify positive, negative, and warning states.
 
 ### Badge Pastels (Tag Categories)
 
-- **Orange:** `#fb923c`
-- **Pink:** `#ec4899`
-- **Violet:** `#8b5cf6`
-- **Emerald:** `#34d399`
+- **Lavender / Violet:** Black text on translucent lavender fills.
+- **Pink:** Black text on translucent pink fills.
+- The existing `orange` badge variant uses pink for compatibility.
 
 ---
 

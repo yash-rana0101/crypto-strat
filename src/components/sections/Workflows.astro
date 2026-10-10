@@ -25,7 +25,7 @@ const { intro, steps, note } = workflows;
       data-reveal-group
     >
       <div data-reveal-item>
-        <Badge variant="emerald" class="mb-4">{intro.badge}</Badge>
+        <Badge variant="lavender" class="mb-4">{intro.badge}</Badge>
       </div>
       <h2
         id="workflows-heading"
@@ -51,20 +51,20 @@ const { intro, steps, note } = workflows;
       data-reveal-group
     >
       <div
-        class="workflow-rail absolute border-l md:border-l-0 md:border-t border-dashed border-emerald-300/80 pointer-events-none"
+        class="workflow-rail absolute border-l md:border-l-0 md:border-t border-dashed border-violet-300/80 pointer-events-none"
         aria-hidden="true"
       ></div>
       <div class="workflow-progress absolute pointer-events-none" aria-hidden="true"></div>
       {
         steps.map((step, index) => (
           <article class="workflow-step reveal-item relative grid grid-cols-[48px_1fr] md:flex md:flex-col items-start md:items-center gap-x-5 md:gap-0 text-left md:text-center" data-workflow-step>
-            <span class="col-start-2 md:col-auto font-mono text-[10px] uppercase tracking-[0.18em] text-badge-emerald mb-2 md:mb-4">
+            <span class="col-start-2 md:col-auto font-mono text-[10px] uppercase tracking-[0.18em] text-ink mb-2 md:mb-4">
               {step.phase}
             </span>
 
-            <div class="workflow-node row-start-1 row-span-4 md:row-auto relative z-10 grid h-12 w-12 place-items-center rounded-full border-2 border-solid border-slate-300 bg-canvas text-emerald-700 md:mb-5">
+            <div class="workflow-node row-start-1 row-span-4 md:row-auto relative z-10 grid h-12 w-12 place-items-center rounded-full border-2 border-solid border-slate-300 bg-canvas text-ink md:mb-5">
               <Icon name={step.icon} size={20} />
-              <span class="workflow-number absolute -top-2 -right-2 grid h-5 min-w-5 place-items-center rounded-full bg-emerald-100 px-1 font-mono text-[9px] font-bold text-emerald-700">
+              <span class="workflow-number absolute -top-2 -right-2 grid h-5 min-w-5 place-items-center rounded-full bg-violet-100 px-1 font-mono text-[9px] font-bold text-ink">
                 {String(index + 1).padStart(2, '0')}
               </span>
             </div>
@@ -76,7 +76,7 @@ const { intro, steps, note } = workflows;
               {step.body}
             </p>
 
-            <span class="col-start-2 md:col-auto inline-flex mt-3 font-mono text-[9px] font-semibold tracking-[0.12em] px-2.5 py-1 rounded-full border border-emerald-200 bg-emerald-50/70 text-emerald-700">
+            <span class="col-start-2 md:col-auto inline-flex mt-3 font-mono text-[9px] font-semibold tracking-[0.12em] px-2.5 py-1 rounded-full border border-violet-200 bg-violet-50/70 text-ink">
               {step.artefact}
             </span>
           </article>
@@ -116,11 +116,11 @@ const { intro, steps, note } = workflows;
     const cleanups: Array<() => void> = [];
     const desktop = window.matchMedia('(min-width: 768px)');
     const palette = [
-      { color: '#10b981' },
-      { color: '#14b8a6' },
-      { color: '#ef4444' },
-      { color: '#f59e0b' },
-      { color: '#22c55e' },
+      { color: '#7c3aed' },
+      { color: '#5814b8' },
+      { color: '#db2777' },
+      { color: '#db2777' },
+      { color: '#6622c5' },
     ];
     const thresholds = [0.08, 0.29, 0.5, 0.71, 0.92];
     const restart = () => initWorkflowProgress();
@@ -142,7 +142,7 @@ const { intro, steps, note } = workflows;
           Object.assign(node.style, {
             backgroundColor: '#ffffff',
             borderColor: milestone.color,
-            color: milestone.color,
+            color: '#000000',
             boxShadow: 'none',
           });
         }
@@ -190,15 +190,15 @@ const { intro, steps, note } = workflows;
                   ? {
                       backgroundColor: '#ffffff',
                       borderColor: milestone.color,
-                      color: milestone.color,
-                      boxShadow: '0 0 0 rgba(15, 23, 42, 0)',
+                      color: '#000000',
+                      boxShadow: '0 0 0 rgba(26, 15, 42, 0)',
                       transform: 'translateY(-2px) scale(1)',
                     }
                   : {
                       backgroundColor: '#ffffff',
-                      borderColor: '#cbd5e1',
-                      color: '#94a3b8',
-                      boxShadow: '0 0 0 rgba(15, 23, 42, 0)',
+                      borderColor: '#d4cbe1',
+                      color: '#666666',
+                      boxShadow: '0 0 0 rgba(26, 15, 42, 0)',
                       transform: 'translateY(0) scale(0.96)',
                     },
                 { duration: 0.3, ease: 'easeOut' }
@@ -244,24 +244,24 @@ const { intro, steps, note } = workflows;
     bottom: 3.5rem;
     left: calc(1.5rem - 0.5px);
     width: 2px;
-    background: linear-gradient(to bottom, #34d399, #059669);
-    box-shadow: 0 0 14px rgba(5, 150, 105, 0.3);
+    background: linear-gradient(to bottom, #a78bfa, #7c3aed);
+    box-shadow: 0 0 14px rgba(124, 58, 237, 0.3);
     transform: scaleY(0);
     transform-origin: top;
     will-change: transform;
   }
 
   .workflow-node {
-    color: #94a3b8;
+    color: var(--color-muted);
     background: #ffffff;
-    border-color: #cbd5e1;
+    border-color: #d4cbe1;
     box-shadow: none;
     transform: scale(0.96);
   }
 
   .workflow-number {
-    color: #64748b;
-    background: #f1f5f9;
+    color: var(--color-ink);
+    background: #f4f1f9;
   }
 
   @media (min-width: 768px) {
@@ -286,13 +286,13 @@ const { intro, steps, note } = workflows;
       height: 2px;
       background: linear-gradient(
         to right,
-        #10b981,
-        #14b8a6 25%,
-        #ef4444 50%,
-        #f59e0b 75%,
-        #22c55e
+        #7c3aed,
+        #5814b8 25%,
+        #db2777 50%,
+        #db2777 75%,
+        #6622c5
       );
-      box-shadow: 0 0 16px rgba(16, 185, 129, 0.24);
+      box-shadow: 0 0 16px rgba(124, 58, 237, 0.24);
       transform: scaleX(0);
       transform-origin: left;
     }

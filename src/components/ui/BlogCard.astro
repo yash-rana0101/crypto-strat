@@ -28,11 +28,11 @@ const formattedDate = date.toLocaleDateString('en-US', {
 });
 
 const categoryVariants: Record<string, string> = {
-  'AI & Machine Learning': 'bg-badge-violet/15 text-badge-violet',
-  'Market Research': 'bg-badge-orange/15 text-badge-orange',
-  'Product Updates': 'bg-badge-pink/15 text-badge-pink',
-  'Trading Insights': 'bg-badge-emerald/15 text-badge-emerald',
-  Engineering: 'bg-brand-accent/15 text-brand-accent',
+  'AI & Machine Learning': 'bg-badge-violet/15 text-ink',
+  'Market Research': 'bg-badge-orange/15 text-ink',
+  'Product Updates': 'bg-badge-pink/15 text-ink',
+  'Trading Insights': 'bg-badge-lavender/15 text-ink',
+  Engineering: 'bg-brand-accent/15 text-ink',
 };
 
 const badgeClass = categoryVariants[category] || 'bg-surface-card text-muted';
@@ -58,7 +58,7 @@ const badgeClass = categoryVariants[category] || 'bg-surface-card text-muted';
   </div>
 
   <h3
-    class="type-title-lg text-ink group-hover:text-brand-accent transition-colors duration-200 leading-tight"
+    class="type-title-lg text-ink group-hover:text-ink transition-colors duration-200 leading-tight"
   >
     {title}
   </h3>

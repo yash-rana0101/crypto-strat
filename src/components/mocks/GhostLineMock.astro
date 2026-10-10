@@ -53,18 +53,18 @@ const tabs = ghostLineMock.modes.map((mode) => ({
             data-tab-panel="ghostline"
             data-tab={mode.id}
             class:list={[
-              'rounded-panel bg-ink p-4 text-white',
+              'rounded-panel bg-surface-strong p-4 text-ink',
               index !== 0 && 'hidden',
             ]}
           >
-            <span class="font-mono text-[9px] uppercase tracking-[0.2em] text-emerald-300">
+            <span class="font-mono text-[9px] uppercase tracking-[0.2em] text-ink">
               Active model
             </span>
             <strong class="mt-2 block text-xl tracking-tight">{mode.label}</strong>
-            <p class="mt-1 text-[10px] leading-relaxed text-white/65">
+            <p class="mt-1 text-[10px] leading-relaxed text-muted">
               {mode.math}
             </p>
-            <span class="mt-4 block border-t border-white/15 pt-3 font-mono text-[9px] text-white/55">
+            <span class="mt-4 block border-t border-white/15 pt-3 font-mono text-[9px] text-muted">
               {mode.window} window
             </span>
           </div>
@@ -118,7 +118,7 @@ const tabs = ghostLineMock.modes.map((mode) => ({
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="text-brand-accent"></path>
+            class="text-ink"></path>
           {
             ghostLineMock.modes.map((mode, index) => (
               <path
@@ -169,9 +169,9 @@ const tabs = ghostLineMock.modes.map((mode) => ({
 <style>
   :global(.ghostline-comparator) {
     background-image:
-      linear-gradient(rgba(5, 150, 105, 0.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(5, 150, 105, 0.035) 1px, transparent 1px);
+      linear-gradient(rgba(124, 58, 237, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(124, 58, 237, 0.035) 1px, transparent 1px);
     background-size: 20px 20px;
-    box-shadow: 0 10px 28px rgba(18, 49, 38, 0.08);
+    box-shadow: 0 10px 28px rgba(46, 36, 64, 0.08);
   }
 </style>

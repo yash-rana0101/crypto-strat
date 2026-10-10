@@ -21,7 +21,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  color: var(--demo-highlight);
+  color: var(--color-ink);
   font-weight: 600;
   font-size: 14px;
 }
@@ -58,7 +58,7 @@
 }
 .copilot-demo .library-number {
   font: 10px var(--font-code);
-  color: var(--demo-highlight);
+  color: var(--color-ink);
   margin-top: 3px;
 }
 .copilot-demo .library-list li > div {
@@ -78,7 +78,7 @@
 }
 .copilot-demo .library-list small {
   display: block;
-  color: var(--demo-highlight);
+  color: var(--color-ink);
   font-size: 10px;
   margin-top: 6px;
 }
@@ -98,12 +98,12 @@
   font-size: 12px;
 }
 .copilot-demo .tool-telemetry summary > svg {
-  color: var(--demo-highlight);
+  color: var(--color-ink);
 }
 .copilot-demo .telemetry-count {
   margin-left: auto;
   font: 10px var(--font-code);
-  color: var(--demo-highlight);
+  color: var(--color-ink);
   white-space: nowrap;
 }
 .copilot-demo .telemetry-results {

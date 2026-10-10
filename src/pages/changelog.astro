@@ -26,8 +26,8 @@ const releases = apiChangelogs.map((item) => ({
         ? 'Improvement'
         : 'Update'),
   tagVariant: (item.metadata?.tagVariant ||
-    (item.type === 'feature' ? 'violet' : 'emerald')) as
-    'emerald' | 'violet' | 'orange' | 'pink' | 'default',
+    (item.type === 'feature' ? 'violet' : 'lavender')) as
+    'lavender' | 'violet' | 'orange' | 'pink' | 'default',
   changes: Array.isArray(item.changes) ? item.changes : [],
 }));
 ---
@@ -36,7 +36,7 @@ const releases = apiChangelogs.map((item) => ({
   title="Product Updates & Release Changelog"
   description="Stay updated with the latest product features, performance enhancements, terminal improvements, and quantitative model releases on Strat Ai."
   badge="Updates"
-  badgeVariant="emerald"
+  badgeVariant="lavender"
   breadcrumbs={[{ label: 'Changelog' }]}
 >
   <section class="py-16 md:py-20 bg-canvas transition-colors duration-300">

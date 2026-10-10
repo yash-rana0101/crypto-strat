@@ -18,7 +18,7 @@
   align-items: center;
   gap: 5px;
   font: 11px var(--font-code);
-  color: var(--demo-highlight);
+  color: var(--color-ink);
 }
 .copilot-demo .engine-title {
   font-family: var(--font-display);
@@ -95,7 +95,7 @@
 }
 .copilot-demo .node-symbol {
   display: flex;
-  color: var(--demo-highlight);
+  color: var(--color-ink);
 }
 .copilot-demo .node-model {
   left: 0;
@@ -120,7 +120,7 @@
   text-align: left;
 }
 .copilot-demo .node-tool > svg {
-  color: var(--demo-highlight);
+  color: var(--color-ink);
 }
 .copilot-demo .node-tool strong {
   font-size: 13px;
@@ -192,7 +192,7 @@
 .copilot-demo .stage-count {
   margin-left: auto;
   flex: none;
-  color: var(--demo-highlight);
+  color: var(--color-ink);
   font: 11px var(--font-code);
   padding-top: 4px;
 }
@@ -221,9 +221,9 @@
   color: var(--color-ink);
 }
 .copilot-demo .stage-list li[data-state='active'] > span {
-  color: var(--color-brand-accent);
+  color: var(--color-ink);
   border-color: var(--color-brand-accent);
 }
 .copilot-demo .stage-list li[data-state='done'] > span {
-  color: var(--color-brand-accent);
+  color: var(--color-ink);
 }
