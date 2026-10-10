@@ -276,42 +276,33 @@ const faqSchema = {
 >
   <Hero />
 
-  <!-- Tier 1 — the four headline features, high level to low level -->
-  {
-    deepDives.map((dive) =>
-      dive.id === 'copilot' ? (
-        <CopilotShowcase dive={dive} />
-      ) : (
-        <FeatureDeepDive dive={dive} />
+  <div class="post-hero-content">
+    <!-- Tier 1 — the four headline features, high level to low level -->
+    {
+      deepDives.map((dive) =>
+        dive.id === 'copilot' ? (
+          <CopilotShowcase dive={dive} />
+        ) : (
+          <FeatureDeepDive dive={dive} />
+        )
       )
-    )
-  }
+    }
 
-  <!-- Tier 2 — the engine underneath, then the measurement layer -->
-  <HowItWorks />
-  <Features />
+    <!-- Tier 2 — the engine underneath, then the measurement layer -->
+    <HowItWorks />
+    <Features />
 
-  <!-- Tier 3 — where it fits in a session -->
-  <Workflows />
+    <!-- Tier 3 — where it fits in a session -->
+    <Workflows />
 
-  <!-- Tier 4 — constraints, refusals, and what is not shipped yet -->
-  <Stats />
-  <Security />
+    <!-- Tier 4 — constraints, refusals, and what is not shipped yet -->
+    <Stats />
+    <Security />
 
-  <Pricing />
-  <Blog />
-  <FAQ />
-  <CTA />
-  <Partners />
+    <Pricing />
+    <Blog />
+    <FAQ />
+    <CTA />
+    <Partners />
+  </div>
 </BaseLayout>
-
-<script>
-  import { initSectionScroll } from '@/utils/effects/sectionScroll';
-
-  let cleanupSectionScroll = initSectionScroll();
-  document.addEventListener('astro:before-swap', () => cleanupSectionScroll());
-  document.addEventListener('astro:after-swap', () => {
-    cleanupSectionScroll();
-    cleanupSectionScroll = initSectionScroll();
-  });
-</script>

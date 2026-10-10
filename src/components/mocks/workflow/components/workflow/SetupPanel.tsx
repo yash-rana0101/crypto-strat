@@ -71,8 +71,8 @@ export default function SetupPanel({ demo }: { demo: WorkflowController }) {
       }}
     >
       <div className="setup-heading">
-        <h3>CONFIGURE SETUP</h3>
-        <span>{trade.symbol} · Sample context</span>
+        <h3>Your setup</h3>
+        <span>{trade.symbol} · Demo</span>
       </div>
       <fieldset disabled={running}>
         <legend className="sr-only">Trade direction</legend>
@@ -96,7 +96,7 @@ export default function SetupPanel({ demo }: { demo: WorkflowController }) {
         </div>
         <div className="setup-prices">
           <label>
-            ENTRY PRICE
+            Entry
             <input
               aria-label="Entry price"
               type="number"
@@ -108,7 +108,7 @@ export default function SetupPanel({ demo }: { demo: WorkflowController }) {
             />
           </label>
           <label>
-            STOP LOSS
+            Stop loss
             <input
               aria-label="Stop loss"
               type="number"
@@ -120,7 +120,7 @@ export default function SetupPanel({ demo }: { demo: WorkflowController }) {
             />
           </label>
           <label>
-            TAKE PROFIT
+            Target
             <input
               aria-label="Take profit"
               type="number"
@@ -133,11 +133,11 @@ export default function SetupPanel({ demo }: { demo: WorkflowController }) {
           </label>
         </div>
         <label className="setup-notes">
-          MY ANALYSIS NOTES / SETUP RATIONALE
+          Your notes
           <textarea
             rows={3}
             maxLength={1000}
-            placeholder="E.g., support held on the 10m chart; expecting a move toward resistance…"
+            placeholder="Why this setup?"
             value={draft.notes}
             onChange={(event) => update('notes', event.target.value)}
           />
@@ -149,11 +149,11 @@ export default function SetupPanel({ demo }: { demo: WorkflowController }) {
         )}
         <button type="submit" className="setup-submit">
           <Glyph kind="shield" />
-          {running ? 'VERIFYING…' : 'VERIFY MY SETUP'}
+          {running ? 'VERIFYING…' : 'VERIFY SETUP'}
         </button>
       </fieldset>
       <p className="setup-disclaimer">
-        Checks your levels against simulated measurements. No live prices.
+        Sample data only. No live prices.
       </p>
     </form>
   );

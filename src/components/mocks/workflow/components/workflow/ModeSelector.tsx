@@ -61,9 +61,9 @@ export default function ModeSelector({ demo }: { demo: WorkflowController }) {
           />
           {mode === 'find'
             ? running
-              ? 'SCANNING MARKET…'
+              ? 'SCANNING…'
               : 'FIND TRADE'
-            : 'VERIFY MY TRADE'}
+            : 'VERIFY TRADE'}
         </button>
         <button
           ref={menuTrigger}
@@ -92,8 +92,8 @@ export default function ModeSelector({ demo }: { demo: WorkflowController }) {
           >
             <WorkflowIcon name="find-trade" />
             <span>
-              Find a trade setup
-              <small>Scans breakouts &amp; quant signals</small>
+              Find a trade
+              <small>Scan market signals</small>
             </span>
           </button>
           <button
@@ -104,8 +104,8 @@ export default function ModeSelector({ demo }: { demo: WorkflowController }) {
           >
             <WorkflowIcon name="verify-trade" />
             <span>
-              Verify my trade idea
-              <small>Critical co-pilot risk review</small>
+              Verify a trade
+              <small>Check your risk</small>
             </span>
           </button>
         </div>

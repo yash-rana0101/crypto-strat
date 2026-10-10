@@ -6800,15 +6800,15 @@
   --color-muted-soft: #8a8a8a;
   --workflow-canvas: #0b0b0b;
   --workflow-surface: #141414;
-  --workflow-surface-soft: #1f1d25;
-  --workflow-surface-strong: #2e2540;
-  --workflow-border: #38313f;
-  --workflow-border-soft: #29252f;
+  --workflow-surface-soft: #1f1f1f;
+  --workflow-surface-strong: #2b2b2b;
+  --workflow-border: #383838;
+  --workflow-border-soft: #292929;
   --workflow-ink: var(--color-ink);
   --workflow-body: var(--color-body);
   --workflow-muted: var(--color-muted);
-  --workflow-lavender: #a78bfa;
-  --workflow-lavender-dark: #8b5cf6;
+  --workflow-lavender: #d4d4d4;
+  --workflow-lavender-dark: #a3a3a3;
   --workflow-pink: #f9a8d4;
   --workflow-pink-soft: #33232b;
   color-scheme: dark;
@@ -6827,4 +6827,356 @@
 .copilot-workflow .phone-preview .terminal .analysis-mode-options {
   left: 0;
   right: 0;
+}
+
+/* Secondary controls use neutral surfaces rather than the action gradient. */
+.copilot-workflow .phone-preview .terminal .analysis-mode-options button,
+.copilot-workflow .phone-preview .terminal .setup-directions button,
+.copilot-workflow .phone-preview .terminal .telemetry-toggle,
+.copilot-workflow .phone-preview .terminal .followups button {
+  background: transparent !important;
+  color: var(--workflow-body) !important;
+  border-color: var(--workflow-border) !important;
+  box-shadow: none !important;
+}
+
+.copilot-workflow .phone-preview .terminal .analysis-mode-options button:not(:disabled):hover,
+.copilot-workflow .phone-preview .terminal .setup-directions button:not(:disabled):hover,
+.copilot-workflow .phone-preview .terminal .telemetry-toggle:not(:disabled):hover,
+.copilot-workflow .phone-preview .terminal .followups button:not(:disabled):hover {
+  background: var(--workflow-surface-soft) !important;
+}
+
+.copilot-workflow .phone-preview .terminal .analysis-mode-options button[aria-pressed='true'],
+.copilot-workflow .phone-preview .terminal .setup-directions button[aria-pressed='true'] {
+  background: var(--workflow-surface-strong) !important;
+  color: var(--workflow-ink) !important;
+  box-shadow: inset 2px 0 var(--workflow-muted) !important;
+}
+
+.copilot-workflow .phone-preview .terminal .analysis-mode-options button small {
+  color: var(--workflow-muted) !important;
+}
+
+.copilot-workflow .phone-preview .terminal .question-form button:disabled {
+  background: var(--workflow-surface-strong) !important;
+  color: var(--workflow-muted) !important;
+  border-color: var(--workflow-border) !important;
+  box-shadow: none !important;
+}
+
+.copilot-workflow .phone-preview .app-brand-lockup img,
+.copilot-workflow .phone-preview .ready-brand img {
+  filter: grayscale(1);
+}
+
+/* Readable phone copy, including when the desktop demo scales the phone down. */
+.copilot-workflow .phone-preview .terminal {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.copilot-workflow .phone-preview .terminal .terminal-meta {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 8px 12px;
+  margin: 12px 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--workflow-border-soft);
+}
+
+.copilot-workflow .phone-preview .terminal .market-context {
+  flex: 0 0 auto;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.copilot-workflow .phone-preview .terminal .market-context strong {
+  font-size: inherit;
+  font-weight: 600;
+  color: var(--workflow-ink);
+}
+
+.copilot-workflow .phone-preview .terminal .market-context :is(i, b, span) {
+  flex-shrink: 0;
+}
+
+.copilot-workflow .phone-preview .terminal .replay-tag {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-family: var(--font-body);
+}
+
+.copilot-workflow .phone-preview .terminal .terminal-scroll {
+  margin: 0;
+  padding: 4px 6px 20px 0;
+  scrollbar-gutter: stable;
+}
+
+.copilot-workflow .phone-preview .terminal .chat-workflow {
+  margin-top: 0;
+}
+
+.copilot-workflow .phone-preview .terminal .chat-workflow-heading {
+  position: static;
+  margin: 0 0 16px;
+  padding: 0;
+  border: 0;
+}
+
+.copilot-workflow .phone-preview .terminal .chat-request {
+  align-items: flex-start;
+  margin: 0 0 16px;
+  padding: 12px;
+  border: 1px solid var(--workflow-border-soft);
+  border-radius: 10px;
+  background: var(--workflow-surface-soft);
+}
+
+.copilot-workflow .phone-preview .terminal .chat-request .glyph {
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.copilot-workflow .phone-preview .terminal .trade-plan {
+  margin-top: 20px;
+  padding-bottom: 20px;
+}
+
+.copilot-workflow .phone-preview .terminal .response-topline {
+  margin: 0;
+  padding: 16px 0;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.copilot-workflow .phone-preview .terminal .response-body {
+  padding-top: 4px;
+  gap: 20px;
+}
+
+.copilot-workflow .phone-preview .terminal .response-symbol {
+  gap: 8px;
+}
+
+.copilot-workflow .phone-preview .terminal .response-symbol > span {
+  white-space: nowrap;
+}
+
+.copilot-workflow .phone-preview .terminal .chat-workflow .response-visual {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0;
+}
+
+.copilot-workflow .phone-preview .terminal .chat-workflow .score-badge {
+  position: static;
+  align-self: flex-start;
+  padding: 0;
+}
+
+.copilot-workflow .phone-preview .terminal .chat-workflow .sample-chart {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  height: 170px;
+  flex: none;
+}
+
+.copilot-workflow .phone-preview .terminal .signal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin: 16px 0;
+}
+
+.copilot-workflow .phone-preview .terminal .validation {
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 16px 0 12px;
+}
+
+.copilot-workflow .phone-preview .terminal .followup-label {
+  margin: 0 0 8px;
+  padding-top: 20px;
+}
+
+.copilot-workflow .phone-preview .terminal .followups button {
+  padding: 14px 4px;
+  gap: 12px;
+}
+
+.copilot-workflow .phone-preview .terminal .question-form {
+  position: static;
+  margin-top: 20px;
+  padding: 14px;
+  border-radius: 12px;
+  transition: border-color 150ms ease;
+}
+
+.copilot-workflow .phone-preview .terminal .question-form:is(:hover, :focus-within) {
+  border-color: var(--color-brand-accent);
+}
+
+.copilot-workflow .phone-preview .terminal .question-form textarea {
+  min-height: 72px;
+  resize: none;
+}
+
+.copilot-workflow .phone-preview .terminal .question-form textarea:focus-visible {
+  outline: none;
+}
+
+.copilot-workflow .phone-preview .terminal .composer-footer {
+  margin-top: 10px;
+  padding-top: 10px;
+  gap: 10px;
+}
+
+.copilot-workflow .phone-preview .terminal .composer-footer > span {
+  flex-wrap: wrap;
+}
+
+.copilot-workflow .phone-preview .terminal .question-form button {
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+}
+
+.copilot-workflow .phone-preview .app-brand-lockup strong {
+  font-size: 22px;
+}
+
+.copilot-workflow .phone-preview .app-brand-lockup small {
+  font-size: 14px;
+  letter-spacing: 0.4px;
+}
+
+.copilot-workflow .phone-preview .terminal .chat-product-header > .app-demo-badge {
+  font-size: 14px;
+  letter-spacing: 0;
+}
+
+.copilot-workflow .phone-preview .app-status-bar {
+  font-size: 14px;
+}
+
+.copilot-workflow .phone-preview .terminal :is(
+  .analysis-mode-action, .analysis-mode-options button > span,
+  .setup-directions button, .setup-submit, .followups button,
+  .feed-tool-label, .telemetry-toggle, .completed-checks summary
+) {
+  font-size: 18px;
+  line-height: 1.4;
+  min-height: 44px;
+}
+
+.copilot-workflow .phone-preview .terminal :is(
+  .analysis-mode-options small, .terminal-meta, .replay-tag,
+  .setup-heading > span, .setup-panel label, .setup-disclaimer,
+  .chat-workflow-heading > span, .chat-workflow-heading small,
+  .feed-heading, .feed-heading > span:last-child, .feed-row > div > small,
+  .response-topline, .response-topline small, .response-symbol > span,
+  .score-badge > span, .chart-caption, .signal-tags span, .empty-plan > span,
+  .execution-cards > div > span, .execution-cards b, .validation,
+  .validation b, .telemetry code, .telemetry span, .composer-footer > span
+) {
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 0;
+  overflow-wrap: normal;
+}
+
+.copilot-workflow .phone-preview .terminal :is(
+  .ready-description, .sample-response, .chat-setup-notes,
+  .chat-request, .chat-working-status, .invalidation,
+  .user-question, .agent-answer, .thinking, .empty-plan p,
+  .setup-error, .followup-label
+),
+.copilot-workflow .phone-preview .terminal .chat-workflow .sample-response {
+  font-size: 18px;
+  line-height: 1.55;
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
+}
+
+.copilot-workflow .phone-preview .terminal :is(
+  .setup-panel input, .setup-panel textarea, .question-form textarea
+),
+.copilot-workflow .phone-preview .terminal .setup-panel textarea::placeholder,
+.copilot-workflow .phone-preview .terminal .question-form textarea::placeholder {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.copilot-workflow .phone-preview .terminal :is(.setup-heading h3, .empty-plan h3) {
+  font-size: 20px;
+}
+
+.copilot-workflow .phone-preview .terminal :is(.ready-title, .response-symbol strong) {
+  font-size: 24px;
+}
+
+.copilot-workflow .phone-preview .terminal .response-summary h3 {
+  font-size: 26px;
+}
+
+.copilot-workflow .phone-preview .terminal :is(.execution-cards strong, .score-badge strong) {
+  font-size: 22px;
+}
+
+.copilot-workflow .phone-preview .terminal :is(
+  .response-body, .chat-workflow .response-body,
+  .execution-cards, .chat-workflow .execution-cards, .setup-prices
+) {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.copilot-workflow .phone-preview .terminal .execution-cards > div {
+  grid-column: auto;
+  border-left: 0;
+  padding: 12px 0;
+}
+
+.copilot-workflow .phone-preview .terminal .execution-cards > div + div {
+  border-top: 1px solid var(--workflow-border-soft);
+}
+
+.copilot-workflow .phone-preview .terminal :is(.setup-heading, .chat-workflow-heading, .feed-heading) {
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.copilot-workflow .phone-preview .terminal .feed-row {
+  min-height: 64px;
+  padding: 12px 8px;
+}
+
+.copilot-workflow .phone-preview .terminal .feed-tool-label {
+  min-height: 0;
+}
+
+.copilot-workflow .phone-preview .terminal .completed-checks summary {
+  padding: 12px;
+  border: 1px solid var(--workflow-border-soft);
+  border-radius: 8px;
+  background: var(--workflow-surface-soft);
+  color: var(--workflow-body);
+  cursor: pointer;
+}
+
+.copilot-workflow .phone-preview .terminal .completed-checks[open] summary {
+  margin-bottom: 12px;
+}
+
+.copilot-workflow .phone-preview .terminal .telemetry :is(code, span) {
+  overflow-wrap: anywhere;
+}
+
+.copilot-workflow .phone-preview .terminal .completed-checks summary:focus-visible {
+  outline: 2px solid var(--workflow-muted);
+  outline-offset: 2px;
 }
