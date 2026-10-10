@@ -6,7 +6,7 @@ This document outlines the design tokens, layout principles, typography rules, c
 
 ## 1. Core Principles
 
-1. **White-Led Palette:** White canvas and cards provide the dominant 60%. Lavender sections, panels, borders, and illustrations supply 30%. Pink calls to action, projections, and alerts supply the remaining 10%.
+1. **White-Led Palette:** White canvas and cards provide the dominant 60%. Lavender sections, panels, borders, illustrations, and buttons supply 30%. Pink highlights, projections, and alerts supply the remaining 10%.
 2. **Borderless Structure:** Replaced rigid, spreadsheet-like horizontal/vertical border dividers with content grouping, unified spacing (`gap`), and subtle card backgrounds (`bg-surface-soft/5` or `bg-surface-card`) to create a clear layout.
 3. **Physical Micro-Animations:** Interaction elements (buttons, nav pills, transitions) use ease-out curves and subtle spring-like scales (`scale-[0.98]`) to feel tactile, responsive, and alive.
 4. **Symmetrical Balance:** Precise visual alignment constraints across all screen breakpoints, with special care taken on mobile views to keep layouts uncluttered and visually balanced.
@@ -32,8 +32,8 @@ The design system uses Tailwind v4 theme tokens in `src/styles/global.css` and a
 | `muted` | `#525252` | Secondary text |
 | `muted-soft` | `#666666` | Captions |
 | `brand-accent` | `#7c3aed` | Lavender accents and focus rings |
-| `primary` | `#f9a8d4` | Pink primary actions |
-| `primary-active` | `#f472b6` | Pink hover and active actions |
+| `primary` | `#c4b5fd` | Lavender primary actions |
+| `primary-active` | `#a78bfa` | Lavender hover and active actions |
 | `brand-pink` | `#be185d` | Pink highlights and alerts |
 | `brand-pink-soft` | `#fdf2f8` | Pink alert surfaces |
 
