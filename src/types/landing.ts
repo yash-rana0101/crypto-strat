@@ -7,7 +7,7 @@
  */
 
 /** Accent ramp available to cards and pills. Maps to badge tokens in global.css. */
-export type Accent = 'emerald' | 'violet' | 'orange' | 'pink';
+export type Accent = 'lavender' | 'violet' | 'orange' | 'pink';
 
 /** Shared heading block: eyebrow badge, h2, optional standfirst. */
 export interface SectionIntro {

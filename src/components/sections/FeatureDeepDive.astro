@@ -56,12 +56,12 @@ const headingId = `${dive.id}-heading`;
           <span class="font-mono text-xs font-bold text-muted-soft">
             {dive.index}
           </span>
-          <Badge variant="emerald">{dive.badge}</Badge>
+          <Badge variant="lavender">{dive.badge}</Badge>
         </div>
 
         <div class="flex flex-col gap-3" data-reveal-item>
           <span
-            class="font-mono text-[10px] uppercase tracking-[0.2em] text-badge-emerald"
+            class="font-mono text-[10px] uppercase tracking-[0.2em] text-ink"
           >
             {dive.eyebrow}
           </span>
@@ -96,8 +96,8 @@ const headingId = `${dive.id}-heading`;
                 <span
                   class:list={[
                     isVerify
-                      ? 'font-mono text-[10px] font-bold text-badge-emerald pt-0.5'
-                      : 'w-1.5 h-1.5 rounded-full bg-badge-emerald shrink-0 mt-2',
+                      ? 'font-mono text-[10px] font-bold text-ink pt-0.5'
+                      : 'w-1.5 h-1.5 rounded-full bg-badge-lavender shrink-0 mt-2',
                   ]}
                   aria-hidden="true"
                 >
@@ -135,7 +135,7 @@ const headingId = `${dive.id}-heading`;
       <!-- Mock -->
       <div
         class:list={[
-          'p-5 sm:p-8 md:p-12 flex items-center justify-center bg-surface-soft/10 reveal reveal-scale-up',
+          'p-5 sm:p-8 md:p-12 flex items-center justify-center bg-surface-strong/60 reveal reveal-scale-up',
           mockFirst ? 'lg:order-1' : 'lg:order-2',
         ]}
       >

@@ -40,12 +40,12 @@ const readingTime = Math.max(1, Math.ceil(wordCount / 200));
 
 const categoryVariants: Record<
   string,
-  'orange' | 'pink' | 'violet' | 'emerald' | 'accent' | 'default'
+  'orange' | 'pink' | 'violet' | 'lavender' | 'accent' | 'default'
 > = {
   'AI & Machine Learning': 'violet',
   'Market Research': 'orange',
   'Product Updates': 'pink',
-  'Trading Insights': 'emerald',
+  'Trading Insights': 'lavender',
   Engineering: 'accent',
 };
 
@@ -164,7 +164,7 @@ const isTRWAuthor =
                 isTRWAuthor ? (
                   <a
                     href="https://www.tradingrw.com/"
-                    class="type-body-sm text-ink font-medium hover:text-brand-accent hover:underline block"
+                    class="type-body-sm text-ink font-medium hover:text-ink hover:underline block"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

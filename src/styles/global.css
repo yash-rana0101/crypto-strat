@@ -2,7 +2,7 @@
 
 /* ================================================
    Strat Ai Design System — Theme Tokens
-  Permanent light palette: white 60%, green 30%, red 10%.
+   Permanent light palette: white 60%, lavender 30%, pink 10%.
    ================================================ */
 
 @theme {
@@ -19,42 +19,42 @@
     'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
   /* Brand */
-  --color-primary: #047857;
-  --color-primary-active: #065f46;
-  --color-brand-accent: #059669;
-  --color-brand-red: #dc2626;
-  --color-brand-red-soft: #fef2f2;
+  --color-primary: #f9a8d4;
+  --color-primary-active: #f472b6;
+  --color-brand-accent: #7c3aed;
+  --color-brand-pink: #be185d;
+  --color-brand-pink-soft: #fdf2f8;
 
   /* Light surfaces — white is the dominant 60% */
   --color-canvas: #ffffff;
-  --color-surface-soft: #f0fdf4;
+  --color-surface-soft: #f5f3ff;
   --color-surface-card: #ffffff;
-  --color-surface-strong: #dcfce7;
+  --color-surface-strong: #ede9fe;
 
   /* Borders */
-  --color-hairline: #bbf7d0;
-  --color-hairline-soft: #dcfce7;
+  --color-hairline: #ddd6fe;
+  --color-hairline-soft: #ede9fe;
 
   /* Text */
-  --color-ink: #123126;
-  --color-body: #365348;
-  --color-muted: #60786f;
-  --color-muted-soft: #71877e;
-  --color-on-primary: #ffffff;
+  --color-ink: #000000;
+  --color-body: #262626;
+  --color-muted: #525252;
+  --color-muted-soft: #666666;
+  --color-on-primary: #000000;
 
-  /* Badge Pastels */
-  --color-badge-orange: #fb923c;
-  --color-badge-pink: #ec4899;
-  --color-badge-violet: #8b5cf6;
-  --color-badge-emerald: #34d399;
+  /* Badge accents — deeper shades keep text legible on pastel surfaces. */
+  --color-badge-orange: #be185d;
+  --color-badge-pink: #be185d;
+  --color-badge-violet: #6d28d9;
+  --color-badge-lavender: #6d28d9;
 
   /* Semantic */
-  --color-success: #10b981;
-  --color-warning: #f59e0b;
-  --color-error: #dc2626;
+  --color-success: #7c3aed;
+  --color-warning: #db2777;
+  --color-error: #be185d;
 
   /* Projection overlay — matches the ghost-line colour used in the terminal */
-  --color-projection: #f59e0b;
+  --color-projection: #db2777;
 
   /* Section rhythm — consumed by the .section-y utility below */
   --spacing-section: 3rem;
@@ -76,27 +76,27 @@
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.68),
-    rgba(240, 253, 244, 0.88)
+    rgba(245, 243, 255, 0.88)
   ) !important;
   box-shadow:
-    0 20px 50px rgba(5, 150, 105, 0.12),
+    0 20px 50px rgba(124, 58, 237, 0.12),
     inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.95),
     inset 0 -10px 24px 0 rgba(255, 255, 255, 0.15),
-    inset 0 0 0 1px rgba(5, 150, 105, 0.15) !important;
-  border-color: rgba(5, 150, 105, 0.18) !important;
+    inset 0 0 0 1px rgba(124, 58, 237, 0.15) !important;
+  border-color: rgba(124, 58, 237, 0.18) !important;
 }
 
 #dynamic-island.is-expanded {
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.96),
-    rgba(240, 253, 244, 0.98)
+    rgba(245, 243, 255, 0.98)
   ) !important;
 }
 
 #dynamic-island.is-scrolled .desktop-nav-pill {
-  background-color: rgba(220, 252, 231, 0.55) !important;
-  border-color: rgba(5, 150, 105, 0.16) !important;
+  background-color: rgba(237, 233, 254, 0.55) !important;
+  border-color: rgba(124, 58, 237, 0.16) !important;
 }
 
 /* Initial top state — force fully transparent */
@@ -206,8 +206,8 @@
   }
 
   ::selection {
-    background-color: var(--color-brand-accent);
-    color: white;
+    background-color: var(--color-surface-strong);
+    color: var(--color-ink);
   }
 
   :focus-visible {

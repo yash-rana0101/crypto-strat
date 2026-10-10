@@ -50,13 +50,13 @@ export function triggerPaperCuts() {
   window.addEventListener('resize', resizeCanvas);
 
   const colors = [
-    '#10b981', // emerald
-    '#14b8a6', // teal
-    '#06b6d4', // cyan
-    '#fb923c', // orange
-    '#8b5cf6', // violet
-    '#ec4899', // pink
-    '#f59e0b', // amber
+    '#c4b5fd', // lavender
+    '#ddd6fe', // pale lavender
+    '#a78bfa', // lavender accent
+    '#ede9fe', // soft lavender
+    '#7c3aed', // violet
+    '#be185d', // pink
+    '#db2777', // pink highlight
   ];
 
   const particles: Particle[] = [];

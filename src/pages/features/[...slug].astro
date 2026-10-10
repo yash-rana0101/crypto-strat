@@ -34,7 +34,7 @@ const data = {
   title: feature.title,
   description: feature.description,
   badge: meta.badge || 'Crypto Intelligence',
-  badgeVariant: meta.badgeVariant || 'emerald',
+  badgeVariant: meta.badgeVariant || 'lavender',
   subtitleBadge: meta.subtitleBadge || feature.subtitle || '15-Step Evaluation',
   headline: meta.headline || feature.title,
   introText: meta.introText || feature.description,
@@ -89,7 +89,7 @@ const featureSchema = {
               data.keyHighlights?.map(
                 (item: { icon: string; text: string }) => (
                   <li class="flex items-center gap-3 text-body">
-                    <span class="w-5 h-5 rounded-full bg-badge-emerald/10 border border-badge-emerald/20 flex items-center justify-center text-badge-emerald shrink-0">
+                    <span class="w-5 h-5 rounded-full bg-badge-lavender/10 border border-badge-lavender/20 flex items-center justify-center text-ink shrink-0">
                       <Icon name={item.icon} size={12} />
                     </span>
                     <span>{item.text}</span>
@@ -117,7 +117,7 @@ const featureSchema = {
 
         <!-- Interactive Mockup Card -->
         <div
-          class="relative rounded-2xl overflow-hidden border border-hairline/80 shadow-[0_20px_50px_rgba(16,185,129,0.06)] bg-surface-card p-4 aspect-video flex items-center justify-center"
+          class="relative rounded-2xl overflow-hidden border border-hairline/80 shadow-[0_20px_50px_rgba(124,58,237,0.06)] bg-surface-card p-4 aspect-video flex items-center justify-center"
         >
           <div
             class="absolute inset-0 opacity-[0.03] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,black_20%,transparent_80%)]"
@@ -126,7 +126,7 @@ const featureSchema = {
           </div>
           <div class="z-10 text-center">
             <div
-              class="w-12 h-12 rounded-xl bg-badge-emerald/10 border border-badge-emerald/20 text-badge-emerald flex items-center justify-center mx-auto mb-4"
+              class="w-12 h-12 rounded-xl bg-badge-lavender/10 border border-badge-lavender/20 text-ink flex items-center justify-center mx-auto mb-4"
             >
               <Icon name={data.mockupIcon || 'zap'} size={24} />
             </div>
@@ -164,7 +164,7 @@ const featureSchema = {
               variant?: string;
             }) => (
               <div class="p-8 rounded-xl bg-surface-card border border-hairline hover:border-brand-accent/30 transition-all duration-300">
-                <div class="w-8 h-8 rounded-lg bg-badge-emerald/10 text-badge-emerald flex items-center justify-center mb-5">
+                <div class="w-8 h-8 rounded-lg bg-badge-lavender/10 text-ink flex items-center justify-center mb-5">
                   <Icon name={item.icon} size={16} />
                 </div>
                 <h3 class="type-title-sm text-ink mb-3 font-semibold">

@@ -36,7 +36,7 @@ const docsCollection = defineCollection({
     order: z.number().default(0),
     badge: z.string().optional(),
     badgeVariant: z
-      .enum(['emerald', 'violet', 'orange', 'default'])
+      .enum(['lavender', 'violet', 'orange', 'default'])
       .default('default'),
     draft: z.boolean().default(false),
   }),
@@ -48,7 +48,7 @@ const featuresCollection = defineCollection({
     title: z.string(),
     description: z.string(),
     badge: z.string(),
-    badgeVariant: z.string().default('emerald'),
+    badgeVariant: z.string().default('lavender'),
     subtitleBadge: z.string(),
     headline: z.string(),
     introText: z.string(),

@@ -21,17 +21,17 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID || '';
     <Card
       variant="feature"
       padding="lg"
-      class="border border-hairline/80 shadow-[0_20px_50px_rgba(16,185,129,0.04)] relative overflow-hidden"
+      class="border border-hairline/80 shadow-[0_20px_50px_rgba(124,58,237,0.04)] relative overflow-hidden"
     >
       <!-- Background glow -->
       <div
-        class="absolute -top-12 -right-12 w-40 h-40 bg-[radial-gradient(circle,rgba(16,185,129,0.08)_0%,transparent_70%)] pointer-events-none"
+        class="absolute -top-12 -right-12 w-40 h-40 bg-[radial-gradient(circle,rgba(124,58,237,0.08)_0%,transparent_70%)] pointer-events-none"
       >
       </div>
 
       <div class="flex flex-col gap-6" data-reveal-item>
         <div class="text-center md:text-left">
-          <Badge variant="emerald" class="mb-3 inline-flex">Private Beta</Badge>
+          <Badge variant="lavender" class="mb-3 inline-flex">Private Beta</Badge>
           <h2 class="type-display-sm font-bold text-ink leading-tight">
             Join the Private Beta
           </h2>
@@ -44,7 +44,7 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID || '';
         <!-- Error Alert -->
         <div
           id="waitlist-error-alert"
-          class="hidden p-3 bg-red-500/10 border border-red-500/20 text-red-500 text-xs rounded-lg transition-all duration-300"
+          class="hidden p-3 bg-pink-500/10 border border-pink-500/20 text-ink text-xs rounded-lg transition-all duration-300"
         >
           <div class="flex items-center gap-2">
             <Icon name="alert-triangle" size={16} class="shrink-0" />
@@ -158,16 +158,16 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID || '';
     <Card
       variant="feature"
       padding="lg"
-      class="border border-brand-accent/30 shadow-[0_20px_50px_rgba(16,185,129,0.08)] text-center relative overflow-hidden"
+      class="border border-brand-accent/30 shadow-[0_20px_50px_rgba(124,58,237,0.08)] text-center relative overflow-hidden"
     >
       <div
-        class="absolute -top-12 -left-12 w-40 h-40 bg-[radial-gradient(circle,rgba(16,185,129,0.1)_0%,transparent_70%)] pointer-events-none"
+        class="absolute -top-12 -left-12 w-40 h-40 bg-[radial-gradient(circle,rgba(124,58,237,0.1)_0%,transparent_70%)] pointer-events-none"
       >
       </div>
 
       <div class="flex flex-col items-center gap-6">
         <div
-          class="w-16 h-16 bg-brand-accent/10 border border-brand-accent/20 text-brand-accent rounded-full flex items-center justify-center checkmark-circle-animated"
+          class="w-16 h-16 bg-brand-accent/10 border border-brand-accent/20 text-ink rounded-full flex items-center justify-center checkmark-circle-animated"
         >
           <Icon name="check" size={32} />
         </div>
@@ -190,7 +190,7 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID || '';
             >Your Beta Spot</span
           >
           <span
-            class="text-3xl font-display font-extrabold text-brand-accent"
+            class="text-3xl font-display font-extrabold text-ink"
             id="success-queue-spot">#1,842</span
           >
           <p class="text-xs text-muted">

@@ -1,15 +1,15 @@
 ---
 /**
- * HeroIllustration — Actual Strat AI Terminal Product Screenshot (/hero/hero-dark.png).
+ * HeroIllustration — Strat AI Terminal Product Screenshot (/hero/hero-dark.png).
  * Mounted inside a crisp floating terminal frame below the illustrated hero copy.
- * The surrounding site uses the permanent light palette; the product screenshot stays dark.
+ * The product screenshot displays its original colors without a tint or filter.
  */
 ---
 
 <div
   class="relative w-full flex items-start justify-center px-4 sm:px-8 lg:px-12"
 >
-  <!-- Subtle base glow keeps the dark product terminal anchored to the light hero. -->
+  <!-- Lavender glow anchors the product terminal to the light hero. -->
   <div
     id="hero-planet-wrapper"
     class="absolute -top-20 inset-x-0 w-full flex justify-center pointer-events-none z-0 overflow-visible"
@@ -40,17 +40,17 @@
             fx="50%"
             fy="0%"
           >
-            <stop offset="0%" stop-color="#6ee7b7" stop-opacity="0.34"></stop>
-            <stop offset="30%" stop-color="#a7f3d0" stop-opacity="0.24"></stop>
-            <stop offset="62%" stop-color="#d1fae5" stop-opacity="0.13"></stop>
-            <stop offset="84%" stop-color="#ecfdf5" stop-opacity="0.05"></stop>
-            <stop offset="100%" stop-color="#eef7e7" stop-opacity="0"></stop>
+            <stop offset="0%" stop-color="#c4b5fd" stop-opacity="0.34"></stop>
+            <stop offset="30%" stop-color="#ddd6fe" stop-opacity="0.24"></stop>
+            <stop offset="62%" stop-color="#ede9fe" stop-opacity="0.13"></stop>
+            <stop offset="84%" stop-color="#f5f3ff" stop-opacity="0.05"></stop>
+            <stop offset="100%" stop-color="#faf5ff" stop-opacity="0"></stop>
           </radialGradient>
 
           <linearGradient id="stratRimGlow" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#6ee7b7" stop-opacity="0.22"></stop>
-            <stop offset="50%" stop-color="#34d399" stop-opacity="0.46"></stop>
-            <stop offset="100%" stop-color="#6ee7b7" stop-opacity="0.22"></stop>
+            <stop offset="0%" stop-color="#c4b5fd" stop-opacity="0.22"></stop>
+            <stop offset="50%" stop-color="#a78bfa" stop-opacity="0.46"></stop>
+            <stop offset="100%" stop-color="#c4b5fd" stop-opacity="0.22"></stop>
           </linearGradient>
 
           <filter id="softRimBlur" x="-20%" y="-20%" width="140%" height="140%">
@@ -80,10 +80,10 @@
     <div
       id="hero-card-left"
       data-reveal-item
-      class="hero-terminal-frame reveal-item relative w-full rounded-2xl sm:rounded-[1.65rem] overflow-hidden border border-emerald-200/90 bg-white/95 backdrop-blur-2xl shadow-[0_28px_90px_rgba(5,150,105,0.18),0_4px_18px_rgba(15,23,42,0.10)]"
+      class="hero-terminal-frame reveal-item relative w-full rounded-2xl sm:rounded-[1.65rem] overflow-hidden border border-violet-200/90 bg-white/95 backdrop-blur-2xl shadow-[0_28px_90px_rgba(124,58,237,0.18),0_4px_18px_rgba(26,15,42,0.10)]"
     >
       <!-- Product Image Container -->
-      <div class="w-full relative bg-[#070809]">
+      <div class="w-full relative bg-canvas">
         <img
           id="hero-illustration-image"
           src="/hero/hero-dark.png"
@@ -136,9 +136,9 @@
   .hero-atmosphere {
     background: radial-gradient(
       ellipse at top,
-      rgba(16, 185, 129, 0.2) 0%,
-      rgba(52, 211, 153, 0.12) 38%,
-      rgba(167, 243, 208, 0.06) 72%,
+      rgba(124, 58, 237, 0.2) 0%,
+      rgba(167, 139, 250, 0.12) 38%,
+      rgba(221, 214, 254, 0.06) 72%,
       transparent 96%
     ) !important;
     filter: blur(90px) !important;

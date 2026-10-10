@@ -17,7 +17,7 @@ const { intro, layers, punchline } = engine;
 ---
 
 <section
-  class="section-y bg-canvas"
+  class="section-y bg-surface-soft"
   id={intro.id}
   aria-labelledby="engine-heading"
 >
@@ -28,7 +28,7 @@ const { intro, layers, punchline } = engine;
     >
       <div>
         <div data-reveal-item>
-          <Badge variant="emerald" class="mb-4">{intro.badge}</Badge>
+          <Badge variant="lavender" class="mb-4">{intro.badge}</Badge>
         </div>
         <h2
           id="engine-heading"
@@ -57,8 +57,8 @@ const { intro, layers, punchline } = engine;
         <span class="font-mono text-[9px] uppercase tracking-[0.22em] text-muted-soft">
           Number provenance
         </span>
-        <span class="flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.16em] text-badge-emerald">
-          <span class="h-1.5 w-1.5 rounded-full bg-badge-emerald"></span>
+        <span class="flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.16em] text-ink">
+          <span class="h-1.5 w-1.5 rounded-full bg-badge-lavender"></span>
           Contract enforced
         </span>
       </div>
@@ -81,7 +81,7 @@ const { intro, layers, punchline } = engine;
                   {layer.index}
                 </span>
                 <div class="relative flex h-full flex-col">
-                  <span class="font-mono text-[9px] uppercase tracking-[0.22em] text-badge-emerald">
+                  <span class="font-mono text-[9px] uppercase tracking-[0.22em] text-ink">
                     {layer.index} / {layer.label}
                   </span>
                   <h3 class="mt-8 text-2xl font-bold tracking-tight text-ink">
@@ -103,7 +103,7 @@ const { intro, layers, punchline } = engine;
               {index < layers.length - 1 && (
                 <div class="relative hidden items-center justify-center bg-white md:flex" aria-hidden="true">
                   <span class="absolute h-px w-full bg-hairline"></span>
-                  <span class="relative grid h-6 w-6 place-items-center rounded-full border border-success/30 bg-white font-mono text-xs text-badge-emerald">
+                  <span class="relative grid h-6 w-6 place-items-center rounded-full border border-success/30 bg-white font-mono text-xs text-ink">
                     →
                   </span>
                 </div>
@@ -115,7 +115,7 @@ const { intro, layers, punchline } = engine;
 
       <div class="grid border-t border-hairline bg-surface-soft/40 md:grid-cols-[1.25fr_0.75fr]">
         <div class="p-6 sm:p-8">
-          <span class="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-badge-emerald">
+          <span class="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-ink">
             {punchline.label}
           </span>
           <h3 class="mt-2 text-xl font-bold tracking-tight text-ink sm:text-2xl">
@@ -131,7 +131,7 @@ const { intro, layers, punchline } = engine;
             <dt class="font-mono text-[8px] uppercase tracking-[0.18em] text-muted-soft">
               Missing value
             </dt>
-            <dd class="mt-2 flex items-center gap-2 font-mono text-xs font-bold text-error">
+            <dd class="mt-2 flex items-center gap-2 font-mono text-xs font-bold text-ink">
               <span class="h-1.5 w-1.5 rounded-full bg-error"></span>
               UNAVAILABLE
             </dd>
@@ -140,7 +140,7 @@ const { intro, layers, punchline } = engine;
             <dt class="font-mono text-[8px] uppercase tracking-[0.18em] text-muted-soft">
               Reasoning
             </dt>
-            <dd class="mt-2 font-mono text-xs font-bold text-badge-emerald">
+            <dd class="mt-2 font-mono text-xs font-bold text-ink">
               TRACEABLE
             </dd>
           </div>

@@ -17,10 +17,10 @@ import { refusals as content } from '@/content/landing';
 const { intro, pills, refusals } = content;
 
 const pillIconClasses = {
-  emerald: 'text-badge-emerald',
-  violet: 'text-badge-violet',
-  orange: 'text-badge-orange',
-  pink: 'text-badge-pink',
+  lavender: 'text-ink',
+  violet: 'text-ink',
+  orange: 'text-ink',
+  pink: 'text-ink',
 };
 ---
 
@@ -38,7 +38,7 @@ const pillIconClasses = {
         data-reveal-group
       >
         <div data-reveal-item>
-          <Badge variant="emerald">{intro.badge}</Badge>
+          <Badge variant="lavender">{intro.badge}</Badge>
         </div>
         <h2
           id="security-heading"
@@ -78,11 +78,11 @@ const pillIconClasses = {
         class="overflow-hidden rounded-[1.5rem] border border-hairline bg-white"
         data-reveal-group
       >
-        <div class="flex items-center justify-between gap-4 border-b border-hairline bg-ink px-5 py-3 text-white sm:px-6">
-          <span class="font-mono text-[9px] uppercase tracking-[0.22em] text-emerald-300">
+        <div class="flex items-center justify-between gap-4 border-b border-hairline bg-surface-strong px-5 py-3 text-ink sm:px-6">
+          <span class="font-mono text-[9px] uppercase tracking-[0.22em] text-ink">
             Hard boundaries
           </span>
-          <span class="font-mono text-[9px] uppercase tracking-[0.16em] text-white/45">
+          <span class="font-mono text-[9px] uppercase tracking-[0.16em] text-muted">
             Enforced in code
           </span>
         </div>
@@ -95,7 +95,7 @@ const pillIconClasses = {
                 data-reveal-item
               >
                 <div
-                  class="grid h-7 w-7 place-items-center rounded-full bg-error/10 font-mono text-[9px] font-bold text-error"
+                  class="grid h-7 w-7 place-items-center rounded-full bg-error/10 font-mono text-[9px] font-bold text-ink"
                   aria-hidden="true"
                 >
                   {String(index + 1).padStart(2, '0')}
@@ -108,7 +108,7 @@ const pillIconClasses = {
                     {refusal.body}
                   </dd>
                 </div>
-                <span class="w-fit rounded border border-success/20 bg-success/5 px-2 py-1 font-mono text-[8px] uppercase tracking-[0.12em] text-badge-emerald">
+                <span class="w-fit rounded border border-success/20 bg-success/5 px-2 py-1 font-mono text-[8px] uppercase tracking-[0.12em] text-ink">
                   {refusal.proof}
                 </span>
               </div>

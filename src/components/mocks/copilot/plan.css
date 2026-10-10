@@ -20,7 +20,7 @@
   align-items: center;
 }
 .copilot-demo .plan-heading svg {
-  color: var(--color-brand-accent);
+  color: var(--color-ink);
 }
 .copilot-demo .plan-pill {
   padding: 4px 6px;
@@ -37,7 +37,7 @@
   padding: 18px 0;
 }
 .copilot-demo .plan-direction h4 {
-  color: var(--color-error);
+  color: var(--color-ink);
   font-size: 24px;
   font-weight: 600;
   line-height: 1.3;
@@ -55,7 +55,7 @@
 }
 .copilot-demo .plan-conviction strong {
   display: block;
-  color: var(--color-error);
+  color: var(--color-ink);
   font-size: 9px;
   margin-top: 5px;
   font-weight: 500;
@@ -68,7 +68,7 @@
   border: 3px solid var(--color-error);
   border-left-color: var(--color-hairline);
   border-radius: 50%;
-  color: var(--color-error);
+  color: var(--color-ink);
   font-size: 11px;
 }
 .copilot-demo .plan-payoff {
@@ -83,7 +83,7 @@
   margin-left: 4px;
 }
 .copilot-demo .plan-payoff b {
-  color: var(--color-warning);
+  color: var(--color-ink);
   font-weight: 400;
 }
 .copilot-demo .payoff-bar {
@@ -126,10 +126,10 @@
   color: var(--color-muted);
 }
 .copilot-demo .stop {
-  color: var(--color-error);
+  color: var(--color-ink);
 }
 .copilot-demo .target {
-  color: var(--color-brand-accent);
+  color: var(--color-ink);
 }
 .copilot-demo .plan-risk {
   border-top: 1px solid var(--color-hairline);
@@ -142,7 +142,7 @@
   font: 9px var(--font-code);
 }
 .copilot-demo .plan-risk svg {
-  color: var(--color-warning);
+  color: var(--color-ink);
 }
 .copilot-demo .plan-risk p,
 .copilot-demo .verification-note p {
@@ -154,7 +154,7 @@
 .copilot-demo .verification-note {
   display: flex;
   gap: 8px;
-  color: var(--color-brand-accent);
+  color: var(--color-ink);
   border-top: 1px solid var(--color-hairline);
   padding: 12px 0;
 }

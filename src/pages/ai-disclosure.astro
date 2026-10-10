@@ -27,7 +27,7 @@ const aiDisclosureSchema = {
   title="How Strat AI Uses AI — Public AI Transparency & Governance Disclosure"
   description="Learn exactly what AI models do in Strat AI, structural limits, models and routers used, input data boundaries, and known limitations."
   badge="AI Governance"
-  badgeVariant="emerald"
+  badgeVariant="lavender"
   breadcrumbs={[{ label: 'AI Disclosure', href: '/ai-disclosure' }]}
   jsonLd={aiDisclosureSchema}
 >
@@ -37,7 +37,7 @@ const aiDisclosureSchema = {
   >
     <div class="absolute inset-0 pointer-events-none opacity-40">
       <div
-        class="absolute top-[10%] left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-[radial-gradient(ellipse_at_center,rgba(16,185,129,0.15)_0%,transparent_70%)] blur-[120px]"
+        class="absolute top-[10%] left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-[radial-gradient(ellipse_at_center,rgba(124,58,237,0.15)_0%,transparent_70%)] blur-[120px]"
       >
       </div>
     </div>
@@ -46,7 +46,7 @@ const aiDisclosureSchema = {
       <div
         class="max-w-[850px] mx-auto text-center flex flex-col items-center gap-5"
       >
-        <Badge variant="emerald" class="px-4 py-1 text-xs"
+        <Badge variant="lavender" class="px-4 py-1 text-xs"
           >Public Transparency Standard</Badge
         >
         <h1
@@ -73,7 +73,7 @@ const aiDisclosureSchema = {
     <Container size="narrow">
       <div class="flex flex-col gap-6">
         <div class="flex items-center gap-2">
-          <Badge variant="emerald">Section 01</Badge>
+          <Badge variant="lavender">Section 01</Badge>
           <span class="text-xs font-mono text-muted uppercase tracking-wider"
             >Research Pipeline</span
           >
@@ -117,7 +117,7 @@ const aiDisclosureSchema = {
               },
             ].map((item) => (
               <div class="p-5 rounded-xl bg-surface-card border border-hairline flex items-start gap-4">
-                <span class="text-xs font-mono font-bold px-2.5 py-1 rounded bg-brand-accent/15 text-brand-accent shrink-0 mt-0.5">
+                <span class="text-xs font-mono font-bold px-2.5 py-1 rounded bg-brand-accent/15 text-ink shrink-0 mt-0.5">
                   {item.step}
                 </span>
                 <div>
@@ -170,7 +170,7 @@ const aiDisclosureSchema = {
             <h3
               class="type-title-sm text-ink font-bold flex items-center gap-2"
             >
-              <Icon name="shield-check" size={18} class="text-badge-emerald" /> It
+              <Icon name="shield-check" size={18} class="text-ink" /> It
               cannot place, modify, or cancel an order
             </h3>
             <p class="type-body-sm text-muted leading-relaxed">
@@ -186,7 +186,7 @@ const aiDisclosureSchema = {
             <h3
               class="type-title-sm text-ink font-bold flex items-center gap-2"
             >
-              <Icon name="zap" size={18} class="text-badge-violet" /> It cannot give
+              <Icon name="zap" size={18} class="text-ink" /> It cannot give
               you personal financial advice
             </h3>
             <p class="type-body-sm text-muted leading-relaxed">
@@ -202,7 +202,7 @@ const aiDisclosureSchema = {
             <h3
               class="type-title-sm text-ink font-bold flex items-center gap-2"
             >
-              <Icon name="layers" size={18} class="text-badge-orange" /> It cannot
+              <Icon name="layers" size={18} class="text-ink" /> It cannot
               override hard risk validation rules
             </h3>
             <p class="type-body-sm text-muted leading-relaxed">
@@ -291,7 +291,7 @@ const aiDisclosureSchema = {
         </div>
 
         <div
-          class="p-5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-xs text-rose-300 leading-relaxed"
+          class="p-5 rounded-xl bg-pink-500/10 border border-pink-500/30 text-xs text-ink leading-relaxed"
         >
           <strong>What it is NEVER given:</strong> Anything about you. Not your capital,
           your holdings, your other positions, your income, your age, your risk tolerance,
@@ -391,7 +391,7 @@ const aiDisclosureSchema = {
     <Container size="narrow">
       <div class="flex flex-col gap-6">
         <div class="flex items-center gap-2">
-          <Badge variant="emerald">Section 05</Badge>
+          <Badge variant="lavender">Section 05</Badge>
           <span class="text-xs font-mono text-muted uppercase tracking-wider"
             >Limitations</span
           >
@@ -408,7 +408,7 @@ const aiDisclosureSchema = {
           <li
             class="p-4 rounded-xl bg-surface-card border border-hairline flex items-start gap-3"
           >
-            <span class="text-brand-accent font-bold mt-0.5">•</span>
+            <span class="text-ink font-bold mt-0.5">•</span>
             <span
               ><strong>Confident errors:</strong> Language models can sound articulate
               while drawing incorrect conclusions. Confidence in writing carries zero
@@ -418,7 +418,7 @@ const aiDisclosureSchema = {
           <li
             class="p-4 rounded-xl bg-surface-card border border-hairline flex items-start gap-3"
           >
-            <span class="text-brand-accent font-bold mt-0.5">•</span>
+            <span class="text-ink font-bold mt-0.5">•</span>
             <span
               ><strong>Scope bounded to provided data:</strong> The model only evaluates
               market indicators and headlines passed to it. It has no visibility into
@@ -429,7 +429,7 @@ const aiDisclosureSchema = {
           <li
             class="p-4 rounded-xl bg-surface-card border border-hairline flex items-start gap-3"
           >
-            <span class="text-brand-accent font-bold mt-0.5">•</span>
+            <span class="text-ink font-bold mt-0.5">•</span>
             <span
               ><strong>Past patterns do not guarantee outcomes:</strong> Market regimes
               shift. Historical setups do not guarantee future price action.</span
@@ -438,7 +438,7 @@ const aiDisclosureSchema = {
           <li
             class="p-4 rounded-xl bg-surface-card border border-hairline flex items-start gap-3"
           >
-            <span class="text-brand-accent font-bold mt-0.5">•</span>
+            <span class="text-ink font-bold mt-0.5">•</span>
             <span
               ><strong>Missing data is reported, not guessed:</strong> If open interest,
               funding, or news feeds are offline, the system marks them unavailable rather

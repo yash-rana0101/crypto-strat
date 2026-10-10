@@ -35,7 +35,7 @@ export const refusals: RefusalsContent = {
     body: 'These are product boundaries—not policy promises.',
   },
   pills: [
-    { icon: 'shield-check', label: 'No order path', accent: 'emerald' },
+    { icon: 'shield-check', label: 'No order path', accent: 'lavender' },
     { icon: 'layers', label: 'Read-only exchange interface', accent: 'orange' },
     { icon: 'zap', label: 'Honest failure', accent: 'violet' },
   ],

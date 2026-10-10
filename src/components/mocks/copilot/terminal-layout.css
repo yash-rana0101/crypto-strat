@@ -19,10 +19,10 @@
   align-items: center;
 }
 .copilot-demo .terminal-title svg {
-  color: var(--color-brand-accent);
+  color: var(--color-ink);
 }
 .copilot-demo .terminal-status {
-  color: var(--color-brand-accent);
+  color: var(--color-ink);
   font-size: 10px;
 }
 .copilot-demo .terminal-actions {
@@ -87,7 +87,7 @@
 .copilot-demo .ready-badge {
   font: 10px var(--font-code);
   letter-spacing: 0.1em;
-  color: var(--color-brand-accent);
+  color: var(--color-ink);
   background: color-mix(in srgb, var(--color-brand-accent) 8%, transparent);
   border: 1px solid
     color-mix(in srgb, var(--color-brand-accent) 25%, transparent);
@@ -117,7 +117,7 @@
   color: var(--color-muted);
 }
 .copilot-demo .qa-heading > span:last-child {
-  color: var(--color-brand-accent);
+  color: var(--color-ink);
 }
 .copilot-demo .qa-questions {
   display: flex;
@@ -134,7 +134,7 @@
   padding: 8px;
 }
 .copilot-demo .demo-question svg {
-  color: var(--color-brand-accent);
+  color: var(--color-ink);
 }
 .copilot-demo .demo-question:hover:not(:disabled) {
   border-color: var(--color-brand-accent);
