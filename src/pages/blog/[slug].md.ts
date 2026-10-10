@@ -6,19 +6,13 @@
  * are already authored in markdown, so the twin is the source content plus a
  * frontmatter block carrying document metadata.
  */
-import type { APIRoute, GetStaticPaths } from 'astro';
-import { fetchBlogs } from '@/services/content';
+import type { APIRoute } from 'astro';
+import { fetchBlogBySlug } from '@/services/content';
 import type { DbBlog } from '@/services/content';
 import { cryptoBlogs } from '@/services/cryptoContent';
 import { SITE_URL } from '@/constants/agent';
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const blogs = cryptoBlogs(await fetchBlogs());
-  return blogs.map((blog) => ({
-    params: { slug: blog.slug },
-    props: { blog },
-  }));
-};
+export const prerender = false;
 
 /** Frontmatter values are unquoted, so line breaks and quotes must go. */
 function scalar(value: string): string {
@@ -50,8 +44,9 @@ Published by Trading & Research Wing — ${SITE_URL}
 `;
 }
 
-export const GET: APIRoute = async ({ props }) => {
-  const blog = cryptoBlogs(props.blog ? [props.blog as DbBlog] : [])[0];
+export const GET: APIRoute = async ({ params }) => {
+  const initialBlog = params.slug ? await fetchBlogBySlug(params.slug) : null;
+  const blog = cryptoBlogs(initialBlog ? [initialBlog] : [])[0];
 
   if (!blog) {
     return new Response('Not found', {
@@ -63,7 +58,7 @@ export const GET: APIRoute = async ({ props }) => {
   return new Response(buildDocument(blog), {
     headers: {
       'Content-Type': 'text/markdown; charset=utf-8',
-      'Cache-Control': 'public, max-age=3600',
+      'Cache-Control': 'no-store',
     },
   });
 };

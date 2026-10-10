@@ -24,6 +24,11 @@ import CTA from '@/components/sections/CTA.astro';
 import Partners from '@/components/sections/Partners.astro';
 import { deepDives, faq } from '@/content/landing';
 
+// The homepage blog preview reads the live API and must not freeze at build time.
+export const prerender = false;
+
+Astro.response.headers.set('Cache-Control', 'no-store');
+
 /**
  * featureList is corrected against FEATURE_CATALOGUE.md: eight projection
  * engines rather than an OLS-only claim, and the conviction score described as
