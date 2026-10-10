@@ -32,10 +32,12 @@ export interface HeroContent {
   };
   heading: string;
   body: string;
-  signals: Array<{
+  productHunt: {
     label: string;
-    icon: string;
-  }>;
+    href: string;
+    badgeSrc: string;
+    badgeAlt: string;
+  };
   primaryCta: LinkTarget;
   secondaryCta: LinkTarget;
   note: string;
