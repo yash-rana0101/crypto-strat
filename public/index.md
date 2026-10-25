@@ -105,7 +105,7 @@ research and market analysis terminal. It does not execute trades, manage funds,
 or provide financial advice, and the exchange interface is read-only.
 
 **What markets does it cover?** Crypto spot pairs and perpetual futures only.
-Equities (Indian or US), forex, commodities, and crypto options are out of scope.
+Other markets, crypto options, and DeFi are out of scope.
 
 **How does the conviction score work?** Technical momentum and news sentiment
 are fused into a relative 1-100 setup ranking. The base weighting is 70/30, but

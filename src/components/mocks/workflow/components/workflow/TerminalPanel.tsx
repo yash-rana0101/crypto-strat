@@ -30,18 +30,21 @@ export default function TerminalPanel({ demo }: { demo: WorkflowController }) {
           </div>
         </div>
         <span className="app-demo-badge">
-          <WorkflowIcon name="live-status" /> SAMPLE REPLAY
+          <WorkflowIcon name="live-status" /> DEMO
         </span>
       </header>
       <ModeSelector demo={demo} />
       <div className="terminal-meta">
-        <span>
+        <span className="market-context">
           <i />
-          {trade.symbol}
-          <b>·</b> 10m <b>·</b> intraday
+          <strong>{trade.symbol}</strong>
+          <b aria-hidden="true">·</b>
+          <span>10m</span>
+          <b aria-hidden="true">·</b>
+          <span>Intraday</span>
         </span>
         <span className="replay-tag">
-          SAMPLE {String(trade.id).padStart(2, '0')} / 10
+          Sample {String(trade.id).padStart(2, '0')}/10
         </span>
       </div>
       <div
@@ -77,7 +80,7 @@ export default function TerminalPanel({ demo }: { demo: WorkflowController }) {
                 <Glyph kind="chat" />
                 <span>
                   {mode === 'find'
-                    ? `Find an intraday trade for ${trade.symbol}`
+                    ? `Find a ${trade.symbol} setup`
                     : `Verify my ${trade.symbol} ${trade.side === 'BUY' ? 'long' : 'short'} setup`}
                 </span>
               </div>

@@ -9,9 +9,9 @@ export default function ReadyState() {
           <img src="/strat.svg" alt="" />
         </div>
       </div>
-      <p className="ready-title">Market analysis is ready</p>
+      <p className="ready-title">Ready to analyze</p>
       <p className="ready-description">
-        Tap Find Trade to explore a sample setup.
+        Tap Find Trade for a sample setup.
       </p>
     </div>
   );

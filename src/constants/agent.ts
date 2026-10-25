@@ -36,7 +36,7 @@ export const BEST_FIT_USE_CASES: string[] = [
 export const OUT_OF_SCOPE: string[] = [
   'Placing, modifying or cancelling orders, withdrawals, or anything that moves money. The exchange interface is read-only, API keys need read-only scope, and a test asserts the absence of every order-placement and withdrawal method.',
   'Personalised financial, investment or tax advice, and discretionary portfolio management. A deterministic guardrail refuses questions about capital, holdings, position size, income, net worth, goals and suitability before the model is invoked.',
-  'Markets other than crypto spot pairs and perpetual futures. No equities, forex or commodities, no crypto options, and no DeFi or on-chain trade execution.',
+  'Markets other than crypto spot pairs and perpetual futures, including crypto options and DeFi, are out of scope. There is no on-chain trade execution.',
   'Strategy backtesting, algo hosting or automated execution.',
   'Reselling or redistributing real-time market data.',
   'Performance figures. Total return, win rate, maximum drawdown and average conviction are not published by any endpoint.',
@@ -100,7 +100,7 @@ export const AGENT_ENTRY_POINTS: Array<{ label: string; path: string }> = [
   { label: 'Agentic resource catalog', path: '/.well-known/ard.json' },
 ];
 
-/** Canonical product areas. Fallback when the content API is unreachable. */
+/** Canonical, reviewed crypto product areas for feature pages and agent tools. */
 export const PRODUCT_AREAS: Array<{
   title: string;
   path: string;

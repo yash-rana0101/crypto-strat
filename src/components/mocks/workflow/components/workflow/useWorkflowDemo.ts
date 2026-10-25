@@ -127,7 +127,7 @@ export function useWorkflowDemo() {
         behavior: 'smooth',
       });
     }
-  }, [step]);
+  }, [step, running]);
 
   useEffect(() => {
     if ((thread.length > 0 || thinking) && viewport.current) {

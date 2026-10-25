@@ -6,8 +6,9 @@ import PageLayout from '@/layouts/PageLayout.astro';
 import Container from '@/components/ui/Container.astro';
 import Badge from '@/components/ui/Badge.astro';
 import { fetchChangelogs } from '@/services/content';
+import { cryptoChangelogs } from '@/services/cryptoContent';
 
-const apiChangelogs = await fetchChangelogs();
+const apiChangelogs = cryptoChangelogs(await fetchChangelogs());
 
 const releases = apiChangelogs.map((item) => ({
   version: item.version,
@@ -71,7 +72,7 @@ const releases = apiChangelogs.map((item) => ({
         {
           releases.length === 0 && (
             <div class="p-8 text-center text-muted">
-              No product updates found in database.
+              Crypto product updates are coming soon.
             </div>
           )
         }

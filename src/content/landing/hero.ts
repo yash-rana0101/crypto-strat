@@ -17,11 +17,13 @@ export const hero: HeroContent = {
   },
   heading: 'Ask the market. Get computed answers.',
   body: 'Live crypto analysis and pre-trade risk—without guesswork.',
-  signals: [
-    { label: 'Ask', icon: 'search' },
-    { label: 'Compute', icon: 'cpu' },
-    { label: 'Decide', icon: 'shield-check' },
-  ],
+  productHunt: {
+    label: 'Find us on Product Hunt',
+    href: 'https://www.producthunt.com/products/strat-ai?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-strat-ai',
+    badgeSrc:
+      'https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1203967&theme=neutral&t=1784757622538',
+    badgeAlt: 'Strat AI on Product Hunt',
+  },
   primaryCta: {
     label: 'Join Waitlist',
     href: '/waitlist',

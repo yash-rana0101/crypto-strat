@@ -182,23 +182,9 @@
     font-size: 16px;
   }
 
-  /* Snap the landing page at section boundaries without adding scroll containers.
-     Sections taller than the viewport retain their native internal scroll range. */
+  /* Keep anchor targets clear of the navigation without trapping wheel scrolling. */
   html:has(#hero) {
-    scroll-snap-type: y mandatory;
     scroll-padding-top: 5rem;
-  }
-
-  html:has(#hero) #main-content > section,
-  html:has(#hero) body > footer {
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-  }
-
-  /* Motion handles wheel easing while active; native snapping resumes on settle. */
-  html:has(#hero)[data-section-scroll-active] {
-    scroll-snap-type: none;
-    scroll-behavior: auto;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -232,11 +218,12 @@
   }
 
   /* Continuous vertical border lines at content area edges */
-  #main-content {
+  #main-content,
+  .post-hero-content {
     position: relative;
   }
-  #main-content::before,
-  #main-content::after {
+  :is(#main-content, .post-hero-content)::before,
+  :is(#main-content, .post-hero-content)::after {
     content: '';
     position: absolute;
     top: 0;
@@ -246,18 +233,22 @@
     z-index: 30;
     pointer-events: none;
   }
-  #main-content::before {
+  #main-content:has(> .post-hero-content)::before,
+  #main-content:has(> .post-hero-content)::after {
+    content: none;
+  }
+  :is(#main-content, .post-hero-content)::before {
     left: 0;
   }
-  #main-content::after {
+  :is(#main-content, .post-hero-content)::after {
     right: 0;
   }
 
   @media (min-width: 1400px) {
-    #main-content::before {
+    :is(#main-content, .post-hero-content)::before {
       left: calc((100% - 1400px) / 2);
     }
-    #main-content::after {
+    :is(#main-content, .post-hero-content)::after {
       right: calc((100% - 1400px) / 2);
     }
   }

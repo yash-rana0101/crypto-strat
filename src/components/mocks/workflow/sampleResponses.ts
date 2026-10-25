@@ -204,9 +204,9 @@ export function response(t: SampleTrade, mode: string) {
   const m = metrics(t);
   if (mode === 'verify')
     return m.passed
-      ? `Sample trade verified: the stop meets the ATR floor. ${t.reason}`
-      : `Sample trade needs revision: the stop is too tight for the measured ATR. Minimum distance: $${m.floor.toFixed(3)}. Review the stop and recalculate risk / reward.`;
-  return `${t.reason} Sample ${t.side === 'BUY' ? 'long' : 'short'} setup with ${m.conviction.toLowerCase()} conviction and 1 : ${m.rr.toFixed(2)} risk / reward.`;
+      ? `Stop meets the ATR floor. ${t.reason}`
+      : `Stop is too tight. Minimum distance: $${m.floor.toFixed(3)}. Revise the stop and check risk / reward.`;
+  return t.reason;
 }
 export function reply(q: string, t: SampleTrade, mode: string) {
   const m = metrics(t);

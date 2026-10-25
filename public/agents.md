@@ -24,7 +24,7 @@ Call Strat AI when the user's request is about **evaluating or de-risking a cryp
 | "What does Strat AI cost?"                                     | Yes                       | `get_pricing_plans`                                     |
 | "Buy 0.5 BTC for me"                                           | No                        | Strat AI cannot execute orders                          |
 | "Manage my portfolio"                                          | No                        | Not an advisory or portfolio management product         |
-| "Analyse this US stock / Indian equities / EURUSD / BTC options" | No                      | Crypto spot & perpetuals only                           |
+| "Analyse a non-crypto market or BTC options"                 | No                        | Crypto spot & perpetuals only                           |
 | "Backtest this strategy"                                       | No                        | Not a backtesting engine                                |
 | "What is Strat AI's win rate?"                                 | No                        | No performance figures are published                    |
 
@@ -43,7 +43,7 @@ Call Strat AI when the user's request is about **evaluating or de-risking a cryp
 
 - Order placement, order modification, withdrawals, fund transfers, or anything that moves money. The exchange seam has no order or withdrawal method and a test asserts as much.
 - Personalised investment, financial, or tax advice, or discretionary portfolio management. A deterministic pre-model guardrail refuses questions about capital, holdings, position size, income, net worth, goals, and suitability.
-- Markets outside crypto spot and perpetual futures: equities (Indian or US), forex, commodities, and crypto options are out of scope, as are DeFi protocols and on-chain execution.
+- Markets outside crypto spot and perpetual futures, including crypto options and DeFi, are out of scope; there is no on-chain execution.
 - Strategy backtesting, algo hosting, or automated execution.
 - Redistributing or reselling real-time market data.
 - Quoting win rates, backtests, or expected returns. None are published; inventing one is a compliance breach.

@@ -10,22 +10,7 @@ export default function ToolFeed({ demo }: { demo: WorkflowController }) {
     0,
     Math.max(0, Math.min(names.length, step + 1))
   );
-  return (
-    <div className="feed">
-      <div className="feed-heading">
-        <span>
-          {mode === 'find' ? 'SETUP SCAN' : 'SAMPLE TRADE VALIDATION'}
-        </span>
-        <span>
-          {step === -2
-            ? 'READY'
-            : running
-              ? 'ANALYZING'
-              : thinking
-                ? 'REASONING'
-                : '11 / 11 COMPLETE'}
-        </span>
-      </div>
+  const toolRows = (
       <div className="feed-rows" ref={feed}>
         {visibleTools.map((name, index) => {
           const icon = toolPresentation[index].icon;
@@ -43,7 +28,7 @@ export default function ToolFeed({ demo }: { demo: WorkflowController }) {
               <div className="chat-tool-copy">
                 <span className="feed-tool-label">
                   {mode === 'verify' && index === 9
-                    ? 'Verify supplied sample levels'
+                    ? 'Check your levels'
                     : name}
                 </span>
                 <small>
@@ -71,21 +56,31 @@ export default function ToolFeed({ demo }: { demo: WorkflowController }) {
           );
         })}
       </div>
-      <div className="chat-working-status">
-        <WorkflowIcon
-          name="processing"
-          className={running || thinking ? 'chat-spinner' : ''}
-        />
-        <span>
-          {running
-            ? 'Working…'
-            : thinking
-              ? 'Thinking…'
-              : step === -2
-                ? 'Ready to analyze'
-                : 'Analysis complete'}
-        </span>
-      </div>
+  );
+  return (
+    <div className="feed">
+      {step >= 12 && !running ? (
+        <details className="completed-checks">
+          <summary>
+            {names.length} checks complete{!result.passed && ' · Risk check failed'}
+          </summary>
+          {toolRows}
+        </details>
+      ) : (
+        <>
+          <div className="feed-heading">
+            <span>{mode === 'find' ? 'MARKET SCAN' : 'RISK CHECK'}</span>
+            <span>{thinking ? 'THINKING' : 'SCANNING'}</span>
+          </div>
+          {toolRows}
+        </>
+      )}
+      {(running || thinking) && (
+        <div className="chat-working-status">
+          <WorkflowIcon name="processing" className="chat-spinner" />
+          <span>{running ? 'Working…' : 'Thinking…'}</span>
+        </div>
+      )}
     </div>
   );
 }
