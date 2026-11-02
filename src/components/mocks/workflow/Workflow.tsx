@@ -8,10 +8,16 @@ import {
   LiveStatus,
 } from './components/workflow/WorkflowChrome';
 import { useWorkflowDemo } from './components/workflow/useWorkflowDemo';
+import { useAutoplay } from './components/workflow/useAutoplay';
 import './workflow.css';
 
 export default function Workflow() {
   const demo = useWorkflowDemo();
+  const autoplay = useAutoplay();
+  // Autoplay clicks are synthetic (isTrusted false); only a real visitor stops it.
+  const stopOnUser = (event: { nativeEvent: Event }) => {
+    if (event.nativeEvent.isTrusted) autoplay.stop();
+  };
   const [layout, setLayout] = useState<HTMLDivElement | null>(null);
   const frame = useRef<HTMLDivElement>(null);
   const [fit, setFit] = useState({
@@ -73,7 +79,12 @@ export default function Workflow() {
   }, [layout]);
 
   return (
-    <div className="copilot-workflow">
+    <div
+      className="copilot-workflow"
+      ref={autoplay.scope}
+      onClick={stopOnUser}
+      onKeyDown={stopOnUser}
+    >
       <div className="showcase" data-phase={demo.phase}>
         <section
           className="workflow-section"

@@ -20,7 +20,7 @@ export default function ModeSelector({ demo }: { demo: WorkflowController }) {
   const choose = (nextMode: 'find' | 'verify') => {
     if (nextMode !== mode) selectMode(nextMode);
     setOpen(false);
-    menuTrigger.current?.focus();
+    menuTrigger.current?.focus({ preventScroll: true });
   };
 
   return (
