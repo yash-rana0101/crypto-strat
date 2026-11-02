@@ -100,39 +100,33 @@ export const AGENT_ENTRY_POINTS: Array<{ label: string; path: string }> = [
   { label: 'Agentic resource catalog', path: '/.well-known/ard.json' },
 ];
 
-/** Canonical, reviewed crypto product areas for feature pages and agent tools. */
+/** Canonical, reviewed crypto product areas for agent tools. */
 export const PRODUCT_AREAS: Array<{
   title: string;
-  path: string;
   summary: string;
 }> = [
   {
     title: 'Strat AI Platform',
-    path: '/features/ai-trading-platform',
     summary:
       'The crypto market analysis and pre-trade risk evaluation terminal itself.',
   },
   {
     title: 'Derivatives Analysis',
-    path: '/features/crypto-derivatives-analysis',
     summary:
       'Funding rates and velocity, open interest buildup, liquidation clusters, long/short ratio and perpetual basis for BTC, ETH, SOL and other perpetual futures.',
   },
   {
     title: 'Crypto Trading Terminal',
-    path: '/features/crypto-trading-terminal',
     summary:
       'Exchange WebSocket stream decoding with order-book depth, order flow imbalance, footprint volume and the intraday heads-up display.',
   },
   {
     title: 'AI Crypto Analysis',
-    path: '/features/ai-crypto-analysis',
     summary:
       'Crypto pair scanning with the 15-step setup evaluation across 26 chart pattern labels in five categories, plus a separate forming-pattern pass.',
   },
   {
     title: 'Strat AI Co-Pilot',
-    path: '/features/ai-trading-assistant',
     summary:
       'FIND, VERIFY, DEBATE and QA reasoning modes over a single trade setup.',
   },

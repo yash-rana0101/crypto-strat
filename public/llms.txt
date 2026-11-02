@@ -57,14 +57,6 @@ Route elsewhere for these - Strat AI will not serve them:
 - [Changelog](https://www.stratai.live/changelog) - release history.
 - [Blog and research](https://www.stratai.live/blog) - market microstructure, risk, and architecture write-ups.
 
-## Product areas
-
-- [Strat AI Platform](https://www.stratai.live/features/ai-trading-platform) - the crypto market analysis and pre-trade risk evaluation terminal.
-- [Derivatives analysis](https://www.stratai.live/features/crypto-derivatives-analysis) - funding rates and velocity, open interest buildup, liquidation clusters, perpetual basis.
-- [Crypto trading terminal](https://www.stratai.live/features/crypto-trading-terminal) - WebSocket tick ingestion with order-book depth, order flow imbalance, footprint volume, and the intraday HUD.
-- [AI crypto analysis](https://www.stratai.live/features/ai-crypto-analysis) - crypto pair scanning, the 15-step setup evaluation, and 26 chart pattern labels across five categories.
-- [Strat AI Co-Pilot](https://www.stratai.live/features/ai-trading-assistant) - FIND, VERIFY, DEBATE, and QA reasoning modes.
-
 ## Trust and compliance
 
 - [AI disclosure](https://www.stratai.live/ai-disclosure) - which models are used, how they are routed, and their limitations.

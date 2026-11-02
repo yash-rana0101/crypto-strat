@@ -2,37 +2,6 @@ import type { NavigationItem, NavigationGroup } from '@/types/navigation';
 
 export const NAV_ITEMS: NavigationItem[] = [
   {
-    label: 'Products',
-    href: '/#features',
-    dropdownItems: [
-      {
-        label: 'Strat AI Platform',
-        desc: 'Crypto market analysis & pre-trade risk evaluation',
-        href: '/features/ai-trading-platform',
-      },
-      {
-        label: 'Derivatives Analysis',
-        desc: 'Funding, open interest & liquidation diagnostics',
-        href: '/features/crypto-derivatives-analysis',
-      },
-      {
-        label: 'Crypto Trading Terminal',
-        desc: 'WebSocket tick pipeline & order flow decoding',
-        href: '/features/crypto-trading-terminal',
-      },
-      {
-        label: 'AI Crypto Analysis',
-        desc: 'Spot & perpetual pairs with 15-step setup scanning',
-        href: '/features/ai-crypto-analysis',
-      },
-      {
-        label: 'Strat AI Co-Pilot',
-        desc: 'Pre-trade risk auditing & multi-agent debate',
-        href: '/features/ai-trading-assistant',
-      },
-    ],
-  },
-  {
     label: 'Pricing',
     href: '/pricing',
     dropdownItems: [
@@ -116,17 +85,6 @@ export const FOOTER_GROUPS: NavigationGroup[] = [
   {
     title: 'Platform',
     items: [
-      { label: 'Strat AI Platform', href: '/features/ai-trading-platform' },
-      {
-        label: 'Derivatives Analysis',
-        href: '/features/crypto-derivatives-analysis',
-      },
-      {
-        label: 'Crypto Trading Terminal',
-        href: '/features/crypto-trading-terminal',
-      },
-      { label: 'AI Crypto Analysis', href: '/features/ai-crypto-analysis' },
-      { label: 'Strat AI Co-Pilot', href: '/features/ai-trading-assistant' },
       { label: 'Pricing Plans', href: '/pricing' },
       { label: 'Join Private Beta', href: '/waitlist' },
     ],

@@ -282,11 +282,6 @@ forms carry `toolname` / `tooldescription` attributes in server-rendered HTML.
 ## 11. Links
 
 - Homepage: https://www.stratai.live/
-- Strat AI Platform: https://www.stratai.live/features/ai-trading-platform
-- Derivatives analysis: https://www.stratai.live/features/crypto-derivatives-analysis
-- Crypto trading terminal: https://www.stratai.live/features/crypto-trading-terminal
-- AI crypto analysis: https://www.stratai.live/features/ai-crypto-analysis
-- Strat AI Co-Pilot: https://www.stratai.live/features/ai-trading-assistant
 - Pricing: https://www.stratai.live/pricing
 - Blog: https://www.stratai.live/blog
 - Changelog: https://www.stratai.live/changelog

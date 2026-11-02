@@ -58,7 +58,7 @@ Every page on stratai.live registers tools on `document.modelContext` (falling b
 | ------------------------ | --------- | ------------------------------------------------------------------------------------- |
 | `get_product_overview`   | read-only | What Strat AI is, its scope limits, and its risk rules.                               |
 | `get_pricing_plans`      | read-only | Live credit plans with INR pricing and per-plan capabilities.                         |
-| `list_features`          | read-only | Product areas with their canonical URLs.                                              |
+| `list_features`          | read-only | Product areas with a one-line summary each.                                           |
 | `search_documentation`   | read-only | Keyword search across published docs and research articles.                           |
 | `join_private_beta`      | write     | Registers a name and email for beta access. Requires user confirmation.               |
 | `submit_contact_inquiry` | write     | Files a support, partnership, research, or media inquiry. Requires user confirmation. |

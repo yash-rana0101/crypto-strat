@@ -59,7 +59,7 @@
     {
       "name": "list_features",
       "title": "List Features",
-      "description": "List Strat AI product areas with a one-line summary and canonical URL for each. Use to route a user to the right part of the product, such as derivatives analytics or the crypto trading terminal.",
+      "description": "List Strat AI product areas with a one-line summary for each. Use to route a user to the right part of the product, such as derivatives analytics or the crypto trading terminal.",
       "annotations": { "readOnlyHint": true }
     },
     {

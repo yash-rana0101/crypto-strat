@@ -124,7 +124,7 @@ export const pricingTool: WebMcpTool = {
 export const featuresTool: WebMcpTool = {
   name: 'list_features',
   description:
-    'List Strat AI product areas with a one-line summary and canonical URL for each. Use to route a user to the right part of the product, such as derivatives analytics or the crypto trading terminal.',
+    'List Strat AI product areas with a one-line summary for each. Use to route a user to the right part of the product, such as derivatives analytics or the crypto trading terminal.',
   inputSchema: { type: 'object', properties: {} },
   annotations: { readOnlyHint: true, openWorldHint: true },
   execute: async () =>
@@ -132,7 +132,7 @@ export const featuresTool: WebMcpTool = {
       '# Strat AI product areas',
       '',
       PRODUCT_AREAS.map(
-        (area) => `- **${area.title}** (${SITE_URL}${area.path}): ${area.summary}`
+        (area) => `- **${area.title}**: ${area.summary}`
       ).join('\n'),
     ].join('\n'),
 };

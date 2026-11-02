@@ -42,7 +42,6 @@ export const platform: PlatformContent = {
       title: 'Pattern structure',
       body: 'Completed and still-forming structures.',
       signal: '26 labels · 5 families',
-      href: '/features/ai-crypto-analysis',
     },
     {
       icon: 'cpu',
@@ -50,7 +49,6 @@ export const platform: PlatformContent = {
       title: 'Order flow',
       body: 'Tick imbalance and bid/ask footprint.',
       signal: 'OFI · footprint',
-      href: '/features/crypto-trading-terminal',
     },
     {
       icon: 'bar-chart',
@@ -65,7 +63,6 @@ export const platform: PlatformContent = {
       title: 'Derivatives positioning',
       body: 'Funding, OI, liquidations, basis and bias.',
       signal: '6-signal vote',
-      href: '/features/crypto-derivatives-analysis',
     },
     {
       icon: 'compass',
@@ -73,7 +70,6 @@ export const platform: PlatformContent = {
       title: 'Trading workspaces',
       body: 'A risk floor and toolset for each style.',
       signal: '4 profiles',
-      href: '/features/ai-trading-platform',
     },
     {
       icon: 'clock',
